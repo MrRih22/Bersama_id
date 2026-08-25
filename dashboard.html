@@ -43,12 +43,6 @@
                 <a href="dashboard.html" class="flex items-center gap-3 px-3 py-3 rounded-lg bg-earth-50 text-earth-600 font-bold transition">
                     <i class="fa-solid fa-pen-to-square w-5 text-center"></i> Edit Undangan
                 </a>
-                <a href="#" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-500 hover:bg-sage-50 hover:text-sage-700 font-medium transition mt-1">
-                    <i class="fa-solid fa-book-open w-5 text-center"></i> Daftar Tamu (RSVP)
-                </a>
-                <a href="#" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-500 hover:bg-sage-50 hover:text-sage-700 font-medium transition mt-1">
-                    <i class="fa-solid fa-eye w-5 text-center"></i> Lihat Hasil
-                </a>
             </div>
 
             <div class="p-4 border-t border-sage-100">
@@ -58,19 +52,12 @@
             </div>
         </aside>
 
-        <!-- Overlay Mobile -->
-        <div id="sidebar-overlay" class="fixed inset-0 bg-sage-900/50 z-40 hidden lg:hidden backdrop-blur-sm transition-opacity opacity-0"></div>
-
         <!-- MAIN AREA -->
         <div class="flex-1 flex flex-col h-screen overflow-hidden">
-            
             <!-- Topbar -->
             <header class="h-20 bg-white border-b border-sage-200 flex items-center justify-between px-6 lg:px-10 shrink-0 shadow-sm z-30">
                 <div class="flex items-center gap-4">
-                    <button id="btn-sidebar" class="lg:hidden text-sage-600 hover:text-sage-900 focus:outline-none text-xl">
-                        <i class="fa-solid fa-bars"></i>
-                    </button>
-                    <h2 class="text-xl font-bold font-serif text-sage-900 hidden sm:block">Pengaturan Undangan</h2>
+                    <h2 class="text-xl font-bold font-serif text-sage-900 hidden sm:block">Panel Klien</h2>
                 </div>
                 
                 <div class="flex items-center gap-5">
@@ -86,44 +73,53 @@
                 </div>
             </header>
 
-            <!-- Content Formulir Klien -->
+            <!-- Content -->
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-sage-50/50 p-4 sm:p-6 lg:p-10 scroll-smooth">
                 
                 <div class="max-w-4xl mx-auto">
-                    <!-- Progress Bar Ringkasan -->
-                    <div class="bg-white p-5 rounded-2xl border border-sage-200 shadow-sm mb-6 flex justify-between items-center">
-                        <div>
-                            <h3 class="font-bold text-sage-900">Status Undangan</h3>
-                            <p class="text-xs text-slate-500">Lengkapi data acara Anda agar undangan siap disebar.</p>
+                    
+                    <!-- 0. PROGRESS BAR PENGERJAAN -->
+                    <div class="bg-white p-6 md:p-8 rounded-2xl border border-sage-200 shadow-sm mb-8 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-sage-50 rounded-bl-full -z-10"></div>
+                        
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-4 gap-4">
+                            <div>
+                                <h3 class="font-bold text-xl font-serif text-sage-900">Status Pengerjaan Undangan</h3>
+                                <p id="status-text" class="text-sm text-earth-600 font-bold mt-2 bg-earth-50 inline-block px-4 py-1.5 rounded-full border border-earth-100">Menunggu Data Lengkap</p>
+                            </div>
+                            <span id="progress-text" class="text-4xl font-serif font-bold text-sage-900">10%</span>
                         </div>
-                        <a href="#" target="_blank" class="bg-sage-900 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-sage-800 transition shadow-md">
-                            <i class="fa-solid fa-eye mr-2"></i> Preview
-                        </a>
+                        
+                        <div class="w-full bg-slate-100 rounded-full h-4 mb-6 overflow-hidden border border-slate-200 shadow-inner">
+                            <div id="progress-bar" class="bg-gradient-to-r from-earth-400 to-earth-600 h-4 rounded-full transition-all duration-1000 ease-out relative" style="width: 10%">
+                                <div class="absolute inset-0 bg-white/20 w-full h-full animate-pulse"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pt-4 border-t border-sage-100 gap-4">
+                            <p class="text-xs text-slate-500 leading-relaxed max-w-lg">
+                                <i class="fa-solid fa-circle-info text-sage-400 mr-1"></i> Tim kami akan memproses desain secara manual setelah data tersimpan. Link undangan akan otomatis aktif jika status sudah 100%.
+                            </p>
+                            <a href="#" id="btn-preview" target="_blank" class="shrink-0 bg-sage-900 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition shadow-md pointer-events-none opacity-50 flex items-center gap-2">
+                                <i class="fa-solid fa-eye"></i> Lihat Hasil Undangan
+                            </a>
+                        </div>
                     </div>
 
                     <form id="form-dashboard-klien" class="space-y-6">
-                        
-                        <!-- 1. DATA MEMPELAI -->
+                        <!-- DATA MEMPELAI -->
                         <div class="bg-white rounded-2xl border border-sage-200 shadow-sm overflow-hidden">
                             <div class="bg-sage-100/50 px-6 py-4 border-b border-sage-200 flex items-center gap-3">
                                 <i class="fa-solid fa-venus-mars text-earth-500 text-xl"></i>
                                 <h3 class="font-bold font-serif text-lg text-sage-900">Data Mempelai</h3>
                             </div>
                             <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <!-- Mempelai Pria -->
-                                <div>
-                                    <label class="block text-sm font-bold text-sage-900 mb-1.5">Nama Mempelai Pria</label>
-                                    <input type="text" id="groom-name" class="w-full px-4 py-2.5 rounded-xl border border-sage-200 focus:outline-none focus:border-earth-500 bg-slate-50 focus:bg-white text-sm transition" placeholder="Contoh: Romeo Montague">
-                                </div>
-                                <!-- Mempelai Wanita -->
-                                <div>
-                                    <label class="block text-sm font-bold text-sage-900 mb-1.5">Nama Mempelai Wanita</label>
-                                    <input type="text" id="bride-name" class="w-full px-4 py-2.5 rounded-xl border border-sage-200 focus:outline-none focus:border-earth-500 bg-slate-50 focus:bg-white text-sm transition" placeholder="Contoh: Juliet Capulet">
-                                </div>
+                                <div><label class="block text-sm font-bold text-sage-900 mb-1.5">Mempelai Pria</label><input type="text" id="groom-name" class="w-full px-4 py-2.5 rounded-xl border border-sage-200 bg-slate-50 text-sm"></div>
+                                <div><label class="block text-sm font-bold text-sage-900 mb-1.5">Mempelai Wanita</label><input type="text" id="bride-name" class="w-full px-4 py-2.5 rounded-xl border border-sage-200 bg-slate-50 text-sm"></div>
                             </div>
                         </div>
 
-                        <!-- 2. DETAIL ACARA (Waktu & Lokasi) -->
+                        <!-- LOKASI & WAKTU -->
                         <div class="bg-white rounded-2xl border border-sage-200 shadow-sm overflow-hidden">
                             <div class="bg-sage-100/50 px-6 py-4 border-b border-sage-200 flex items-center gap-3">
                                 <i class="fa-solid fa-calendar-day text-earth-500 text-xl"></i>
@@ -131,166 +127,117 @@
                             </div>
                             <div class="p-6 space-y-6">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label class="block text-sm font-bold text-sage-900 mb-1.5">Tanggal Acara Utama</label>
-                                        <input type="date" id="event-date" class="w-full px-4 py-2.5 rounded-xl border border-sage-200 focus:outline-none focus:border-earth-500 bg-slate-50 focus:bg-white text-sm transition text-slate-600">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-bold text-sage-900 mb-1.5">Waktu / Jam (Contoh: 08:00 - Selesai)</label>
-                                        <input type="text" id="event-time" class="w-full px-4 py-2.5 rounded-xl border border-sage-200 focus:outline-none focus:border-earth-500 bg-slate-50 focus:bg-white text-sm transition" placeholder="08.00 WIB - Selesai">
-                                    </div>
+                                    <div><label class="block text-sm font-bold text-sage-900 mb-1.5">Tanggal Acara</label><input type="date" id="event-date" class="w-full px-4 py-2.5 rounded-xl border border-sage-200 bg-slate-50 text-sm text-slate-600"></div>
+                                    <div><label class="block text-sm font-bold text-sage-900 mb-1.5">Waktu (Jam)</label><input type="text" id="event-time" class="w-full px-4 py-2.5 rounded-xl border border-sage-200 bg-slate-50 text-sm" placeholder="Contoh: 08.00 - Selesai"></div>
                                 </div>
-                                <div>
-                                    <label class="block text-sm font-bold text-sage-900 mb-1.5">Nama Gedung / Lokasi</label>
-                                    <input type="text" id="event-location" class="w-full px-4 py-2.5 rounded-xl border border-sage-200 focus:outline-none focus:border-earth-500 bg-slate-50 focus:bg-white text-sm transition" placeholder="Contoh: Gedung Serbaguna Senayan">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-bold text-sage-900 mb-1.5">Link Google Maps Lokasi</label>
-                                    <div class="relative">
-                                        <i class="fa-solid fa-map-location-dot absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                                        <input type="url" id="event-maps" class="w-full pl-11 pr-4 py-2.5 rounded-xl border border-sage-200 focus:outline-none focus:border-earth-500 bg-slate-50 focus:bg-white text-sm transition" placeholder="https://goo.gl/maps/...">
-                                    </div>
-                                </div>
+                                <div><label class="block text-sm font-bold text-sage-900 mb-1.5">Nama Gedung / Lokasi</label><input type="text" id="event-location" class="w-full px-4 py-2.5 rounded-xl border border-sage-200 bg-slate-50 text-sm"></div>
+                                <div><label class="block text-sm font-bold text-sage-900 mb-1.5">Link Google Maps</label><input type="url" id="event-maps" class="w-full px-4 py-2.5 rounded-xl border border-sage-200 bg-slate-50 text-sm" placeholder="https://goo.gl/maps/..."></div>
                             </div>
                         </div>
 
-                        <!-- 3. GALERI FOTO (Sesuai Pesanan Klien) -->
-                        <div class="bg-white rounded-2xl border border-sage-200 shadow-sm overflow-hidden relative">
-                            <!-- Badge Fitur -->
-                            <div class="absolute top-4 right-4 bg-earth-100 text-earth-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-earth-200">
-                                Fitur Tambahan
+                        <!-- FITUR TAMBAHAN (Musik & Cerita) -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-white rounded-2xl border border-sage-200 shadow-sm overflow-hidden">
+                                <div class="bg-sage-100/50 px-6 py-4 border-b border-sage-200"><h3 class="font-bold font-serif text-sage-900">Latar Musik (Youtube)</h3></div>
+                                <div class="p-6"><input type="url" id="music-url" class="w-full px-4 py-2.5 rounded-xl border border-sage-200 bg-slate-50 text-sm" placeholder="Link YouTube Lagu"></div>
                             </div>
-                            
-                            <div class="bg-sage-100/50 px-6 py-4 border-b border-sage-200 flex items-center gap-3">
-                                <i class="fa-regular fa-images text-earth-500 text-xl"></i>
-                                <h3 class="font-bold font-serif text-lg text-sage-900">Galeri Foto Pre-Wedding</h3>
-                            </div>
-                            <div class="p-6">
-                                <p class="text-sm text-slate-500 mb-4">Unggah momen romantis Anda (Maksimal 6 foto, format JPG/PNG).</p>
-                                <div class="border-2 border-dashed border-sage-300 rounded-xl p-8 text-center bg-slate-50 hover:bg-sage-50 transition cursor-pointer">
-                                    <i class="fa-solid fa-cloud-arrow-up text-4xl text-sage-400 mb-3"></i>
-                                    <p class="text-sm font-bold text-sage-800">Klik untuk memilih foto atau seret ke sini</p>
-                                    <input type="file" id="gallery-upload" multiple accept="image/png, image/jpeg" class="hidden">
-                                </div>
-                                <!-- Area Preview Foto (Nanti dikelola via JS) -->
-                                <div id="photo-preview-container" class="grid grid-cols-3 sm:grid-cols-6 gap-3 mt-4 hidden"></div>
-                            </div>
-                        </div>
-
-                        <!-- 4. MUSIK & AUDIO (Kustom Lagu) -->
-                        <div class="bg-white rounded-2xl border border-sage-200 shadow-sm overflow-hidden relative">
-                            <div class="absolute top-4 right-4 bg-earth-100 text-earth-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-earth-200">
-                                Audio Kustom
-                            </div>
-
-                            <div class="bg-sage-100/50 px-6 py-4 border-b border-sage-200 flex items-center gap-3">
-                                <i class="fa-solid fa-music text-earth-500 text-xl"></i>
-                                <h3 class="font-bold font-serif text-lg text-sage-900">Latar Musik (Backsound)</h3>
-                            </div>
-                            <div class="p-6">
-                                <label class="block text-sm font-bold text-sage-900 mb-1.5">Pilih Lagu Romantis Anda</label>
-                                <p class="text-xs text-slate-500 mb-4">Tempelkan link YouTube dari lagu pilihan Anda. Sistem kami akan otomatis memutarnya di undangan.</p>
-                                <div class="relative">
-                                    <i class="fa-brands fa-youtube absolute left-4 top-1/2 -translate-y-1/2 text-red-500 text-lg"></i>
-                                    <input type="url" id="music-url" class="w-full pl-12 pr-4 py-2.5 rounded-xl border border-sage-200 focus:outline-none focus:border-earth-500 bg-slate-50 focus:bg-white text-sm transition" placeholder="Contoh: https://youtu.be/videoid">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 5. CERITA CINTA (Love Story) -->
-                        <div class="bg-white rounded-2xl border border-sage-200 shadow-sm overflow-hidden relative">
-                            <div class="absolute top-4 right-4 bg-earth-100 text-earth-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-earth-200">
-                                Cerita Cinta
-                            </div>
-
-                            <div class="bg-sage-100/50 px-6 py-4 border-b border-sage-200 flex items-center gap-3">
-                                <i class="fa-solid fa-heart text-earth-500 text-xl"></i>
-                                <h3 class="font-bold font-serif text-lg text-sage-900">Kisah Perjalanan Cinta</h3>
-                            </div>
-                            <div class="p-6">
-                                <label class="block text-sm font-bold text-sage-900 mb-1.5">Tuliskan Singkat Kisah Anda</label>
-                                <textarea id="love-story" rows="4" class="w-full px-4 py-3 rounded-xl border border-sage-200 focus:outline-none focus:border-earth-500 bg-slate-50 focus:bg-white text-sm transition" placeholder="Berawal dari pertemuan di kampus, kami mulai merajut kasih..."></textarea>
-                            </div>
-                        </div>
-
-                        <!-- 6. AMPLOP DIGITAL (Kirim Kado) -->
-                        <div class="bg-white rounded-2xl border border-sage-200 shadow-sm overflow-hidden relative">
-                            <div class="absolute top-4 right-4 bg-earth-100 text-earth-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-earth-200">
-                                Amplop Digital
-                            </div>
-
-                            <div class="bg-sage-100/50 px-6 py-4 border-b border-sage-200 flex items-center gap-3">
-                                <i class="fa-solid fa-gift text-earth-500 text-xl"></i>
-                                <h3 class="font-bold font-serif text-lg text-sage-900">Rekening Amplop Digital</h3>
-                            </div>
-                            <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div>
-                                    <label class="block text-sm font-bold text-sage-900 mb-1.5">Nama Bank / E-Wallet</label>
-                                    <input type="text" id="bank-name" class="w-full px-4 py-2.5 rounded-xl border border-sage-200 focus:outline-none focus:border-earth-500 bg-slate-50 focus:bg-white text-sm transition" placeholder="BCA / GoPay / DANA">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-bold text-sage-900 mb-1.5">Nomor Rekening</label>
-                                    <input type="number" id="bank-account" class="w-full px-4 py-2.5 rounded-xl border border-sage-200 focus:outline-none focus:border-earth-500 bg-slate-50 focus:bg-white text-sm transition" placeholder="1234567890">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-bold text-sage-900 mb-1.5">Atas Nama (A/N)</label>
-                                    <input type="text" id="bank-holder" class="w-full px-4 py-2.5 rounded-xl border border-sage-200 focus:outline-none focus:border-earth-500 bg-slate-50 focus:bg-white text-sm transition" placeholder="Nama Pemilik Rekening">
-                                </div>
+                            <div class="bg-white rounded-2xl border border-sage-200 shadow-sm overflow-hidden">
+                                <div class="bg-sage-100/50 px-6 py-4 border-b border-sage-200"><h3 class="font-bold font-serif text-sage-900">Cerita Cinta</h3></div>
+                                <div class="p-6"><textarea id="love-story" rows="1" class="w-full px-4 py-2.5 rounded-xl border border-sage-200 bg-slate-50 text-sm" placeholder="Tuliskan kisah singkat Anda..."></textarea></div>
                             </div>
                         </div>
 
                         <!-- TOMBOL SIMPAN -->
                         <div class="sticky bottom-6 z-20 mt-8 flex justify-end">
-                            <button type="button" onclick="simpanDataDashboard()" class="bg-sage-900 text-white font-bold text-sm px-8 py-4 rounded-xl hover:bg-sage-800 transition shadow-2xl shadow-sage-900/30 flex items-center gap-3">
-                                <i class="fa-solid fa-floppy-disk"></i> Simpan Semua Perubahan
+                            <button type="button" onclick="simpanDataDashboard()" id="btn-simpan" class="bg-sage-900 text-white font-bold text-sm px-8 py-4 rounded-xl hover:bg-sage-800 transition shadow-2xl shadow-sage-900/30 flex items-center gap-3">
+                                <i class="fa-solid fa-floppy-disk"></i> Simpan & Perbarui Data
                             </button>
                         </div>
-                        
                     </form>
                 </div>
-
-                <p class="text-center text-xs text-slate-400 mt-10 pb-10">Copyright © 2026 Bersama.id Dashboard. Dilindungi Undang-Undang.</p>
             </main>
         </div>
     </div>
 
-    <!-- 1. Panggil Supabase DI SINI -->
+    <!-- Panggil Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
-    <!-- 2. Panggil auth.js milik kita -->
-    <script src="sistem-auth.js"></script> <!-- Sesuaikan nama JS kamu -->
+    <script src="sistem-auth.js"></script>
 
-    <!-- LOGIKA UI DASHBOARD SAJA -->
     <script>
-        const btnSidebar = document.getElementById('btn-sidebar');
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('sidebar-overlay');
+        let currentUser = null;
 
-        function toggleSidebar() {
-            sidebar.classList.toggle('-translate-x-full');
-            overlay.classList.toggle('hidden');
-            if(overlay.classList.contains('hidden')) {
-                overlay.classList.remove('opacity-100'); overlay.classList.add('opacity-0');
-            } else {
-                setTimeout(() => { overlay.classList.remove('opacity-0'); overlay.classList.add('opacity-100'); }, 10);
+        async function loadDashboardData() {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session) return;
+            currentUser = session.user;
+
+            const { data, error } = await supabase.from('invitations').select('*').eq('user_id', currentUser.id).single();
+
+            if (data) {
+                // Tampilkan Data ke Form
+                document.getElementById('groom-name').value = data.groom_name || '';
+                document.getElementById('bride-name').value = data.bride_name || '';
+                document.getElementById('event-date').value = data.event_date || '';
+                document.getElementById('event-time').value = data.event_time || '';
+                document.getElementById('event-location').value = data.event_location || '';
+                document.getElementById('event-maps').value = data.event_maps || '';
+                document.getElementById('music-url').value = data.music_url || '';
+                document.getElementById('love-story').value = data.love_story || '';
+
+                // Atur Progress Bar Berdasarkan Database
+                const progress = data.progress || 10;
+                const status = data.status || 'Menunggu Data Klien';
+                const previewLink = data.preview_link || '#';
+
+                document.getElementById('progress-bar').style.width = progress + '%';
+                document.getElementById('progress-text').innerText = progress + '%';
+                document.getElementById('status-text').innerText = status;
+
+                // Logika Tombol Preview
+                const btnPreview = document.getElementById('btn-preview');
+                if(progress >= 100 && previewLink !== '#') {
+                    btnPreview.href = previewLink;
+                    btnPreview.classList.remove('pointer-events-none', 'opacity-50');
+                    btnPreview.classList.add('hover:bg-earth-600', 'bg-earth-500'); // Berubah warna jika selesai
+                }
             }
         }
-        btnSidebar.addEventListener('click', toggleSidebar);
-        overlay.addEventListener('click', toggleSidebar);
 
-        // Simulasi fungsi tombol simpan
-        function simpanDataDashboard() {
-            // Kita akan sambungkan ini ke Supabase di tahap berikutnya
-            alert("Sedang memproses penyimpanan data...");
-            setTimeout(() => {
-                alert("SUKSES: Data berhasil disimpan ke database!");
-            }, 1000);
+        async function simpanDataDashboard() {
+            if (!currentUser) return;
+            
+            const btnSimpan = document.getElementById('btn-simpan');
+            btnSimpan.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Menyimpan...';
+            btnSimpan.disabled = true;
+
+            const updates = {
+                groom_name: document.getElementById('groom-name').value,
+                bride_name: document.getElementById('bride-name').value,
+                event_date: document.getElementById('event-date').value || null,
+                event_time: document.getElementById('event-time').value,
+                event_location: document.getElementById('event-location').value,
+                event_maps: document.getElementById('event-maps').value,
+                music_url: document.getElementById('music-url').value,
+                love_story: document.getElementById('love-story').value,
+                // Mengubah status otomatis ketika klien pertama kali menyimpan data
+                status: 'Data Diterima - Menunggu Desain',
+                progress: 25
+            };
+
+            const { error } = await supabase.from('invitations').update(updates).eq('user_id', currentUser.id);
+
+            btnSimpan.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Simpan & Perbarui Data';
+            btnSimpan.disabled = false;
+
+            if (error) {
+                alert("Gagal Menyimpan: " + error.message);
+            } else {
+                alert("SUKSES: Data tersimpan! Tim kami akan segera memproses undangan Anda.");
+                loadDashboardData(); // Refresh progress bar
+            }
         }
 
-        // Trik Upload File Palsu (UI)
-        document.querySelector('.border-dashed').addEventListener('click', () => {
-            document.getElementById('gallery-upload').click();
-        });
+        loadDashboardData();
     </script>
 </body>
 </html>
