@@ -1,4 +1,3 @@
-// INISIALISASI SUPABASE
 const supabaseUrl = 'https://yvwfduhzcrzkxcfufubx.supabase.co'; 
 const supabaseKey = 'sb_publishable_M4wVaavZ1s3BDtoiQTbU4g_W-Cwl-xv';
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
@@ -15,9 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (formLogin) console.log("--> Form Login ditemukan!");
     if (formRegister) console.log("--> Form Register ditemukan!");
 
-    // ==========================================
-    // CEK SESI LOGIN
-    // ==========================================
+  
     const { data: { session }, error: sessionError } = await supabase.auth.getSession();
     const currentPath = window.location.pathname;
 
@@ -33,9 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
-    // ==========================================
-    // FUNGSI NOTIFIKASI
-    // ==========================================
+    
     function showAlert(message, type) {
         console.log("Menampilkan Alert:", message);
         const alertBox = document.getElementById('alert-box');
@@ -59,9 +54,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }, 3000);
     }
 
-    // ==========================================
-    // DAFTAR (REGISTER)
-    // ==========================================
+  
     if(formRegister) {
         formRegister.addEventListener('submit', async (e) => {
             e.preventDefault(); // Mencegah halaman refresh
@@ -91,9 +84,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    // ==========================================
-    // MASUK (LOGIN)
-    // ==========================================
+   
     if(formLogin) {
         formLogin.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -121,7 +112,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-// FUNGSI GLOBAL
+
 function togglePassword(inputId) {
     const input = document.getElementById(inputId);
     const icon = input.nextElementSibling.querySelector('i');
