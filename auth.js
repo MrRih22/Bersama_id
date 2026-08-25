@@ -1,4 +1,4 @@
-// INISIALISASI SUPABASE
+ // INISIALISASI SUPABASE
 const supabaseUrl = 'https://yvwfduhzcrzkxcfufubx.supabase.co'; 
 const supabaseKey = 'sb_publishable_M4wVaavZ1s3BDtoiQTbU4g_W-Cwl-xv';
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
