@@ -1,67 +1,68 @@
-    <!DOCTYPE html>
-    <html lang="id">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Undangan & Ucapan Digital | Bersama.id</title>
-        <!-- Google Fonts: Playfair Display (Elegan/Serif) & Lato (Bersih/Sans) -->
-        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-        <!-- FontAwesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <!-- Tailwind CSS (CDN) -->
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script>
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        fontFamily: { 
-                            sans: ['Lato', 'sans-serif'],
-                            serif: ['Playfair Display', 'serif']
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Undangan & Ucapan Digital | Bersama.id</title>
+    <!-- Google Fonts: Playfair Display (Elegan/Serif) & Lato (Bersih/Sans) -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    },
+                    colors: {
+                        sage: {
+                            50: '#f4f6f4',
+                            100: '#e4e9e5',
+                            200: '#cbd4cc',
+                            300: '#a6b5a8',
+                            500: '#697e6d', // Primary Sage Green
+                            600: '#526456',
+                            800: '#334036',
+                            900: '#232c25'  // Footer Color
                         },
-                        colors: {
-                            sage: {
-                                50: '#f4f6f4',
-                                100: '#e4e9e5',
-                                200: '#cbd4cc',
-                                300: '#a6b5a8',
-                                500: '#697e6d', // Primary Sage Green
-                                600: '#526456',
-                                800: '#334036',
-                                900: '#232c25'  // Footer Color
-                            },
-                            earth: {
-                                100: '#f9f3ee',
-                                200: '#f0dfd1',
-                                500: '#d4a373', // Terracotta/Sand Accent
-                                600: '#b58255',
-                                700: '#8c613c'
-                            },
-                            cream: '#fdfdfc' // Background Utama
-                        }
+                        earth: {
+                            100: '#f9f3ee',
+                            200: '#f0dfd1',
+                            500: '#d4a373', // Terracotta/Sand Accent
+                            600: '#b58255',
+                            700: '#8c613c'
+                        },
+                        cream: '#fdfdfc' // Background Utama
                     }
                 }
             }
-           
-        <style>
-            /* Custom Toggle Switch dengan warna Sage */
-            .toggle-checkbox:checked { right: 0; border-color: #697e6d; }
-            .toggle-checkbox:checked + .toggle-label { background-color: #697e6d; }
-            /* Custom Range Slider */
-            input[type=range] { accent-color: #697e6d; }
-            
-            /* Animasi fade in lambat ala website elegan */
-            @keyframes subtleZoom {
-                0% { transform: scale(1); }
-                50% { transform: scale(1.02); }
-                100% { transform: scale(1); }
-            }
-            .animate-subtle { animation: subtleZoom 8s ease-in-out infinite; }
+        }
+    </script> <!-- TAG INI YANG SEBELUMNYA HILANG -->
+       
+    <style>
+        /* Custom Toggle Switch dengan warna Sage */
+        .toggle-checkbox:checked { right: 0; border-color: #697e6d; }
+        .toggle-checkbox:checked + .toggle-label { background-color: #697e6d; }
+        /* Custom Range Slider */
+        input[type=range] { accent-color: #697e6d; }
+        
+        /* Animasi fade in lambat ala website elegan */
+        @keyframes subtleZoom {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        .animate-subtle { animation: subtleZoom 8s ease-in-out infinite; }
 
-            /* Sembunyikan scrollbar untuk kategori jika diperlukan */
-            .no-scrollbar::-webkit-scrollbar { display: none; }
-            .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        </style>
-    </head>
+        /* Sembunyikan scrollbar untuk kategori jika diperlukan */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
     <body class="bg-cream text-slate-700 font-sans selection:bg-sage-200">
 
         <!-- 1. Navbar Elegan -->
