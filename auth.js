@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const { data: { session }, error: sessionError } = await supabase.auth.getSession();
     const currentPath = window.location.pathname;
 
-    // Pastikan tidak error membaca .includes pada root path (misal: mysite.netlify.app/)
+    // Pastikan tidak error membaca .includes pada root path
     const isAuthPage = currentPath.includes('login') || currentPath.includes('register') || currentPath.includes('lupa-sandi');
     const isDashboard = currentPath.includes('dashboard');
 
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const alertBox = document.getElementById('alert-box');
         const alertMsg = document.getElementById('alert-message');
         
-        // PENTING: Jika elemen alert tidak ada, gunakan default alert browser agar tetap tahu statusnya
+        // Jika elemen alert tidak ada di HTML, gunakan popup bawaan browser
         if(!alertBox || !alertMsg) {
             alert(message);
             return;
@@ -100,15 +100,19 @@ document.addEventListener('DOMContentLoaded', async () => {
             const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
 
+            // Tambahan: Tampilkan proses loading saat mengecek akun
+            showAlert('Sedang memeriksa akun...', 'success');
+
             const { data, error } = await supabase.auth.signInWithPassword({
                 email: email,
                 password: password
             });
 
             if (error) {
-                showAlert('Email atau kata sandi salah!', 'error');
+                // Pesan error diperbarui agar lebih jelas jika belum punya akun
+                showAlert('Gagal masuk! Akun belum terdaftar atau kata sandi salah.', 'error');
             } else {
-                showAlert('Login berhasil!', 'success');
+                showAlert('Masuk berhasil! Mengalihkan ke dashboard...', 'success');
                 setTimeout(() => { window.location.href = 'dashboard.html'; }, 1500);
             }
         });
