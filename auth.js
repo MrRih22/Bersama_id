@@ -1,22 +1,35 @@
+// 1. ALERT PAKSA: Jika alert ini tidak muncul saat web dibuka, berarti browser masih membaca file lama!
+alert("SYSTEM CHECK: File auth.js terbaru berhasil terbaca!");
+console.log("1. Memulai sistem Autentikasi...");
+
+// Cek apakah Supabase berhasil diload dari HTML
+if (!window.supabase) {
+    alert("CRITICAL ERROR: Library Supabase JS gagal dimuat dari HTML!");
+}
+
 // INISIALISASI SUPABASE
 const supabaseUrl = 'https://yvwfduhzcrzkxcfufubx.supabase.co'; 
 const supabaseKey = 'sb_publishable_M4wVaavZ1s3BDtoiQTbU4g_W-Cwl-xv';
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
+console.log("2. Supabase berhasil dihubungkan.");
+
 document.addEventListener('DOMContentLoaded', async () => {
+    console.log("3. Halaman selesai dimuat, mencari form...");
     
     const formLogin = document.getElementById('form-login');
     const formRegister = document.getElementById('form-register');
     const formForgot = document.getElementById('form-forgot');
-    const userNameDisplay = document.getElementById('user-name-display');
+    
+    if (formLogin) console.log("--> Form Login ditemukan!");
+    if (formRegister) console.log("--> Form Register ditemukan!");
 
     // ==========================================
-    // 1. CEK SESI LOGIN (PROTEKSI HALAMAN)
+    // CEK SESI LOGIN
     // ==========================================
     const { data: { session }, error: sessionError } = await supabase.auth.getSession();
     const currentPath = window.location.pathname;
 
-    // Pastikan tidak error membaca .includes pada root path
     const isAuthPage = currentPath.includes('login') || currentPath.includes('register') || currentPath.includes('lupa-sandi');
     const isDashboard = currentPath.includes('dashboard');
 
@@ -24,26 +37,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.location.href = 'dashboard.html';
         return;
     }
-
     if (!session && isDashboard) {
         window.location.href = 'login.html';
         return;
     }
 
-    if (session && userNameDisplay) {
-        userNameDisplay.innerText = session.user.user_metadata?.name || 'Pengguna';
-    }
-
     // ==========================================
-    // 2. FUNGSI NOTIFIKASI
+    // FUNGSI NOTIFIKASI
     // ==========================================
     function showAlert(message, type) {
+        console.log("Menampilkan Alert:", message);
         const alertBox = document.getElementById('alert-box');
         const alertMsg = document.getElementById('alert-message');
         
-        // Jika elemen alert tidak ada di HTML, gunakan popup bawaan browser
         if(!alertBox || !alertMsg) {
-            alert(message);
+            alert(message); // Fallback jika UI alert-box HTML tidak ada
             return;
         }
         
@@ -61,17 +69,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // ==========================================
-    // 3. DAFTAR (REGISTER)
+    // DAFTAR (REGISTER)
     // ==========================================
     if(formRegister) {
         formRegister.addEventListener('submit', async (e) => {
-            e.preventDefault();
+            e.preventDefault(); // Mencegah halaman refresh
+            console.log("TOMBOL DAFTAR DIKLIK!");
             
             const name = document.getElementById('reg-name').value;
             const email = document.getElementById('reg-email').value;
             const password = document.getElementById('reg-password').value;
 
-            // Tampilkan loading sementara
             showAlert('Memproses pendaftaran...', 'success');
 
             const { data, error } = await supabase.auth.signUp({
@@ -81,8 +89,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
 
             if (error) {
+                console.error("Error Daftar:", error.message);
                 showAlert(error.message, 'error');
             } else {
+                console.log("Daftar Sukses!");
                 showAlert('Pendaftaran sukses! Silakan masuk.', 'success');
                 formRegister.reset();
                 setTimeout(() => { window.location.href = 'login.html'; }, 2000);
@@ -91,16 +101,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // ==========================================
-    // 4. MASUK (LOGIN)
+    // MASUK (LOGIN)
     // ==========================================
     if(formLogin) {
         formLogin.addEventListener('submit', async (e) => {
             e.preventDefault();
+            console.log("TOMBOL LOGIN DIKLIK!");
             
             const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
 
-            // Tambahan: Tampilkan proses loading saat mengecek akun
             showAlert('Sedang memeriksa akun...', 'success');
 
             const { data, error } = await supabase.auth.signInWithPassword({
@@ -109,30 +119,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
 
             if (error) {
-                // Pesan error diperbarui agar lebih jelas jika belum punya akun
+                console.error("Error Login:", error.message);
                 showAlert('Gagal masuk! Akun belum terdaftar atau kata sandi salah.', 'error');
             } else {
+                console.log("Login Sukses!");
                 showAlert('Masuk berhasil! Mengalihkan ke dashboard...', 'success');
                 setTimeout(() => { window.location.href = 'dashboard.html'; }, 1500);
-            }
-        });
-    }
-
-    // ==========================================
-    // 5. LUPA SANDI
-    // ==========================================
-    if(formForgot) {
-        formForgot.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('forgot-email').value;
-            
-            const { data, error } = await supabase.auth.resetPasswordForEmail(email);
-
-            if (error) {
-                showAlert(error.message, 'error');
-            } else {
-                showAlert('Tautan reset telah dikirim ke email Anda!', 'success');
-                setTimeout(() => { window.location.href = 'login.html'; }, 2500);
             }
         });
     }
@@ -149,9 +141,4 @@ function togglePassword(inputId) {
         input.type = "password";
         icon.classList.replace('fa-eye-slash', 'fa-eye');
     }
-}
-
-async function logoutUser() {
-    await supabase.auth.signOut();
-    window.location.href = 'login.html';
 }
