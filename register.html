@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Daftar Akun | Bersama.id</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Lato', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
+                    colors: {
+                        sage: { 50: '#f4f6f4', 100: '#e4e9e5', 200: '#cbd4cc', 300: '#a6b5a8', 500: '#697e6d', 600: '#526456', 800: '#334036', 900: '#232c25' },
+                        earth: { 100: '#f9f3ee', 200: '#f0dfd1', 500: '#d4a373', 600: '#b58255', 700: '#8c613c' },
+                        cream: '#fdfdfc'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-sage-50 text-slate-700 font-sans selection:bg-sage-200 min-h-screen flex flex-col justify-center py-10 sm:py-12 px-6 lg:px-8">
+
+    <div id="alert-box" class="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 px-6 py-3 rounded-lg shadow-lg text-sm font-bold text-white transition-all duration-300 opacity-0 pointer-events-none translate-y-[-20px]">
+        <span id="alert-message">Notifikasi</span>
+    </div>
+
+    <div class="sm:mx-auto sm:w-full sm:max-w-[1000px] relative z-10">
+        <div class="bg-white rounded-3xl shadow-2xl shadow-sage-900/10 overflow-hidden flex flex-col md:flex-row min-h-[600px]">
+            
+            <!-- Sisi Kiri: Cover Gambar -->
+            <div class="md:w-5/12 bg-sage-900 relative hidden md:block overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?ixlib=rb-4.0.3&w=800&q=80" alt="Wedding" class="absolute inset-0 w-full h-full object-cover opacity-60">
+                <div class="absolute inset-0 bg-gradient-to-t from-sage-900/90 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-10">
+                    <a href="index.html" class="flex items-center gap-3 text-2xl font-serif font-bold text-cream mb-4">
+                        <i class="fa-solid fa-leaf text-earth-500"></i> Bersama.id
+                    </a>
+                    <p class="text-sage-200 font-light text-sm leading-relaxed">Persiapkan hari bahagiamu hari ini. Daftar gratis dan mulai buat undangan yang merepresentasikan cinta kalian.</p>
+                </div>
+            </div>
+
+            <!-- Sisi Kanan: Form Register -->
+            <div class="md:w-7/12 p-8 sm:p-12 relative flex flex-col justify-center">
+                <h2 class="text-3xl font-serif font-bold text-sage-900">Buat Akun Baru</h2>
+                <p class="mt-2 text-sm text-slate-500 mb-8">Langkah pertama untuk undangan impian Anda.</p>
+                
+                <form id="form-register" class="space-y-4" autocomplete="off">
+                    <div>
+                        <label class="block text-sm font-bold text-sage-900 mb-1.5">Nama Lengkap</label>
+                        <div class="relative">
+                            <i class="fa-regular fa-user absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                            <input type="text" id="reg-name" required class="w-full pl-11 pr-4 py-3 rounded-xl border border-sage-200 focus:outline-none focus:border-earth-500 bg-slate-50 focus:bg-white text-sm transition" placeholder="Nama Anda atau Pasangan">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-sage-900 mb-1.5">Alamat Email</label>
+                        <div class="relative">
+                            <i class="fa-regular fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                            <input type="email" id="reg-email" required class="w-full pl-11 pr-4 py-3 rounded-xl border border-sage-200 focus:outline-none focus:border-earth-500 bg-slate-50 focus:bg-white text-sm transition" placeholder="email@contoh.com">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-sage-900 mb-1.5">Kata Sandi</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                            <input type="password" id="reg-password" required minlength="6" class="w-full pl-11 pr-10 py-3 rounded-xl border border-sage-200 focus:outline-none focus:border-earth-500 bg-slate-50 focus:bg-white text-sm transition" placeholder="Minimal 6 karakter">
+                            <button type="button" onclick="togglePassword('reg-password')" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-sage-600">
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-earth-500 text-white font-bold text-sm py-3.5 rounded-xl hover:bg-earth-600 transition shadow-lg shadow-earth-500/20 mt-4">
+                        Daftar Sekarang
+                    </button>
+                </form>
+                
+                <p class="mt-8 text-center text-sm text-slate-500">
+                    Sudah punya akun? <a href="login.html" class="font-bold text-earth-500 hover:underline">Masuk di sini</a>
+                </p>
+            </div>
+        </div>
+        <p class="text-center text-xs text-slate-400 mt-8">Copyright © 2026 Bersama.id. Dilindungi Undang-Undang.</p>
+    </div>
+
+      <!-- 1. Panggil Supabase DI SINI (Sebelum auth.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- 2. Panggil auth.js milik kita -->
+    <script src="auth.js"></script>
+</body>
+</html>

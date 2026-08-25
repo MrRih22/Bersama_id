@@ -1,0 +1,756 @@
+    <!DOCTYPE html>
+    <html lang="id">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Undangan & Ucapan Digital | Bersama.id</title>
+        <!-- Google Fonts: Playfair Display (Elegan/Serif) & Lato (Bersih/Sans) -->
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+        <!-- FontAwesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <!-- Tailwind CSS (CDN) -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: { 
+                            sans: ['Lato', 'sans-serif'],
+                            serif: ['Playfair Display', 'serif']
+                        },
+                        colors: {
+                            sage: {
+                                50: '#f4f6f4',
+                                100: '#e4e9e5',
+                                200: '#cbd4cc',
+                                300: '#a6b5a8',
+                                500: '#697e6d', // Primary Sage Green
+                                600: '#526456',
+                                800: '#334036',
+                                900: '#232c25'  // Footer Color
+                            },
+                            earth: {
+                                100: '#f9f3ee',
+                                200: '#f0dfd1',
+                                500: '#d4a373', // Terracotta/Sand Accent
+                                600: '#b58255',
+                                700: '#8c613c'
+                            },
+                            cream: '#fdfdfc' // Background Utama
+                        }
+                    }
+                }
+            }
+           
+        <style>
+            /* Custom Toggle Switch dengan warna Sage */
+            .toggle-checkbox:checked { right: 0; border-color: #697e6d; }
+            .toggle-checkbox:checked + .toggle-label { background-color: #697e6d; }
+            /* Custom Range Slider */
+            input[type=range] { accent-color: #697e6d; }
+            
+            /* Animasi fade in lambat ala website elegan */
+            @keyframes subtleZoom {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.02); }
+                100% { transform: scale(1); }
+            }
+            .animate-subtle { animation: subtleZoom 8s ease-in-out infinite; }
+
+            /* Sembunyikan scrollbar untuk kategori jika diperlukan */
+            .no-scrollbar::-webkit-scrollbar { display: none; }
+            .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        </style>
+    </head>
+    <body class="bg-cream text-slate-700 font-sans selection:bg-sage-200">
+
+        <!-- 1. Navbar Elegan -->
+        <nav class="bg-cream/90 backdrop-blur-md sticky top-0 z-50 border-b border-sage-100">
+            <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+                <div class="text-2xl font-bold font-serif text-sage-900 flex items-center gap-3 tracking-wide">
+                    <i class="fa-solid fa-leaf text-earth-500 text-lg"></i> Bersama.id
+                </div>
+                <div class="hidden md:flex space-x-10 text-sm tracking-widest uppercase font-bold text-sage-800">
+                    <a href="#fitur" class="hover:text-earth-500 transition-colors">Fitur</a>
+                    <a href="#harga" class="hover:text-earth-500 transition-colors">Harga</a>
+                    <a href="#katalog" class="hover:text-earth-500 transition-colors">Desain</a>
+                </div>
+                <a href="login.html" class="bg-transparent border border-sage-500 text-sage-600 px-6 py-2 rounded font-bold uppercase text-xs tracking-widest hover:bg-sage-500 hover:text-white transition duration-300">
+                    Login Panel
+                </a>
+            </div>
+        </nav>
+
+        <!-- 2. Hero Section -->
+        <section class="max-w-7xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-16">
+            <div class="md:w-1/2 space-y-8 z-10">
+                <div class="uppercase tracking-widest text-earth-600 text-sm font-bold border-l-2 border-earth-500 pl-4">
+                    Platform Undangan Eksklusif
+                </div>
+                <h1 class="text-5xl md:text-6xl font-serif font-bold leading-tight text-sage-900">
+                    Abadikan <br><span class="italic text-earth-500">Momen Indahmu</span> dalam Keanggunan.
+                </h1>
+                <p class="text-slate-500 text-lg leading-relaxed font-light">
+                    Hadirkan kesan pertama yang tak terlupakan. Undangan digital dengan desain premium, elegan, dan fitur interaktif lengkap untuk para tamu kehormatanmu.
+                </p>
+                <div class="flex gap-4 pt-4">
+                    <a href="#katalog" class="bg-sage-600 text-white px-8 py-3.5 rounded font-bold tracking-wide hover:bg-sage-800 transition duration-300 shadow-lg shadow-sage-900/20">
+                        Jelajahi Desain
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 relative">
+                <div class="absolute inset-0 bg-sage-200 transform translate-x-4 translate-y-4 rounded-xl"></div>
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wedding Elegant" class="relative rounded-xl shadow-xl animate-subtle object-cover w-full h-[500px]">
+            </div>
+        </section>
+
+        <!-- 3. Fitur Esensial -->
+        <section id="fitur" class="bg-sage-50 py-24 border-t border-sage-100">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl font-serif font-bold mb-4 text-sage-900">Keistimewaan Tanpa Batas</h2>
+                    <div class="w-16 h-0.5 bg-earth-500 mx-auto mb-4"></div>
+                    <p class="text-slate-500">Seluruh fitur esensial ini telah disematkan untuk menyempurnakan hari bahagiamu.</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 text-sage-800">
+                    <div class="flex flex-col gap-3"><i class="fa-solid fa-user-group text-earth-500 text-2xl"></i> <span class="font-bold tracking-wide uppercase text-xs">Kuota Tamu Unlimited</span> <p class="text-slate-500 text-sm font-light">Undang siapapun tanpa batasan jumlah.</p></div>
+                    <div class="flex flex-col gap-3"><i class="fa-solid fa-clipboard-check text-earth-500 text-2xl"></i> <span class="font-bold tracking-wide uppercase text-xs">Konfirmasi Kehadiran</span> <p class="text-slate-500 text-sm font-light">Kelola RSVP tamu dengan mudah.</p></div>
+                    <div class="flex flex-col gap-3"><i class="fa-solid fa-hourglass-half text-earth-500 text-2xl"></i> <span class="font-bold tracking-wide uppercase text-xs">Hitung Mundur</span> <p class="text-slate-500 text-sm font-light">Membangun antusiasme jelang hari-H.</p></div>
+                    <div class="flex flex-col gap-3"><i class="fa-solid fa-images text-earth-500 text-2xl"></i> <span class="font-bold tracking-wide uppercase text-xs">Galeri Eksklusif</span> <p class="text-slate-500 text-sm font-light">Tampilkan 8 potret pre-wedding terbaik.</p></div>
+                    <div class="flex flex-col gap-3"><i class="fa-solid fa-map-location-dot text-earth-500 text-2xl"></i> <span class="font-bold tracking-wide uppercase text-xs">Navigasi Presisi</span> <p class="text-slate-500 text-sm font-light">Terintegrasi langsung dengan Google Maps.</p></div>
+                    <div class="flex flex-col gap-3"><i class="fa-solid fa-qrcode text-earth-500 text-2xl"></i> <span class="font-bold tracking-wide uppercase text-xs">QR Code Check-in</span> <p class="text-slate-500 text-sm font-light">Buku tamu digital modern dan cepat.</p></div>
+                    <div class="flex flex-col gap-3"><i class="fa-solid fa-music text-earth-500 text-2xl"></i> <span class="font-bold tracking-wide uppercase text-xs">Melodi Romantis</span> <p class="text-slate-500 text-sm font-light">Latar musik otomatis saat undangan dibuka.</p></div>
+                    <div class="flex flex-col gap-3"><i class="fa-solid fa-envelope-open-text text-earth-500 text-2xl"></i> <span class="font-bold tracking-wide uppercase text-xs">Animasi Pembuka</span> <p class="text-slate-500 text-sm font-light">Sentuhan elegan saat membuka amplop.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Kalkulator Harga -->
+        <section id="harga" class="max-w-7xl mx-auto px-6 py-24">
+            <div class="mb-16 md:w-2/3">
+                <h2 class="text-4xl font-serif font-bold mb-4 text-sage-900">Personalisasi Undangan</h2>
+                <p class="text-slate-500">Sesuaikan fitur tambahan dengan kebutuhan acara Anda. Sistem kami akan mengakumulasi estimasi biaya secara transparan.</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12">
+                <!-- Kiri: Pilihan Add-ons -->
+                <div class="lg:w-2/3">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+                        <!-- Galeri Foto -->
+                        <div class="bg-white p-6 rounded-lg border border-sage-200 shadow-sm hover:border-earth-500 transition duration-300">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex items-center gap-4">
+                                    <i class="fa-regular fa-image text-sage-500 text-2xl"></i>
+                                    <div>
+                                        <h4 class="font-bold text-sage-900">Penambahan Foto</h4>
+                                        <p class="text-xs text-slate-400">Ekspansi memori visual</p>
+                                    </div>
+                                </div>
+                                <span id="label-foto" class="bg-sage-50 text-sage-600 px-3 py-1 rounded text-xs font-bold border border-sage-100">0 Foto</span>
+                            </div>
+                            <input type="range" id="input-foto" min="0" max="20" value="0" class="w-full mt-4">
+                        </div>
+
+                        
+                        <!-- Kirim Kado -->
+                        <div class="bg-white p-6 rounded-lg border border-sage-200 shadow-sm hover:border-earth-500 transition duration-300 flex justify-between items-center">
+                            <div class="flex items-center gap-4">
+                                <i class="fa-solid fa-gift text-sage-500 text-2xl w-6"></i>
+                                <div>
+                                    <h4 class="font-bold text-sage-900">Amplop Digital</h4>
+                                    <p class="text-xs text-slate-400">Terima tanda kasih non-tunai</p>
+                                </div>
+                            </div>
+                            <div class="relative inline-block w-12 mr-2 align-middle select-none">
+                                <input type="checkbox" id="chk-kado" value="10000" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 transition-transform duration-300 border-slate-200"/>
+                                <label for="chk-kado" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-200 cursor-pointer transition-colors duration-300"></label>
+                            </div>
+                        </div>
+
+                        <!-- Cerita Cinta -->
+                        <div class="bg-white p-6 rounded-lg border border-sage-200 shadow-sm hover:border-earth-500 transition duration-300 flex justify-between items-center">
+                            <div class="flex items-center gap-4">
+                                <i class="fa-regular fa-heart text-sage-500 text-2xl w-6"></i>
+                                <div>
+                                    <h4 class="font-bold text-sage-900">Cerita Cinta</h4>
+                                    <p class="text-xs text-slate-400">Teks kronologi romansa</p>
+                                </div>
+                            </div>
+                            <div class="relative inline-block w-12 mr-2 align-middle select-none">
+                                <input type="checkbox" id="chk-cerita" value="15000" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 transition-transform duration-300 border-slate-200"/>
+                                <label for="chk-cerita" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-200 cursor-pointer transition-colors duration-300"></label>
+                            </div>
+                        </div>
+
+                        <!-- Akses Lifetime -->
+                        <div class="bg-white p-6 rounded-lg border border-sage-200 shadow-sm hover:border-earth-500 transition duration-300 flex justify-between items-center">
+                            <div class="flex items-center gap-4">
+                                <i class="fa-solid fa-infinity text-sage-500 text-2xl w-6"></i>
+                                <div>
+                                    <h4 class="font-bold text-sage-900">Akses Life-Time</h4>
+                                    <p class="text-xs text-slate-400">Kenang-kenangan seumur hidup</p>
+                                </div>
+                            </div>
+                            <div class="relative inline-block w-12 mr-2 align-middle select-none">
+                                <input type="checkbox" id="chk-lifetime" value="35000" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 transition-transform duration-300 border-slate-200"/>
+                                <label for="chk-lifetime" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-200 cursor-pointer transition-colors duration-300"></label>
+                            </div>
+                        </div>
+
+                        <!-- Kustom Lagu -->
+                        <div class="bg-white p-6 rounded-lg border border-sage-200 shadow-sm hover:border-earth-500 transition duration-300 flex justify-between items-center">
+                            <div class="flex items-center gap-4">
+                                <i class="fa-solid fa-music text-sage-500 text-2xl w-6"></i>
+                                <div>
+                                    <h4 class="font-bold text-sage-900">Audio Kustom</h4>
+                                    <p class="text-xs text-slate-400">Gunakan musik pilihan sendiri</p>
+                                </div>
+                            </div>
+                            <div class="relative inline-block w-12 mr-2 align-middle select-none">
+                                <input type="checkbox" id="chk-lagu" value="10000" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 transition-transform duration-300 border-slate-200"/>
+                                <label for="chk-lagu" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-200 cursor-pointer transition-colors duration-300"></label>
+                            </div>
+                        </div>
+
+                        <!-- Galeri Video -->
+                        <div class="bg-white p-6 rounded-lg border border-sage-200 shadow-sm hover:border-earth-500 transition duration-300 flex justify-between items-center md:col-span-2 lg:col-span-1">
+                            <div class="flex items-center gap-4">
+                                <i class="fa-solid fa-film text-sage-500 text-2xl w-6"></i>
+                                <div>
+                                    <h4 class="font-bold text-sage-900">Integrasi Video</h4>
+                                    <p class="text-xs text-slate-400">Tampilkan sinematik anda</p>
+                                </div>
+                            </div>
+                            <div class="relative inline-block w-12 mr-2 align-middle select-none">
+                                <input type="checkbox" id="chk-video" value="20000" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 transition-transform duration-300 border-slate-200"/>
+                                <label for="chk-video" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-200 cursor-pointer transition-colors duration-300"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Box Transparan -->
+                    <div class="bg-earth-100/50 border border-earth-500/30 p-6 rounded-lg flex items-start gap-4">
+                        <i class="fa-solid fa-circle-info text-earth-500 text-xl mt-1"></i>
+                        <div>
+                            <h4 class="font-bold text-sage-900">Sistem Harga Transparan</h4>
+                            <p class="text-slate-500 text-sm mt-1">Fleksibilitas penuh. Tambah atau kurangi fitur kapan saja, estimasi akhir akan menyesuaikan secara otomatis.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kanan: Ringkasan & Total -->
+                <div class="lg:w-1/3">
+                    <div class="bg-white p-8 rounded-xl border border-sage-200 shadow-2xl shadow-sage-900/5 sticky top-28">
+                        <h3 class="text-2xl font-serif font-bold text-sage-900 mb-1">Rincian Estimasi</h3>
+                        <div class="w-10 h-0.5 bg-earth-500 mb-6"></div>
+                        
+                        <div class="space-y-2 mb-8 text-sm">
+                            <!-- Foto -->
+                            <div class="flex justify-between items-center p-3 border-b border-sage-100 bg-white" id="row-foto">
+                                <span class="flex items-center gap-3 text-sage-800"><i class="fa-regular fa-image w-5 text-slate-400"></i> Ekstra Foto</span>
+                                <span id="sum-foto" class="font-bold text-sage-900">0</span>
+                            </div>
+
+                            <!-- Kado -->
+                            <div class="flex justify-between items-center p-3 border-b border-sage-100 transition-colors duration-300" id="row-kado">
+                                <span class="flex items-center gap-3 text-sage-800"><i class="fa-solid fa-gift w-5 text-slate-400"></i> Amplop Digital</span>
+                                <i id="icon-kado" class="fa-solid fa-check text-slate-200 transition-colors"></i>
+                            </div>
+
+                            <!-- Cerita -->
+                            <div class="flex justify-between items-center p-3 border-b border-sage-100 transition-colors duration-300" id="row-cerita">
+                                <span class="flex items-center gap-3 text-sage-800"><i class="fa-regular fa-heart w-5 text-slate-400"></i> Kisah Cinta</span>
+                                <i id="icon-cerita" class="fa-solid fa-check text-slate-200 transition-colors"></i>
+                            </div>
+
+                            <!-- Lifetime -->
+                            <div class="flex justify-between items-center p-3 border-b border-sage-100 transition-colors duration-300" id="row-lifetime">
+                                <span class="flex items-center gap-3 text-sage-800"><i class="fa-solid fa-infinity w-5 text-slate-400"></i> Akses Permanen</span>
+                                <i id="icon-lifetime" class="fa-solid fa-check text-slate-200 transition-colors"></i>
+                            </div>
+
+                            <!-- Lagu -->
+                            <div class="flex justify-between items-center p-3 border-b border-sage-100 transition-colors duration-300" id="row-lagu">
+                                <span class="flex items-center gap-3 text-sage-800"><i class="fa-solid fa-music w-5 text-slate-400"></i> Lagu Kustom</span>
+                                <i id="icon-lagu" class="fa-solid fa-check text-slate-200 transition-colors"></i>
+                            </div>
+
+                            <!-- Video -->
+                            <div class="flex justify-between items-center p-3 border-b border-sage-100 transition-colors duration-300" id="row-video">
+                                <span class="flex items-center gap-3 text-sage-800"><i class="fa-solid fa-film w-5 text-slate-400"></i> Galeri Video</span>
+                                <i id="icon-video" class="fa-solid fa-check text-slate-200 transition-colors"></i>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 text-right">
+                            <p class="text-slate-400 text-xs uppercase tracking-widest mb-1">Total Biaya</p>
+                            <p class="text-slate-300 line-through text-sm" id="harga-coret">Rp80.000</p>
+                            <h2 class="text-4xl font-serif font-bold text-sage-900 my-1" id="harga-total">Rp50.000</h2>
+                            <span class="inline-block border border-earth-500 text-earth-600 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest mt-2">Special Offer -38%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Katalog Tema -->
+        <section id="katalog" class="bg-cream py-24 border-t border-sage-100">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-serif font-bold mb-4 text-sage-900">Koleksi Mahakarya</h2>
+                    <div class="w-16 h-0.5 bg-earth-500 mx-auto mb-4"></div>
+                    <p class="text-slate-500 font-light">Eksplorasi ragam estetika yang dirancang khusus untuk mewakili karakter Anda.</p>
+                </div>
+
+                <div class="flex flex-col lg:flex-row gap-8">
+                    
+                    <!-- KOLOM KIRI (Sidebar) -->
+                    <div class="lg:w-1/4">
+                        
+                        <!-- Box Kategori -->
+                        <div class="bg-white rounded-2xl p-6 border border-sage-200 shadow-sm mb-6">
+                            <h3 class="text-xl font-bold text-sage-900 mb-4">Kategori</h3>
+                            <ul class="space-y-1 text-sm font-medium">
+                                <li>
+                                    <a href="?category=semua" data-target="semua" class="category-link flex justify-between items-center bg-earth-50 text-earth-600 px-4 py-3 rounded-lg transition active-category">
+                                        <span>Semua Desain</span>
+                                        <span class="bg-earth-200 text-earth-700 text-xs py-0.5 px-2.5 rounded-full font-bold">8</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="?category=freemium" data-target="freemium" class="category-link flex justify-between items-center text-sage-700 hover:bg-sage-50 px-4 py-3 rounded-lg transition">
+                                        <span>Freemium</span>
+                                        <span class="bg-sage-100 text-sage-600 text-xs py-0.5 px-2.5 rounded-full font-bold">3</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="?category=minimalis" data-target="minimalis" class="category-link flex justify-between items-center text-sage-700 hover:bg-sage-50 px-4 py-3 rounded-lg transition">
+                                        <span>Minimalis</span>
+                                        <span class="bg-sage-100 text-sage-600 text-xs py-0.5 px-2.5 rounded-full font-bold">2</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="?category=tradisional" data-target="tradisional" class="category-link flex justify-between items-center text-sage-700 hover:bg-sage-50 px-4 py-3 rounded-lg transition">
+                                        <span>Tradisional</span>
+                                        <span class="bg-sage-100 text-sage-600 text-xs py-0.5 px-2.5 rounded-full font-bold">1</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="?category=inspired" data-target="inspired" class="category-link flex justify-between items-center text-sage-700 hover:bg-sage-50 px-4 py-3 rounded-lg transition">
+                                        <span>Inspired</span>
+                                        <span class="bg-sage-100 text-sage-600 text-xs py-0.5 px-2.5 rounded-full font-bold">1</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="?category=custom" data-target="custom" class="category-link flex justify-between items-center text-sage-700 hover:bg-sage-50 px-4 py-3 rounded-lg transition">
+                                        <span>Custom</span>
+                                        <span class="bg-sage-100 text-sage-600 text-xs py-0.5 px-2.5 rounded-full font-bold">1</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Box Bantuan -->
+                        <div class="bg-sage-50 rounded-2xl p-6 border border-sage-100 text-center lg:text-left">
+                            <h4 class="font-bold text-sage-900 mb-2">Masih butuh desain lain?</h4>
+                            <p class="text-slate-500 text-sm font-light mb-6">Tim kami siap bantu bikin desain sesuai kebutuhan acaramu.</p>
+                            <a href="https://wa.me/6281234567890" target="_blank" class="block w-full text-center border border-earth-500 text-earth-600 font-bold py-2.5 rounded-lg hover:bg-earth-500 hover:text-white transition">Hubungi Kami</a>
+                        </div>
+                    </div>
+
+                    <!-- KOLOM KANAN (Grid Card) -->
+                    <div class="lg:w-3/4">
+                        
+                        <!-- Search & Sort Top Bar -->
+                        <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
+                            <!-- Search Box (Ditambahkan ID search-desain) -->
+                            <div class="relative w-full md:flex-grow">
+                                <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
+                                <input id="search-desain" type="text" placeholder="Cari desain berdasarkan nama atau tema..." class="w-full pl-12 pr-4 py-3 rounded-xl border border-sage-200 focus:outline-none focus:border-earth-500 bg-white text-sm shadow-sm transition">
+                            </div>
+                            
+                            <!-- Filter Sort -->
+                            <div class="flex items-center gap-3 w-full md:w-auto bg-white border border-sage-200 rounded-xl px-4 py-3 shadow-sm shrink-0">
+                                <span class="text-slate-500 text-sm font-medium">Urutkan:</span>
+                                <select class="focus:outline-none bg-transparent font-bold text-sage-900 cursor-pointer text-sm">
+                                    <option>Terbaru</option>
+                                    <option>Terlaris</option>
+                                    <option>Termurah</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Grid Content -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="katalog-grid">
+                            
+                            <!-- Card 1 (Prahasta) -->
+                            <div class="design-card bg-white rounded-2xl p-4 border border-sage-100 shadow-sm hover:shadow-xl hover:border-sage-300 transition duration-300 relative group cursor-pointer" data-category="freemium">
+                                <div class="absolute top-6 right-6 z-10 bg-earth-500 text-white text-[10px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-md uppercase tracking-wider">
+                                    <i class="fa-solid fa-star"></i> Terlaris
+                                </div>
+                                <div class="bg-sage-50 rounded-xl h-60 mb-4 flex items-center justify-center overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&w=300&q=80" class="h-[90%] w-3/4 object-cover rounded-2xl shadow-lg transform group-hover:scale-105 transition duration-500" alt="Prahasta">
+                                </div>
+                                <div class="flex justify-between items-end px-1">
+                                    <div>
+                                        <h3 class="font-serif text-xl font-bold text-sage-900 mb-2">Prahasta</h3>
+                                        <span class="bg-sage-100 text-sage-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Freemium</span>
+                                    </div>
+                                    <button class="w-8 h-8 rounded-full border border-sage-200 flex items-center justify-center text-slate-400 group-hover:bg-earth-500 group-hover:text-white group-hover:border-earth-500 transition">
+                                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 (Whatsapp) -->
+                            <div class="design-card bg-white rounded-2xl p-4 border border-sage-100 shadow-sm hover:shadow-xl hover:border-sage-300 transition duration-300 relative group cursor-pointer" data-category="inspired">
+                                <div class="bg-sage-50 rounded-xl h-60 mb-4 flex items-center justify-center overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?ixlib=rb-4.0.3&w=300&q=80" class="h-[90%] w-3/4 object-cover rounded-2xl shadow-lg transform group-hover:scale-105 transition duration-500" alt="Whatsapp">
+                                </div>
+                                <div class="flex justify-between items-end px-1">
+                                    <div>
+                                        <h3 class="font-serif text-xl font-bold text-sage-900 mb-2">Whatsapp</h3>
+                                        <span class="bg-earth-100 text-earth-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Inspired</span>
+                                    </div>
+                                    <button class="w-8 h-8 rounded-full border border-sage-200 flex items-center justify-center text-slate-400 group-hover:bg-earth-500 group-hover:text-white group-hover:border-earth-500 transition">
+                                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 (Kusuma) -->
+                            <div class="design-card bg-white rounded-2xl p-4 border border-sage-100 shadow-sm hover:shadow-xl hover:border-sage-300 transition duration-300 relative group cursor-pointer" data-category="tradisional">
+                                <div class="bg-sage-50 rounded-xl h-60 mb-4 flex items-center justify-center overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&w=300&q=80" class="h-[90%] w-3/4 object-cover rounded-2xl shadow-lg transform group-hover:scale-105 transition duration-500" alt="Kusuma">
+                                </div>
+                                <div class="flex justify-between items-end px-1">
+                                    <div>
+                                        <h3 class="font-serif text-xl font-bold text-sage-900 mb-2">Kusuma</h3>
+                                        <span class="bg-sage-100 text-sage-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Tradisional</span>
+                                    </div>
+                                    <button class="w-8 h-8 rounded-full border border-sage-200 flex items-center justify-center text-slate-400 group-hover:bg-earth-500 group-hover:text-white group-hover:border-earth-500 transition">
+                                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Card 4 (Senja) -->
+                            <div class="design-card bg-white rounded-2xl p-4 border border-sage-100 shadow-sm hover:shadow-xl hover:border-sage-300 transition duration-300 relative group cursor-pointer" data-category="freemium">
+                                <div class="absolute top-6 right-6 z-10 bg-sage-900 text-white text-[10px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-md uppercase tracking-wider">
+                                    <i class="fa-solid fa-lock"></i> Private
+                                </div>
+                                <div class="bg-sage-50 rounded-xl h-60 mb-4 flex items-center justify-center overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?ixlib=rb-4.0.3&w=300&q=80" class="h-[90%] w-3/4 object-cover rounded-2xl shadow-lg transform group-hover:scale-105 transition duration-500" alt="Senja">
+                                </div>
+                                <div class="flex justify-between items-end px-1">
+                                    <div>
+                                        <h3 class="font-serif text-xl font-bold text-sage-900 mb-2">Senja</h3>
+                                        <span class="bg-sage-100 text-sage-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Freemium</span>
+                                    </div>
+                                    <button class="w-8 h-8 rounded-full border border-sage-200 flex items-center justify-center text-slate-400 group-hover:bg-earth-500 group-hover:text-white group-hover:border-earth-500 transition">
+                                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Card 5 (Galuh) -->
+                            <div class="design-card bg-white rounded-2xl p-4 border border-sage-100 shadow-sm hover:shadow-xl hover:border-sage-300 transition duration-300 relative group cursor-pointer" data-category="custom">
+                                <div class="bg-sage-50 rounded-xl h-60 mb-4 flex items-center justify-center overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-4.0.3&w=300&q=80" class="h-[90%] w-3/4 object-cover rounded-2xl shadow-lg transform group-hover:scale-105 transition duration-500" alt="Galuh">
+                                </div>
+                                <div class="flex justify-between items-end px-1">
+                                    <div>
+                                        <h3 class="font-serif text-xl font-bold text-sage-900 mb-2">Galuh</h3>
+                                        <span class="bg-earth-100 text-earth-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Custom</span>
+                                    </div>
+                                    <button class="w-8 h-8 rounded-full border border-sage-200 flex items-center justify-center text-slate-400 group-hover:bg-earth-500 group-hover:text-white group-hover:border-earth-500 transition">
+                                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Card 6 (Krayon) -->
+                            <div class="design-card bg-white rounded-2xl p-4 border border-sage-100 shadow-sm hover:shadow-xl hover:border-sage-300 transition duration-300 relative group cursor-pointer" data-category="minimalis">
+                                <div class="bg-sage-50 rounded-xl h-60 mb-4 flex items-center justify-center overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&w=300&q=80" class="h-[90%] w-3/4 object-cover rounded-2xl shadow-lg transform group-hover:scale-105 transition duration-500" alt="Krayon">
+                                </div>
+                                <div class="flex justify-between items-end px-1">
+                                    <div>
+                                        <h3 class="font-serif text-xl font-bold text-sage-900 mb-2">Krayon</h3>
+                                        <span class="bg-sage-100 text-sage-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Minimalis</span>
+                                    </div>
+                                    <button class="w-8 h-8 rounded-full border border-sage-200 flex items-center justify-center text-slate-400 group-hover:bg-earth-500 group-hover:text-white group-hover:border-earth-500 transition">
+                                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Card 7 (Sketsa) -->
+                            <div class="design-card bg-white rounded-2xl p-4 border border-sage-100 shadow-sm hover:shadow-xl hover:border-sage-300 transition duration-300 relative group cursor-pointer" data-category="minimalis">
+                                <div class="bg-sage-50 rounded-xl h-60 mb-4 flex items-center justify-center overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&w=300&q=80" class="h-[90%] w-3/4 object-cover rounded-2xl shadow-lg transform group-hover:scale-105 transition duration-500" alt="Sketsa">
+                                </div>
+                                <div class="flex justify-between items-end px-1">
+                                    <div>
+                                        <h3 class="font-serif text-xl font-bold text-sage-900 mb-2">Sketsa</h3>
+                                        <span class="bg-sage-100 text-sage-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Minimalis</span>
+                                    </div>
+                                    <button class="w-8 h-8 rounded-full border border-sage-200 flex items-center justify-center text-slate-400 group-hover:bg-earth-500 group-hover:text-white group-hover:border-earth-500 transition">
+                                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Card 8 (Kolase) -->
+                            <div class="design-card bg-white rounded-2xl p-4 border border-sage-100 shadow-sm hover:shadow-xl hover:border-sage-300 transition duration-300 relative group cursor-pointer" data-category="freemium">
+                                <div class="bg-sage-50 rounded-xl h-60 mb-4 flex items-center justify-center overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?ixlib=rb-4.0.3&w=300&q=80" class="h-[90%] w-3/4 object-cover rounded-2xl shadow-lg transform group-hover:scale-105 transition duration-500" alt="Kolase">
+                                </div>
+                                <div class="flex justify-between items-end px-1">
+                                    <div>
+                                        <h3 class="font-serif text-xl font-bold text-sage-900 mb-2">Kolase</h3>
+                                        <span class="bg-sage-100 text-sage-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Freemium</span>
+                                    </div>
+                                    <button class="w-8 h-8 rounded-full border border-sage-200 flex items-center justify-center text-slate-400 group-hover:bg-earth-500 group-hover:text-white group-hover:border-earth-500 transition">
+                                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. FOOTER -->
+        <footer class="bg-[#1a211c] text-sage-300 pt-20 pb-8 border-t-4 border-earth-500">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-sage-800/80 pb-12">
+                
+                <div class="space-y-4 pr-4">
+                    <div class="text-2xl font-serif font-bold text-cream flex items-center gap-3 mb-4">
+                        <i class="fa-solid fa-leaf text-earth-500"></i> Bersama.id
+                    </div>
+                    <div class="font-light text-sm space-y-3">
+                        <p>support@bersama.id</p>
+                        <p>6285110551456</p>
+                        <p class="leading-relaxed mt-4">
+                            Centennial Tower, Jl. Gatot Subroto No. 27,<br>
+                            Karet Semanggi, Kec. Setiabudi, Jakarta<br>
+                            Selatan, DKI Jakarta, Indonesia, 12930.
+                        </p>
+                    </div>
+                    <div class="flex gap-4 pt-3">
+                        <a href="#" class="text-sage-300 hover:text-earth-500 transition text-lg"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" class="text-sage-300 hover:text-earth-500 transition text-lg"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="text-sage-300 hover:text-earth-500 transition text-lg"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-cream font-bold text-sm tracking-widest uppercase mb-6">Dukungan</h4>
+                    <ul class="space-y-4 font-light text-sm">
+                        <li><a href="faq.html" class="hover:text-earth-500 transition">Pertanyaan</a></li>
+                        <li><a href="feedback.html" class="hover:text-earth-500 transition">Umpan Balik</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-cream font-bold text-sm tracking-widest uppercase mb-6">Perusahaan</h4>
+                    <ul class="space-y-4 font-light text-sm">
+                        <li><a href="syarat-dan-ketentuan.html" class="hover:text-earth-500 transition">Syarat dan Ketentuan</a></li>
+                        <li><a href="kebijakan-privasi.html" class="hover:text-earth-500 transition">Kebijakan Privasi</a></li>
+                        <li><a href="pengembalian-dana.html" class="hover:text-earth-500 transition">Pengembalian Dana</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-cream font-bold text-sm tracking-widest uppercase mb-6">Newsletter</h4>
+                    <p class="font-light text-sm mb-5 leading-relaxed">Dapatkan inspirasi desain, tips persiapan undangan, dan promo terbaru.</p>
+                    <div class="flex rounded overflow-hidden border border-sage-600 focus-within:border-earth-500 transition-colors">
+                        <input type="email" placeholder="Masukkan email" class="bg-[#1a211c] text-cream px-4 py-2.5 text-sm w-full outline-none">
+                        <button class="bg-earth-500 text-white px-5 py-2.5 text-sm font-bold hover:bg-earth-600 transition">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 pt-6 flex flex-col md:flex-row justify-between items-center text-xs font-light tracking-wide text-sage-400">
+                <p>Copyright © 2026 Team Bersama.id</p>
+                <div class="mt-4 md:mt-0 flex items-center gap-2 text-cream hover:text-earth-500 cursor-pointer transition">
+                    <i class="fa-solid fa-language text-lg"></i> Indonesia
+                </div>
+            </div>
+        </footer>
+
+        <!-- Tombol WA Mengambang -->
+        <a href="https://wa.me/6281234567890" target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-2xl hover:bg-[#1ebd5a] transition-all duration-300 hover:-translate-y-1 z-50 border-2 border-transparent">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+        <script>
+            // -------------------------
+            // LOGIKA KALKULATOR HARGA
+            // -------------------------
+            const formatIDR = (num) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(num);
+
+            const basePrice = 50000; 
+            
+            const inputFoto = document.getElementById('input-foto');
+            const chkKado = document.getElementById('chk-kado');
+            const chkCerita = document.getElementById('chk-cerita');
+            const chkLifetime = document.getElementById('chk-lifetime');
+            const chkLagu = document.getElementById('chk-lagu');
+            const chkVideo = document.getElementById('chk-video');
+
+            const labelFoto = document.getElementById('label-foto');
+            const sumFoto = document.getElementById('sum-foto');
+            const sumTamu = document.getElementById('sum-tamu');
+            const hargaTotal = document.getElementById('harga-total');
+            const hargaCoret = document.getElementById('harga-coret');
+
+            function updateCheckmarkState(checkboxId, iconId, rowId) {
+                const isChecked = document.getElementById(checkboxId).checked;
+                const iconEl = document.getElementById(iconId);
+                const rowEl = document.getElementById(rowId);
+                
+                if (isChecked) {
+                    iconEl.className = 'fa-solid fa-check text-earth-500 transition-colors';
+                    rowEl.classList.add('bg-sage-50', 'border-sage-200');
+                    rowEl.classList.remove('bg-white', 'border-sage-100');
+                } else {
+                    iconEl.className = 'fa-solid fa-check text-slate-200 transition-colors';
+                    rowEl.classList.remove('bg-sage-50', 'border-sage-200');
+                    rowEl.classList.add('bg-white', 'border-sage-100');
+                }
+            }
+
+            function updateSliderState(value, rowId, iconClass) {
+                const rowEl = document.getElementById(rowId);
+                const iconEl = rowEl.querySelector('i');
+                if(parseInt(value) > 0) {
+                    rowEl.classList.add('bg-sage-50', 'border-sage-200');
+                    iconEl.className = `${iconClass} w-5 text-earth-500`;
+                } else {
+                    rowEl.classList.remove('bg-sage-50', 'border-sage-200');
+                    iconEl.className = `${iconClass} w-5 text-slate-400`;
+                }
+            }
+
+            function hitungTotal() {
+                let total = basePrice;
+                
+                const jmlFoto = parseInt(inputFoto.value);
+                total += (jmlFoto * 2000);
+                labelFoto.innerText = jmlFoto + ' Foto';
+                sumFoto.innerText = jmlFoto;
+                updateSliderState(jmlFoto, 'row-foto', 'fa-regular fa-image');
+
+                updateCheckmarkState('chk-kado', 'icon-kado', 'row-kado');
+                updateCheckmarkState('chk-cerita', 'icon-cerita', 'row-cerita');
+                updateCheckmarkState('chk-lifetime', 'icon-lifetime', 'row-lifetime');
+                updateCheckmarkState('chk-lagu', 'icon-lagu', 'row-lagu');
+                updateCheckmarkState('chk-video', 'icon-video', 'row-video');
+
+                if(chkKado.checked) total += parseInt(chkKado.value);
+                if(chkCerita.checked) total += parseInt(chkCerita.value);
+                if(chkLifetime.checked) total += parseInt(chkLifetime.value);
+                if(chkLagu.checked) total += parseInt(chkLagu.value);
+                if(chkVideo.checked) total += parseInt(chkVideo.value);
+
+                hargaTotal.innerText = formatIDR(total);
+                hargaCoret.innerText = formatIDR(total + 30000);
+            }
+
+            [inputFoto  , chkKado, chkCerita, chkLifetime, chkLagu, chkVideo].forEach(el => {
+                if(el) el.addEventListener('input', hitungTotal);
+            });
+
+            hitungTotal();
+
+            // -------------------------
+            // LOGIKA FILTER KATEGORI & PENCARIAN
+            // -------------------------
+            const categoryLinks = document.querySelectorAll('.category-link');
+            const designCards = document.querySelectorAll('.design-card');
+            const searchInput = document.getElementById('search-desain');
+
+            let currentCategory = 'semua';
+            let searchQuery = '';
+
+            function applyFilters() {
+                designCards.forEach(card => {
+                    const cardCategory = card.dataset.category;
+                    const cardName = card.querySelector('h3').innerText.toLowerCase();
+                    
+                    // Cek apakah kartu cocok dengan kategori yang dipilih
+                    const matchCategory = (currentCategory === 'semua' || cardCategory === currentCategory);
+                    
+                    // Cek apakah nama kartu mengandung huruf/kata yang diketik di search bar
+                    const matchSearch = cardName.includes(searchQuery);
+
+                    // Tampilkan hanya jika cocok dengan kategori DAN cocok dengan hasil pencarian
+                    if (matchCategory && matchSearch) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            }
+
+            function filterKatalog(category) {
+                currentCategory = category;
+
+                // 1. Update URL tanpa merefresh halaman
+                const url = new URL(window.location);
+                if (category === 'semua') {
+                    url.searchParams.delete('category');
+                } else {
+                    url.searchParams.set('category', category);
+                }
+                window.history.pushState({}, '', url);
+
+                // 2. Ubah style aktif pada tombol kategori di Sidebar
+                categoryLinks.forEach(link => {
+                    const badge = link.querySelector('span:last-child');
+                    
+                    if (link.dataset.target === category) {
+                        // Kelas aktif (Earth Tone)
+                        link.className = 'category-link flex justify-between items-center bg-earth-50 text-earth-600 px-4 py-3 rounded-lg transition active-category';
+                        badge.className = 'bg-earth-200 text-earth-700 text-xs py-0.5 px-2.5 rounded-full font-bold';
+                    } else {
+                        // Kelas tidak aktif (Sage Tone)
+                        link.className = 'category-link flex justify-between items-center text-sage-700 hover:bg-sage-50 px-4 py-3 rounded-lg transition';
+                        badge.className = 'bg-sage-100 text-sage-600 text-xs py-0.5 px-2.5 rounded-full font-bold';
+                    }
+                });
+
+                // 3. Jalankan fungsi filter
+                applyFilters();
+            }
+
+            // Event Click untuk Sidebar Kategori
+            categoryLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); 
+                    filterKatalog(link.dataset.target);
+                });
+            });
+
+            // Event Input untuk Live Search Bar
+            if(searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    searchQuery = e.target.value.toLowerCase();
+                    applyFilters();
+                });
+            }
+
+            // Cek URL saat pertama kali dimuat
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialCategory = urlParams.get('category') || 'semua';
+            filterKatalog(initialCategory);
+
+        </script>
+    </body>
+    </html>

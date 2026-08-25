@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Kebijakan Pengembalian Dana | Bersama.id</title>
+    
+    <!-- Google Fonts: Playfair Display (Elegan/Serif) & Lato (Bersih/Sans) -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tambahkan ini di semua file HTML kamu -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    },
+                    colors: {
+                        sage: {
+                            50: '#f4f6f4',
+                            100: '#e4e9e5',
+                            200: '#cbd4cc',
+                            300: '#a6b5a8',
+                            500: '#697e6d',
+                            600: '#526456',
+                            800: '#334036',
+                            900: '#232c25' 
+                        },
+                        earth: {
+                            100: '#f9f3ee',
+                            200: '#f0dfd1',
+                            500: '#d4a373', 
+                            600: '#b58255',
+                            700: '#8c613c'
+                        },
+                        cream: '#fdfdfc' 
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth scrolling dan offset agar judul tidak tertutup navbar yang sticky */
+        html { scroll-behavior: smooth; }
+        .scroll-mt-28 { scroll-margin-top: 7rem; }
+    </style>
+</head>
+<body class="bg-cream text-slate-700 font-sans selection:bg-sage-200">
+
+    <!-- Navbar Elegan Terhubung -->
+    <nav class="bg-cream/90 backdrop-blur-md sticky top-0 z-50 border-b border-sage-100">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold font-serif text-sage-900 flex items-center gap-3 tracking-wide">
+                <i class="fa-solid fa-leaf text-earth-500 text-lg"></i> Bersama.id
+            </a>
+            <div class="hidden md:flex space-x-10 text-sm tracking-widest uppercase font-bold text-sage-800">
+                <a href="index.html#fitur" class="hover:text-earth-500 transition-colors">Fitur</a>
+                <a href="index.html#harga" class="hover:text-earth-500 transition-colors">Harga</a>
+                <a href="index.html#katalog" class="hover:text-earth-500 transition-colors">Desain</a>
+            </div>
+            <a href="#" class="bg-transparent border border-sage-500 text-sage-600 px-6 py-2 rounded font-bold uppercase text-xs tracking-widest hover:bg-sage-500 hover:text-white transition duration-300">
+                Login Panel
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-6 py-12 sm:py-16 min-h-screen">
+        
+        <!-- Header Halaman -->
+        <div class="mb-12">
+            <h1 class="text-4xl md:text-5xl font-serif font-bold text-sage-900 tracking-tight">Kebijakan Pengembalian Dana</h1>
+            <div class="w-16 h-0.5 bg-earth-500 mt-4 mb-3"></div>
+            <p class="text-sm font-bold text-slate-400 uppercase tracking-widest">Pembaruan Terakhir: 25 Juni 2026</p>
+        </div>
+
+        <div class="grid gap-10 lg:grid-cols-[18rem_minmax(0,1fr)] items-start">
+            
+            <!-- Sidebar Kiri: Navigasi TOC -->
+            <div class="hidden lg:block relative">
+                <aside class="rounded-2xl border border-sage-200 bg-white p-6 shadow-sm sticky top-28">
+                    <h2 class="text-lg font-serif font-bold text-sage-900 mb-5">Navigasi Halaman</h2>
+                    <ul class="space-y-2 text-sm font-bold" id="toc-menu">
+                        <li><a href="#ketentuan-dasar" data-target="ketentuan-dasar" class="toc-link block w-full truncate rounded-lg px-4 py-2.5 text-left transition bg-earth-50 text-earth-600">1. Ketentuan Dasar</a></li>
+                        <li><a href="#kriteria-refund" data-target="kriteria-refund" class="toc-link block w-full truncate rounded-lg px-4 py-2.5 text-left transition text-sage-700 hover:bg-sage-50">2. Kondisi Memenuhi Syarat</a></li>
+                        <li><a href="#tidak-berlaku" data-target="tidak-berlaku" class="toc-link block w-full truncate rounded-lg px-4 py-2.5 text-left transition text-sage-700 hover:bg-sage-50">3. Kondisi Tidak Berlaku</a></li>
+                        <li><a href="#cara-pengajuan" data-target="cara-pengajuan" class="toc-link block w-full truncate rounded-lg px-4 py-2.5 text-left transition text-sage-700 hover:bg-sage-50">4. Tata Cara Pengajuan</a></li>
+                        <li><a href="#proses-pencairan" data-target="proses-pencairan" class="toc-link block w-full truncate rounded-lg px-4 py-2.5 text-left transition text-sage-700 hover:bg-sage-50">5. Proses Pencairan Dana</a></li>
+                        <li><a href="#konsekuensi" data-target="konsekuensi" class="toc-link block w-full truncate rounded-lg px-4 py-2.5 text-left transition text-sage-700 hover:bg-sage-50">6. Konsekuensi Pembatalan</a></li>
+                    </ul>
+                </aside>
+            </div>
+
+            <!-- Konten Teks Kanan -->
+            <section class="bg-white rounded-2xl border border-sage-200 p-8 md:p-10 shadow-sm">
+                
+                <article class="text-slate-600 font-light leading-relaxed">
+                    <p class="mb-8">
+                        Di <strong>Bersama.id</strong>, kami selalu berupaya memastikan kepuasan Anda dalam merencanakan hari bahagia. 
+                        Namun, kami menyadari bahwa dalam kondisi tertentu, Anda mungkin perlu melakukan pembatalan dan mengajukan pengembalian dana <em>(refund)</em>. 
+                        Dokumen ini memuat batasan, syarat, dan prosedur yang jelas mengenai kebijakan tersebut.
+                    </p>
+
+                    <!-- SECTION 1 -->
+                    <div id="ketentuan-dasar" class="content-section scroll-mt-28 mb-10">
+                        <h3 class="text-xl font-bold font-serif text-sage-900 border-b border-sage-100 pb-2 mb-4">1. Ketentuan Dasar</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-earth-500 mt-1.5 text-xs"></i>
+                                <span>Permohonan pengembalian dana hanya diizinkan untuk transaksi yang telah berhasil diverifikasi oleh sistem pembayaran kami.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-earth-500 mt-1.5 text-xs"></i>
+                                <span>Batas waktu pengajuan klaim adalah maksimal <strong>3x24 jam</strong> sejak invoice dinyatakan lunas.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-earth-500 mt-1.5 text-xs"></i>
+                                <span>Transaksi yang menggunakan kode kupon (promo), potongan afiliasi, maupun bentuk diskon bersyarat lainnya bersifat <strong>mutlak (non-refundable)</strong>.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- SECTION 2 -->
+                    <div id="kriteria-refund" class="content-section scroll-mt-28 mb-10">
+                        <h3 class="text-xl font-bold font-serif text-sage-900 border-b border-sage-100 pb-2 mb-4">2. Kondisi yang Memenuhi Syarat Refund</h3>
+                        <p class="mb-3">Anda berhak mendapatkan pengembalian dana utuh 100% (setelah dipotong biaya admin bank/payment gateway) apabila terjadi hal berikut:</p>
+                        <ul class="space-y-2 pl-2">
+                            <li class="flex items-start gap-3">
+                                <span class="text-earth-500 font-bold mt-0.5">a.</span>
+                                <span><strong>Kendala Teknis Mayor:</strong> Server kami mengalami <em>downtime</em> atau kerusakan yang menyebabkan sistem sama sekali tidak bisa memproses undangan digital Anda melebihi 24 jam berturut-turut.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-earth-500 font-bold mt-0.5">b.</span>
+                                <span><strong>Penagihan Berganda:</strong> Sistem kami secara tidak sengaja memotong saldo/rekening Anda lebih dari satu kali untuk nomor pesanan yang sama.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-earth-500 font-bold mt-0.5">c.</span>
+                                <span><strong>Fitur Premium Gagal:</strong> Add-on berbayar (seperti Kustom Audio atau Auto Broadcast) terbukti gagal diakses dan tim dukungan teknis kami tidak dapat memulihkannya.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- SECTION 3 -->
+                    <div id="tidak-berlaku" class="content-section scroll-mt-28 mb-10">
+                        <h3 class="text-xl font-bold font-serif text-sage-900 border-b border-sage-100 pb-2 mb-4">3. Kondisi di Luar Pertanggungan (Non-Refundable)</h3>
+                        <p class="mb-3">Klaim pengembalian dana <strong>akan ditolak</strong> jika permohonan didasari oleh alasan personal atau eksternal berikut:</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-xmark text-sage-300 mt-1.5 text-xs"></i>
+                                <span><strong>Perubahan Keputusan:</strong> Anda membatalkan pesanan karena sekadar berubah pikiran, menemukan vendor lain, atau merasa tema desain tidak lagi sesuai dengan selera.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-xmark text-sage-300 mt-1.5 text-xs"></i>
+                                <span><strong>Pembatalan Acara:</strong> Hari H pernikahan atau acara Anda tertunda maupun dibatalkan secara mendadak.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-xmark text-sage-300 mt-1.5 text-xs"></i>
+                                <span><strong>Kesalahan Klien:</strong> Kesalahan ketik, input koordinat lokasi yang salah, atau nomor rekening penerima kado yang keliru (hal ini bisa Anda ubah sendiri secara mandiri di dashboard).</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-xmark text-sage-300 mt-1.5 text-xs"></i>
+                                <span><strong>Isu Pihak Ketiga:</strong> Broadcast pesan gagal terkirim karena nomor tujuan diblokir WhatsApp, atau gangguan server sentral dari aplikasi pihak ketiga (Google Maps/WhatsApp/Instagram).</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- SECTION 4 -->
+                    <div id="cara-pengajuan" class="content-section scroll-mt-28 mb-10">
+                        <h3 class="text-xl font-bold font-serif text-sage-900 border-b border-sage-100 pb-2 mb-4">4. Tata Cara Pengajuan</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-dot text-sage-300 mt-1.5 text-[8px]"></i>
+                                <span>Kirimkan laporan tertulis melalui <em>WhatsApp Support</em> atau Email resmi yang tertera di bagian Footer situs web ini.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-dot text-sage-300 mt-1.5 text-[8px]"></i>
+                                <span>Sertakan rincian berupa: Nomor Invoice/Pesanan, Email terdaftar, dan penjelasan runtut mengenai alasan Anda meminta <em>refund</em>.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-dot text-sage-300 mt-1.5 text-[8px]"></i>
+                                <span>Tim internal kami akan melakukan validasi dan investigasi data dalam estimasi waktu <strong>1 hingga 2 hari kerja</strong>.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- SECTION 5 -->
+                    <div id="proses-pencairan" class="content-section scroll-mt-28 mb-10">
+                        <h3 class="text-xl font-bold font-serif text-sage-900 border-b border-sage-100 pb-2 mb-4">5. Proses Pencairan Dana</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-dot text-sage-300 mt-1.5 text-[8px]"></i>
+                                <span>Jika klaim telah divalidasi dan disetujui, dana akan dikembalikan ke instrumen pembayaran awal (Kartu Kredit, Virtual Account, atau E-Wallet yang sama).</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-dot text-sage-300 mt-1.5 text-[8px]"></i>
+                                <span>Kami membutuhkan waktu operasional <strong>3 hingga 7 hari kerja</strong> untuk menuntaskan mutasi pengembalian dana, menyesuaikan dengan kebijakan <em>Payment Gateway</em> yang bersangkutan.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- SECTION 6 -->
+                    <div id="konsekuensi" class="content-section scroll-mt-28 mb-10">
+                        <h3 class="text-xl font-bold font-serif text-sage-900 border-b border-sage-100 pb-2 mb-4">6. Konsekuensi Pembatalan</h3>
+                        <p>
+                            Mohon diperhatikan bahwa begitu proses pengembalian dana disetujui, <strong>seluruh akses menuju tautan (link) undangan digital Anda akan dicabut secara permanen.</strong> Semua data, foto, dan RSVP tamu di dalam undangan tersebut akan dihapus dari server publik kami.
+                        </p>
+                    </div>
+
+                    <!-- Kotak Persetujuan Bawah -->
+                    <div class="mt-14 bg-earth-50/50 border border-earth-500/20 p-6 rounded-xl flex items-center gap-5">
+                        <i class="fa-solid fa-hand-holding-dollar text-earth-500 text-3xl"></i>
+                        <p class="text-sm font-medium text-sage-800 leading-relaxed">
+                            Kami selalu berusaha memberikan produk yang andal. Apabila Anda memiliki keraguan sebelum membeli, tim dukungan kami selalu sedia untuk diajak berkonsultasi.
+                        </p>
+                    </div>
+
+                </article>
+            </section>
+        </div>
+    </main>
+
+    <!-- FOOTER TERHUBUNG GLOBAL -->
+    <footer class="bg-[#1a211c] text-sage-300 pt-20 pb-8 border-t-4 border-earth-500 mt-10">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-sage-800/80 pb-12">
+            
+            <div class="space-y-4 pr-4">
+                <div class="text-2xl font-serif font-bold text-cream flex items-center gap-3 mb-4">
+                    <i class="fa-solid fa-leaf text-earth-500"></i> Bersama.id
+                </div>
+                <div class="font-light text-sm space-y-3">
+                    <p>support@bersama.id</p>
+                    <p>6285110551456</p>
+                    <p class="leading-relaxed mt-4">
+                        Centennial Tower, Jl. Gatot Subroto No. 27,<br>
+                        Karet Semanggi, Kec. Setiabudi, Jakarta<br>
+                        Selatan, DKI Jakarta, Indonesia, 12930.
+                    </p>
+                </div>
+                <div class="flex gap-4 pt-3">
+                    <a href="#" class="text-sage-300 hover:text-earth-500 transition text-lg"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="text-sage-300 hover:text-earth-500 transition text-lg"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="text-sage-300 hover:text-earth-500 transition text-lg"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="text-cream font-bold text-sm tracking-widest uppercase mb-6">Dukungan</h4>
+                <ul class="space-y-4 font-light text-sm">
+                    <li><a href="faq.html" class="hover:text-earth-500 transition">Pertanyaan Umum</a></li>
+                    <li><a href="feedback.html" class="hover:text-earth-500 transition">Umpan Balik</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-cream font-bold text-sm tracking-widest uppercase mb-6">Perusahaan</h4>
+                <ul class="space-y-4 font-light text-sm">
+                    <li><a href="syarat-dan-ketentuan.html" class="hover:text-earth-500 transition">Syarat dan Ketentuan</a></li>
+                    <li><a href="kebijakan-privasi.html" class="hover:text-earth-500 transition">Kebijakan Privasi</a></li>
+                    <li><a href="pengembalian-dana.html" class="text-earth-500 transition font-bold">Pengembalian Dana</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-cream font-bold text-sm tracking-widest uppercase mb-6">Newsletter</h4>
+                <p class="font-light text-sm mb-5 leading-relaxed">Dapatkan inspirasi desain, tips persiapan undangan, dan promo terbaru.</p>
+                <div class="flex rounded overflow-hidden border border-sage-600 focus-within:border-earth-500 transition-colors">
+                    <input type="email" placeholder="Masukkan email" class="bg-[#1a211c] text-cream px-4 py-2.5 text-sm w-full outline-none">
+                    <button class="bg-earth-500 text-white px-5 py-2.5 text-sm font-bold hover:bg-earth-600 transition">Subscribe</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 pt-6 flex flex-col md:flex-row justify-between items-center text-xs font-light tracking-wide text-sage-400">
+            <p>Copyright © 2026 Team Bersama.id</p>
+            <div class="mt-4 md:mt-0 flex items-center gap-2 text-cream hover:text-earth-500 cursor-pointer transition">
+                <i class="fa-solid fa-language text-lg"></i> Indonesia
+            </div>
+        </div>
+    </footer>
+
+    <!-- Tombol WA Mengambang -->
+    <a href="https://wa.me/6281234567890" target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-2xl hover:bg-[#1ebd5a] transition-all duration-300 hover:-translate-y-1 z-50 border-2 border-transparent">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- SCRIPT SCROLLSPY (Otomatis Highlight Menu Sidebar Kiri Saat Discrool) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.content-section');
+            const navLinks = document.querySelectorAll('.toc-link');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-100px 0px -60% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const currentId = entry.target.getAttribute('id');
+                        
+                        // Hapus class aktif (warna earth) dari semua link menu kiri
+                        navLinks.forEach(link => {
+                            link.classList.remove('bg-earth-50', 'text-earth-600');
+                            link.classList.add('text-sage-700', 'hover:bg-sage-50');
+                        });
+
+                        // Tambahkan class aktif (warna earth) ke menu yang sesuai dengan teks yang sedang dibaca
+                        const activeLink = document.querySelector(`.toc-link[data-target="${currentId}"]`);
+                        if(activeLink) {
+                            activeLink.classList.remove('text-sage-700', 'hover:bg-sage-50');
+                            activeLink.classList.add('bg-earth-50', 'text-earth-600');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Ganti warna langsung pas diklik manual
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    navLinks.forEach(l => {
+                        l.classList.remove('bg-earth-50', 'text-earth-600');
+                        l.classList.add('text-sage-700', 'hover:bg-sage-50');
+                    });
+                    this.classList.remove('text-sage-700', 'hover:bg-sage-50');
+                    this.classList.add('bg-earth-50', 'text-earth-600');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

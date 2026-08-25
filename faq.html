@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Pertanyaan Umum | Bersama.id</title>
+    <!-- Google Fonts: Playfair Display (Elegan/Serif) & Lato (Bersih/Sans) -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tautkan File CSS Eksternal -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tambahkan ini di semua file HTML kamu -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    },
+                    colors: {
+                        sage: { 50: '#f4f6f4', 100: '#e4e9e5', 200: '#cbd4cc', 300: '#a6b5a8', 500: '#697e6d', 600: '#526456', 800: '#334036', 900: '#232c25' },
+                        earth: { 100: '#f9f3ee', 200: '#f0dfd1', 500: '#d4a373', 600: '#b58255', 700: '#8c613c' },
+                        cream: '#fdfdfc'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cream text-slate-700 font-sans selection:bg-sage-200">
+
+    <!-- Navbar Elegan -->
+    <nav class="bg-cream/90 backdrop-blur-md sticky top-0 z-50 border-b border-sage-100">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold font-serif text-sage-900 flex items-center gap-3 tracking-wide">
+                <i class="fa-solid fa-leaf text-earth-500 text-lg"></i> Bersama.id
+            </a>
+            <div class="hidden md:flex space-x-10 text-sm tracking-widest uppercase font-bold text-sage-800">
+                <a href="index.html#fitur" class="hover:text-earth-500 transition-colors">Fitur</a>
+                <a href="index.html#harga" class="hover:text-earth-500 transition-colors">Harga</a>
+                <a href="index.html#katalog" class="hover:text-earth-500 transition-colors">Desain</a>
+            </div>
+            <a href="login.html" class="bg-transparent border border-sage-500 text-sage-600 px-6 py-2 rounded font-bold uppercase text-xs tracking-widest hover:bg-sage-500 hover:text-white transition duration-300">
+                Login Panel
+            </a>
+        </div>
+    </nav>
+
+    <!-- Header FAQ -->
+    <section class="relative overflow-hidden bg-sage-50/60 py-12 border-b border-sage-100">
+        <div class="max-w-7xl mx-auto px-6 relative z-10 grid items-center gap-8 lg:grid-cols-[1fr_22rem] lg:gap-10">
+            <div class="max-w-3xl text-left">
+                <h1 class="text-4xl md:text-5xl font-serif font-bold text-sage-900 tracking-tight">Pertanyaan Umum</h1>
+                <div class="w-16 h-0.5 bg-earth-500 mt-4 mb-3"></div>
+                <p class="mt-4 max-w-2xl text-slate-500 font-light leading-8 sm:text-lg">
+                    Temukan jawaban cepat seputar layanan, fitur, pembayaran, dan pengelolaan undangan digitalmu.
+                </p>
+            </div>
+            <!-- Elemen Dekoratif Kanan -->
+            <div class="relative hidden lg:block opacity-30">
+                <i class="fa-regular fa-comments text-[10rem] text-sage-500 absolute -right-4 top-1/2 transform -translate-y-1/2"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main FAQ Content (Grid Layout) -->
+    <main class="max-w-7xl mx-auto px-6 py-12 sm:py-16 min-h-screen">
+        <section class="grid gap-8 lg:grid-cols-[19rem_minmax(0,1fr)] items-start">
+            
+            <!-- Sidebar Kiri -->
+            <div class="relative space-y-6 sticky top-28">
+                <!-- Box Kategori -->
+                <aside class="rounded-2xl border border-sage-200 bg-white p-5 shadow-sm">
+                    <h2 class="text-xl font-serif font-bold text-sage-900">Kategori</h2>
+                    <div class="mt-5 space-y-2">
+                        <button type="button" class="faq-cat-btn flex w-full items-center justify-between rounded-lg px-4 py-3 text-left text-sm font-bold transition bg-earth-50 text-earth-600" data-target="semua">
+                            <span>Semua Pertanyaan</span>
+                            <span class="inline-flex h-6 min-w-6 items-center justify-center rounded-full px-2 text-[11px] font-bold bg-earth-200 text-earth-700">7</span>
+                        </button>
+                        <button type="button" class="faq-cat-btn flex w-full items-center justify-between rounded-lg px-4 py-3 text-left text-sm font-bold transition text-sage-700 hover:bg-sage-50" data-target="fitur">
+                            <span>Fitur & Layanan</span>
+                            <span class="inline-flex h-6 min-w-6 items-center justify-center rounded-full px-2 text-[11px] font-bold bg-sage-100 text-sage-600">3</span>
+                        </button>
+                        <button type="button" class="faq-cat-btn flex w-full items-center justify-between rounded-lg px-4 py-3 text-left text-sm font-bold transition text-sage-700 hover:bg-sage-50" data-target="pembayaran">
+                            <span>Pembayaran</span>
+                            <span class="inline-flex h-6 min-w-6 items-center justify-center rounded-full px-2 text-[11px] font-bold bg-sage-100 text-sage-600">2</span>
+                        </button>
+                        <button type="button" class="faq-cat-btn flex w-full items-center justify-between rounded-lg px-4 py-3 text-left text-sm font-bold transition text-sage-700 hover:bg-sage-50" data-target="umum">
+                            <span>General</span>
+                            <span class="inline-flex h-6 min-w-6 items-center justify-center rounded-full px-2 text-[11px] font-bold bg-sage-100 text-sage-600">2</span>
+                        </button>
+                    </div>
+                </aside>
+                
+                <!-- Box Bantuan -->
+                <div class="rounded-2xl border border-sage-200 bg-sage-50 p-6 text-slate-800 shadow-sm text-center lg:text-left">
+                    <p class="text-base font-bold text-sage-900">Tidak menemukan yang kamu cari?</p>
+                    <p class="mt-2 text-sm leading-6 text-slate-500 font-light">Tim support kami siap membantu 24/7.</p>
+                    <a href="https://wa.me/6281234567890" target="_blank" class="mt-5 inline-flex w-full items-center justify-center rounded-lg border border-earth-500 bg-white px-4 py-2.5 text-sm font-bold text-earth-600 transition hover:bg-earth-500 hover:text-white">Hubungi Kami</a>
+                </div>
+            </div>
+
+            <!-- Konten Pertanyaan Kanan -->
+            <section>
+                <h2 id="faq-title" class="text-2xl font-serif font-bold text-sage-900">Semua Pertanyaan</h2>
+                <div class="mt-6 space-y-4" id="faq-list">
+                    
+                    <!-- Tanya 1 -->
+                    <article class="faq-box overflow-hidden rounded-xl border transition duration-300 border-sage-200 bg-white" data-category="umum">
+                        <button type="button" class="faq-btn flex w-full items-center justify-between gap-4 rounded-lg px-6 py-5 text-left focus:outline-none">
+                            <h3 class="text-base font-bold text-sage-900 transition-colors">Apa itu Bersama.id?</h3>
+                            <span class="shrink-0 text-earth-500"><i class="fa-solid fa-plus transition-transform duration-300"></i></span>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out px-6" style="max-height: 0;">
+                            <p class="text-sm font-light leading-7 text-slate-600 pb-5">Bersama.id adalah platform undangan pernikahan digital yang dapat diakses melalui tautan (link). Dilengkapi berbagai desain elegan, mudah dibagikan, dan isinya dapat diperbarui kapan saja tanpa biaya cetak ulang.</p>
+                        </div>
+                    </article>
+
+                    <!-- Tanya 2 -->
+                    <article class="faq-box overflow-hidden rounded-xl border transition duration-300 border-sage-200 bg-white" data-category="fitur">
+                        <button type="button" class="faq-btn flex w-full items-center justify-between gap-4 rounded-lg px-6 py-5 text-left focus:outline-none">
+                            <h3 class="text-base font-bold text-sage-900 transition-colors">Apakah saya bisa merevisi isi undangan setelah dibuat?</h3>
+                            <span class="shrink-0 text-earth-500"><i class="fa-solid fa-plus transition-transform duration-300"></i></span>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out px-6" style="max-height: 0;">
+                            <p class="text-sm font-light leading-7 text-slate-600 pb-5">Tentu saja. Anda akan diberikan akses dashboard mandiri dan dibantu oleh admin kami yang selalu siap sedia memandu revisi kapan pun Anda butuhkan.</p>
+                        </div>
+                    </article>
+
+                    <!-- Tanya 3 -->
+                    <article class="faq-box overflow-hidden rounded-xl border transition duration-300 border-sage-200 bg-white" data-category="umum">
+                        <button type="button" class="faq-btn flex w-full items-center justify-between gap-4 rounded-lg px-6 py-5 text-left focus:outline-none">
+                            <h3 class="text-base font-bold text-sage-900 transition-colors">Berapa lama masa aktif undangan saya?</h3>
+                            <span class="shrink-0 text-earth-500"><i class="fa-solid fa-plus transition-transform duration-300"></i></span>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out px-6" style="max-height: 0;">
+                            <p class="text-sm font-light leading-7 text-slate-600 pb-5">Secara bawaan, undangan Anda akan aktif selama 3 bulan. Namun, Anda bisa menambahkan fitur *Lifetime Access* agar undangan bisa diakses dan dikenang seumur hidup.</p>
+                        </div>
+                    </article>
+
+                    <!-- Tanya 4 -->
+                    <article class="faq-box overflow-hidden rounded-xl border transition duration-300 border-sage-200 bg-white" data-category="fitur">
+                        <button type="button" class="faq-btn flex w-full items-center justify-between gap-4 rounded-lg px-6 py-5 text-left focus:outline-none">
+                            <h3 class="text-base font-bold text-sage-900 transition-colors">Apakah tersedia fitur konfirmasi kehadiran (RSVP)?</h3>
+                            <span class="shrink-0 text-earth-500"><i class="fa-solid fa-plus transition-transform duration-300"></i></span>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out px-6" style="max-height: 0;">
+                            <p class="text-sm font-light leading-7 text-slate-600 pb-5">Ya, setiap desain sudah dilengkapi dengan formulir RSVP yang terintegrasi. Anda bisa melihat daftar tamu yang hadir, jumlah orang yang dibawa, dan ucapan selamat secara langsung.</p>
+                        </div>
+                    </article>
+
+                    <!-- Tanya 5 -->
+                    <article class="faq-box overflow-hidden rounded-xl border transition duration-300 border-sage-200 bg-white" data-category="pembayaran">
+                        <button type="button" class="faq-btn flex w-full items-center justify-between gap-4 rounded-lg px-6 py-5 text-left focus:outline-none">
+                            <h3 class="text-base font-bold text-sage-900 transition-colors">Metode pembayaran apa saja yang tersedia?</h3>
+                            <span class="shrink-0 text-earth-500"><i class="fa-solid fa-plus transition-transform duration-300"></i></span>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out px-6" style="max-height: 0;">
+                            <p class="text-sm font-light leading-7 text-slate-600 pb-5">Kami menerima berbagai metode pembayaran instan mulai dari Transfer Bank Virtual Account (BCA, Mandiri, BNI, BRI), QRIS, hingga layanan e-Wallet (GoPay, OVO, Dana, ShopeePay).</p>
+                        </div>
+                    </article>
+
+                    <!-- Tanya 6 -->
+                    <article class="faq-box overflow-hidden rounded-xl border transition duration-300 border-sage-200 bg-white" data-category="fitur">
+                        <button type="button" class="faq-btn flex w-full items-center justify-between gap-4 rounded-lg px-6 py-5 text-left focus:outline-none">
+                            <h3 class="text-base font-bold text-sage-900 transition-colors">Bagaimana sistem kerja fitur Amplop Digital (Kirim Kado)?</h3>
+                            <span class="shrink-0 text-earth-500"><i class="fa-solid fa-plus transition-transform duration-300"></i></span>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out px-6" style="max-height: 0;">
+                            <p class="text-sm font-light leading-7 text-slate-600 pb-5">Fitur ini memungkinkan Anda menampilkan detail nomor rekening bank atau barcode QRIS di dalam undangan. Tamu dapat langsung menyalin nomor tersebut dan mengirimkan kado. Kami 100% tidak memotong komisi apapun.</p>
+                        </div>
+                    </article>
+                    
+                    <!-- Tanya 7 -->
+                    <article class="faq-box overflow-hidden rounded-xl border transition duration-300 border-sage-200 bg-white" data-category="pembayaran">
+                        <button type="button" class="faq-btn flex w-full items-center justify-between gap-4 rounded-lg px-6 py-5 text-left focus:outline-none">
+                            <h3 class="text-base font-bold text-sage-900 transition-colors">Apakah ada biaya berlangganan bulanan?</h3>
+                            <span class="shrink-0 text-earth-500"><i class="fa-solid fa-plus transition-transform duration-300"></i></span>
+                        </button>
+                        <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out px-6" style="max-height: 0;">
+                            <p class="text-sm font-light leading-7 text-slate-600 pb-5">Tidak ada. Sistem pembayaran kami adalah <em>One-Time Payment</em> (Pembayaran Sekali Saja). Anda cukup membayar di awal saat undangan dibuat.</p>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#1a211c] text-sage-300 pt-16 pb-8 border-t-4 border-earth-500 mt-10">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-sage-800/80 pb-12">
+            <div class="space-y-4 pr-4">
+                <div class="text-2xl font-serif font-bold text-cream flex items-center gap-3 mb-4">
+                    <i class="fa-solid fa-leaf text-earth-500"></i> Bersama.id
+                </div>
+                <div class="font-light text-sm space-y-3">
+                    <p>support@bersama.id</p>
+                    <p>6285110551456</p>
+                    <p class="leading-relaxed mt-4">
+                        Centennial Tower, Jl. Gatot Subroto No. 27,<br>
+                        Karet Semanggi, Kec. Setiabudi, Jakarta Selatan.
+                    </p>
+                </div>
+                 <div class="flex gap-4 pt-3">
+                    <a href="#" class="text-sage-300 hover:text-earth-500 transition text-lg"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="text-sage-300 hover:text-earth-500 transition text-lg"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="text-sage-300 hover:text-earth-500 transition text-lg"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-cream font-bold text-sm tracking-widest uppercase mb-6">Dukungan</h4>
+                <ul class="space-y-4 font-light text-sm">
+                    <li><a href="faq.html" class="text-earth-500 transition font-bold">Pertanyaan Umum</a></li>
+                    <li><a href="feedback.html" class="hover:text-earth-500 transition">Umpan Balik</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-cream font-bold text-sm tracking-widest uppercase mb-6">Perusahaan</h4>
+                <ul class="space-y-4 font-light text-sm">
+                    <li><a href="syarat-dan-ketentuan.html" class="hover:text-earth-500 transition">Syarat & Ketentuan</a></li>
+                    <li><a href="kebijakan-privasi.html" class="hover:text-earth-500 transition">Kebijakan Privasi</a></li>
+                    <li><a href="pengembalian-dana.html" class="hover:text-earth-500 transition">Pengembalian Dana</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-cream font-bold text-sm tracking-widest uppercase mb-6">Newsletter</h4>
+                <div class="flex rounded overflow-hidden border border-sage-600 focus-within:border-earth-500 transition-colors">
+                    <input type="email" placeholder="Masukkan email" class="bg-[#1a211c] text-cream px-4 py-2.5 text-sm w-full outline-none">
+                    <button class="bg-earth-500 text-white px-5 py-2.5 text-sm font-bold hover:bg-earth-600 transition">OK</button>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 pt-6 flex flex-col md:flex-row justify-between items-center text-xs font-light tracking-wide text-sage-400">
+            <p>Copyright © 2026 Rasyid Ihtizzamul Hidayat</p>
+            <div class="mt-4 md:mt-0">Indonesia</div>
+        </div>
+    </footer>
+
+    <!-- Tombol WA Mengambang -->
+    <a href="https://wa.me/6281234567890" target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-2xl hover:bg-[#1ebd5a] transition-all duration-300 hover:-translate-y-1 z-50 border-2 border-transparent">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Tautkan File JavaScript Utama -->
+    <script src="script.js"></script>
+</body>
+</html>

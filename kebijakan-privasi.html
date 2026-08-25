@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Kebijakan Privasi | Bersama.id</title>
+    <!-- Google Fonts: Playfair Display (Elegan/Serif) & Lato (Bersih/Sans) -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tambahkan ini di semua file HTML kamu -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    },
+                    colors: {
+                        sage: {
+                            50: '#f4f6f4',
+                            100: '#e4e9e5',
+                            200: '#cbd4cc',
+                            300: '#a6b5a8',
+                            500: '#697e6d',
+                            600: '#526456',
+                            800: '#334036',
+                            900: '#232c25' 
+                        },
+                        earth: {
+                            100: '#f9f3ee',
+                            200: '#f0dfd1',
+                            500: '#d4a373', 
+                            600: '#b58255',
+                            700: '#8c613c'
+                        },
+                        cream: '#fdfdfc' 
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth scrolling dan jarak agar judul tidak tertutup navbar */
+        html { scroll-behavior: smooth; }
+        .scroll-mt-28 { scroll-margin-top: 7rem; }
+    </style>
+</head>
+<body class="bg-cream text-slate-700 font-sans selection:bg-sage-200">
+
+    <!-- Navbar Elegan -->
+    <nav class="bg-cream/90 backdrop-blur-md sticky top-0 z-50 border-b border-sage-100">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold font-serif text-sage-900 flex items-center gap-3 tracking-wide">
+                <i class="fa-solid fa-leaf text-earth-500 text-lg"></i> Bersama.id
+            </a>
+            <div class="hidden md:flex space-x-10 text-sm tracking-widest uppercase font-bold text-sage-800">
+                <a href="index.html#fitur" class="hover:text-earth-500 transition-colors">Fitur</a>
+                <a href="index.html#harga" class="hover:text-earth-500 transition-colors">Harga</a>
+                <a href="index.html#katalog" class="hover:text-earth-500 transition-colors">Desain</a>
+            </div>
+            <a href="login.html" class="bg-transparent border border-sage-500 text-sage-600 px-6 py-2 rounded font-bold uppercase text-xs tracking-widest hover:bg-sage-500 hover:text-white transition duration-300">
+                Login Panel
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-6 py-12 sm:py-16 min-h-screen">
+        
+        <!-- Header Halaman -->
+        <div class="mb-12">
+            <h1 class="text-4xl md:text-5xl font-serif font-bold text-sage-900 tracking-tight">Kebijakan Privasi</h1>
+            <div class="w-16 h-0.5 bg-earth-500 mt-4 mb-3"></div>
+            <p class="text-sm font-bold text-slate-400 uppercase tracking-widest">Pembaruan Terakhir: 25 Juni 2026</p>
+        </div>
+
+        <div class="grid gap-10 lg:grid-cols-[18rem_minmax(0,1fr)] items-start">
+            
+            <!-- Sidebar Kiri: Navigasi TOC -->
+            <div class="hidden lg:block relative">
+                <aside class="rounded-2xl border border-sage-200 bg-white p-6 shadow-sm sticky top-28">
+                    <h2 class="text-lg font-serif font-bold text-sage-900 mb-5">Navigasi Halaman</h2>
+                    <ul class="space-y-2 text-sm font-bold" id="toc-menu">
+                        <li><a href="#pengumpulan" data-target="pengumpulan" class="toc-link block w-full truncate rounded-lg px-4 py-2.5 text-left transition bg-earth-50 text-earth-600">1. Pengumpulan Data</a></li>
+                        <li><a href="#penggunaan" data-target="penggunaan" class="toc-link block w-full truncate rounded-lg px-4 py-2.5 text-left transition text-sage-700 hover:bg-sage-50">2. Penggunaan Informasi</a></li>
+                        <li><a href="#pembagian" data-target="pembagian" class="toc-link block w-full truncate rounded-lg px-4 py-2.5 text-left transition text-sage-700 hover:bg-sage-50">3. Pembagian Data Pihak Ke-3</a></li>
+                        <li><a href="#keamanan" data-target="keamanan" class="toc-link block w-full truncate rounded-lg px-4 py-2.5 text-left transition text-sage-700 hover:bg-sage-50">4. Keamanan & Penyimpanan</a></li>
+                        <li><a href="#hakpengguna" data-target="hakpengguna" class="toc-link block w-full truncate rounded-lg px-4 py-2.5 text-left transition text-sage-700 hover:bg-sage-50">5. Hak Anda sebagai Pengguna</a></li>
+                        <li><a href="#cookies" data-target="cookies" class="toc-link block w-full truncate rounded-lg px-4 py-2.5 text-left transition text-sage-700 hover:bg-sage-50">6. Penggunaan Cookies</a></li>
+                        <li><a href="#perubahan" data-target="perubahan" class="toc-link block w-full truncate rounded-lg px-4 py-2.5 text-left transition text-sage-700 hover:bg-sage-50">7. Pembaruan Kebijakan</a></li>
+                        <li><a href="#kontak" data-target="kontak" class="toc-link block w-full truncate rounded-lg px-4 py-2.5 text-left transition text-sage-700 hover:bg-sage-50">8. Hubungi Kami</a></li>
+                    </ul>
+                </aside>
+            </div>
+
+            <!-- Konten Teks Kanan -->
+            <section class="bg-white rounded-2xl border border-sage-200 p-8 md:p-10 shadow-sm">
+                
+                <article class="text-slate-600 font-light leading-relaxed">
+                    <p class="mb-8">
+                        Di <strong>Bersama.id</strong>, kami menyadari bahwa privasi dan keamanan data adalah hal yang sangat krusial, terutama karena berkaitan dengan momen sakral dalam hidup Anda. 
+                        Kebijakan Privasi ini disusun secara transparan untuk menjelaskan bagaimana kami mengumpulkan, mengelola, mengamankan, serta mendistribusikan informasi pribadi Anda saat menggunakan layanan platform undangan digital kami.
+                    </p>
+
+                    <!-- SECTION 1 -->
+                    <div id="pengumpulan" class="content-section scroll-mt-28 mb-10">
+                        <h3 class="text-xl font-bold font-serif text-sage-900 border-b border-sage-100 pb-2 mb-4">1. Pengumpulan Data</h3>
+                        <p class="mb-3">Dalam proses menyediakan layanan yang prima, kami mengumpulkan beberapa kategori data, antara lain:</p>
+                        <ul class="space-y-3 pl-2">
+                            <li class="flex items-start gap-3">
+                                <span class="text-earth-500 font-bold mt-0.5">a.</span>
+                                <span><strong>Informasi Akun:</strong> Data yang Anda input saat registrasi, seperti nama lengkap, alamat email aktif, nomor WhatsApp, dan kata sandi yang dienkripsi.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-earth-500 font-bold mt-0.5">b.</span>
+                                <span><strong>Materi Acara:</strong> Segala rupa teks (nama mempelai, waktu, lokasi), potret foto/video, serta cerita yang Anda unggah murni untuk ditampilkan di dalam undangan digital Anda.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-earth-500 font-bold mt-0.5">c.</span>
+                                <span><strong>Daftar Tamu:</strong> Nama dan kontak tamu yang Anda tambahkan ke dalam sistem kami untuk keperluan fitur <em>Auto Broadcast</em> dan buku tamu digital (RSVP).</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-earth-500 font-bold mt-0.5">d.</span>
+                                <span><strong>Data Teknis:</strong> Informasi otomatis seperti alamat IP, tipe peramban (browser), dan log aktivitas untuk kepentingan diagnosa server.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- SECTION 2 -->
+                    <div id="penggunaan" class="content-section scroll-mt-28 mb-10">
+                        <h3 class="text-xl font-bold font-serif text-sage-900 border-b border-sage-100 pb-2 mb-4">2. Penggunaan Informasi</h3>
+                        <p class="mb-3">Data yang terkumpul murni kami operasikan untuk kepentingan berikut:</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-earth-500 mt-1.5 text-xs"></i>
+                                <span>Memfasilitasi pembuatan, penayangan, dan pengelolaan undangan digital sesuai pesanan Anda.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-earth-500 mt-1.5 text-xs"></i>
+                                <span>Menyelesaikan proses transaksi pembayaran serta menerbitkan bukti tagihan/invoice.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-earth-500 mt-1.5 text-xs"></i>
+                                <span>Menghubungi Anda terkait konfirmasi pesanan, pembaruan layanan, atau penanganan kendala teknis dari tim <em>Customer Support</em> kami.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-earth-500 mt-1.5 text-xs"></i>
+                                <span>Menganalisis performa website untuk pengembangan dan optimalisasi fitur di masa mendatang.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- SECTION 3 -->
+                    <div id="pembagian" class="content-section scroll-mt-28 mb-10">
+                        <h3 class="text-xl font-bold font-serif text-sage-900 border-b border-sage-100 pb-2 mb-4">3. Pembagian Data kepada Pihak Ketiga</h3>
+                        <p class="mb-3">Kami memegang teguh etika privasi dan <strong>tidak akan pernah menjual atau menyewakan</strong> data Anda kepada korporasi mana pun. Data hanya dibagikan dalam kondisi sangat terbatas, yakni:</p>
+                        <ul class="space-y-2 pl-2">
+                            <li class="flex items-start gap-3">
+                                <span class="text-earth-500 font-bold mt-0.5">&bull;</span>
+                                <span><strong>Mitra Layanan Esensial:</strong> Seperti <em>Payment Gateway</em> resmi untuk memproses pembayaran Anda secara aman.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-earth-500 font-bold mt-0.5">&bull;</span>
+                                <span><strong>Kewajiban Hukum:</strong> Jika diwajibkan oleh undang-undang, putusan pengadilan, atau instansi penegak hukum resmi yang berlaku di Republik Indonesia.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- SECTION 4 -->
+                    <div id="keamanan" class="content-section scroll-mt-28 mb-10">
+                        <h3 class="text-xl font-bold font-serif text-sage-900 border-b border-sage-100 pb-2 mb-4">4. Keamanan & Penyimpanan Data</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-shield-check text-sage-400 mt-1 text-sm"></i>
+                                <span><strong>Proteksi Enkripsi:</strong> Seluruh lalu lintas data antara browser Anda dan server kami diamankan menggunakan protokol lapisan soket aman (SSL/HTTPS).</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-server text-sage-400 mt-1 text-sm"></i>
+                                <span><strong>Penyimpanan:</strong> Data dan berkas undangan Anda akan tersimpan aktif di server kami selama siklus paket Anda berlangsung (standar 3 bulan), atau selamanya jika Anda mengaktifkan fitur <em>Lifetime Access</em>.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- SECTION 5 -->
+                    <div id="hakpengguna" class="content-section scroll-mt-28 mb-10">
+                        <h3 class="text-xl font-bold font-serif text-sage-900 border-b border-sage-100 pb-2 mb-4">5. Hak Anda sebagai Pengguna</h3>
+                        <p class="mb-3">Sebagai pemilik sah atas data tersebut, Anda memiliki kendali penuh untuk:</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-regular fa-hand-point-right text-earth-500 mt-1.5 text-xs"></i>
+                                <span>Mengakses, mengubah, dan memanipulasi sendiri data acara atau foto kapan pun melalui dashboard akun Anda.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-regular fa-hand-point-right text-earth-500 mt-1.5 text-xs"></i>
+                                <span>Meminta penghapusan permanen atas seluruh akun dan aset undangan dari basis data kami secara total (Hak untuk dilupakan).</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-regular fa-hand-point-right text-earth-500 mt-1.5 text-xs"></i>
+                                <span>Menolak (opt-out) dari email nawala (newsletter) atau promosi pemasaran yang kami kirimkan.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- SECTION 6 -->
+                    <div id="cookies" class="content-section scroll-mt-28 mb-10">
+                        <h3 class="text-xl font-bold font-serif text-sage-900 border-b border-sage-100 pb-2 mb-4">6. Penggunaan Cookies</h3>
+                        <p>
+                            Platform kami menggunakan <em>Cookies</em> (berkas teks kecil yang disimpan pada browser Anda) semata-mata untuk mengidentifikasi sesi login, menyimpan preferensi tampilan, serta memastikan kalkulator harga berfungsi secara mulus. Anda dapat menonaktifkan fitur cookies pada pengaturan browser Anda, namun hal tersebut dapat membatasi kelancaran fungsi spesifik pada website kami.
+                        </p>
+                    </div>
+
+                    <!-- SECTION 7 -->
+                    <div id="perubahan" class="content-section scroll-mt-28 mb-10">
+                        <h3 class="text-xl font-bold font-serif text-sage-900 border-b border-sage-100 pb-2 mb-4">7. Pembaruan Kebijakan</h3>
+                        <p>
+                            Kami mereservasi hak istimewa untuk meninjau dan memperbarui Kebijakan Privasi ini bilamana diperlukan, untuk menyelaraskan dengan regulasi undang-undang perlindungan data terbaru. Segala revisi akan diumumkan lewat email atau notifikasi tertulis di dalam situs web kami setidaknya 7 (tujuh) hari sebelum mulai diberlakukan.
+                        </p>
+                    </div>
+
+                    <!-- SECTION 8 -->
+                    <div id="kontak" class="content-section scroll-mt-28 mb-10">
+                        <h3 class="text-xl font-bold font-serif text-sage-900 border-b border-sage-100 pb-2 mb-4">8. Hubungi Kami</h3>
+                        <p>
+                            Bila Anda menyimpan pertanyaan, kekhawatiran, atau permintaan spesifik sehubungan dengan privasi data Anda, jangan ragu untuk berdiskusi dengan kami melalui saluran resmi berikut:
+                        </p>
+                        <div class="mt-4 flex flex-col gap-2">
+                            <span class="inline-flex items-center gap-2"><i class="fa-solid fa-envelope text-earth-500"></i> support@bersama.id</span>
+                            <span class="inline-flex items-center gap-2"><i class="fa-brands fa-whatsapp text-earth-500"></i> +62 812-3456-7890</span>
+                        </div>
+                    </div>
+
+                    <!-- Kotak Persetujuan Bawah -->
+                    <div class="mt-14 bg-earth-50/50 border border-earth-500/20 p-6 rounded-xl flex items-center gap-5">
+                        <i class="fa-solid fa-lock text-earth-500 text-3xl"></i>
+                        <p class="text-sm font-medium text-sage-800 leading-relaxed">
+                            Keamanan dan kerahasiaan momen indah Anda adalah amanah terbesar kami. Terima kasih telah memercayakan platform Bersama.id.
+                        </p>
+                    </div>
+
+                </article>
+            </section>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#1a211c] text-sage-300 pt-20 pb-8 border-t-4 border-earth-500 mt-10">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-sage-800/80 pb-12">
+            
+            <div class="space-y-4 pr-4">
+                <div class="text-2xl font-serif font-bold text-cream flex items-center gap-3 mb-4">
+                    <i class="fa-solid fa-leaf text-earth-500"></i> Bersama.id
+                </div>
+                <div class="font-light text-sm space-y-3">
+                    <p>support@bersama.id</p>
+                    <p>6285110551456</p>
+                    <p class="leading-relaxed mt-4">
+                        Centennial Tower, Jl. Gatot Subroto No. 27,<br>
+                        Karet Semanggi, Kec. Setiabudi, Jakarta<br>
+                        Selatan, DKI Jakarta, Indonesia, 12930.
+                    </p>
+                </div>
+                 <div class="flex gap-4 pt-3">
+                    <a href="#" class="text-sage-300 hover:text-earth-500 transition text-lg"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="text-sage-300 hover:text-earth-500 transition text-lg"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="text-sage-300 hover:text-earth-500 transition text-lg"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="text-cream font-bold text-sm tracking-widest uppercase mb-6">Dukungan</h4>
+                <ul class="space-y-4 font-light text-sm">
+                    <li><a href="faq.html" class="hover:text-earth-500 transition">Pertanyaan</a></li>
+                    <li><a href="feedback.html" class="hover:text-earth-500 transition">Umpan Balik</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-cream font-bold text-sm tracking-widest uppercase mb-6">Perusahaan</h4>
+                <ul class="space-y-4 font-light text-sm">
+                    <li><a href="syarat-dan-ketentuan.html" class="hover:text-earth-500 transition">Syarat dan Ketentuan</a></li>
+                    <li><a href="kebijakan-privasi.html" class="text-earth-500 transition font-bold">Kebijakan Privasi</a></li>
+                    <li><a href="pengembalian-dana.html" class="hover:text-earth-500 transition">Pengembalian Dana</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-cream font-bold text-sm tracking-widest uppercase mb-6">Newsletter</h4>
+                <p class="font-light text-sm mb-5 leading-relaxed">Dapatkan inspirasi desain, tips persiapan undangan, dan promo terbaru.</p>
+                <div class="flex rounded overflow-hidden border border-sage-600 focus-within:border-earth-500 transition-colors">
+                    <input type="email" placeholder="Masukkan email" class="bg-[#1a211c] text-cream px-4 py-2.5 text-sm w-full outline-none">
+                    <button class="bg-earth-500 text-white px-5 py-2.5 text-sm font-bold hover:bg-earth-600 transition">Subscribe</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 pt-6 flex flex-col md:flex-row justify-between items-center text-xs font-light tracking-wide text-sage-400">
+            <p>Copyright © 2026 Team Bersama.id</p>
+            <div class="mt-4 md:mt-0 flex items-center gap-2 text-cream hover:text-earth-500 cursor-pointer transition">
+                <i class="fa-solid fa-language text-lg"></i> Indonesia
+            </div>
+        </div>
+    </footer>
+
+    <!-- Tombol WA Mengambang -->
+    <a href="https://wa.me/6281234567890" target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-2xl hover:bg-[#1ebd5a] transition-all duration-300 hover:-translate-y-1 z-50 border-2 border-transparent">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- SCRIPT SCROLLSPY (Otomatis Highlight Menu Sidebar Kiri Saat Discrool) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.content-section');
+            const navLinks = document.querySelectorAll('.toc-link');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-100px 0px -60% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const currentId = entry.target.getAttribute('id');
+                        
+                        // Hapus class aktif (warna earth) dari semua link menu kiri
+                        navLinks.forEach(link => {
+                            link.classList.remove('bg-earth-50', 'text-earth-600');
+                            link.classList.add('text-sage-700', 'hover:bg-sage-50');
+                        });
+
+                        // Tambahkan class aktif (warna earth) ke menu yang sesuai dengan teks yang sedang dibaca
+                        const activeLink = document.querySelector(`.toc-link[data-target="${currentId}"]`);
+                        if(activeLink) {
+                            activeLink.classList.remove('text-sage-700', 'hover:bg-sage-50');
+                            activeLink.classList.add('bg-earth-50', 'text-earth-600');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Ganti warna langsung pas diklik manual
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    navLinks.forEach(l => {
+                        l.classList.remove('bg-earth-50', 'text-earth-600');
+                        l.classList.add('text-sage-700', 'hover:bg-sage-50');
+                    });
+                    this.classList.remove('text-sage-700', 'hover:bg-sage-50');
+                    this.classList.add('bg-earth-50', 'text-earth-600');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
