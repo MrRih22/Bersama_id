@@ -1,12 +1,3 @@
-// 1. ALERT PAKSA: Jika alert ini tidak muncul saat web dibuka, berarti browser masih membaca file lama!
-alert("SYSTEM CHECK: File auth.js terbaru berhasil terbaca!");
-console.log("1. Memulai sistem Autentikasi...");
-
-// Cek apakah Supabase berhasil diload dari HTML
-if (!window.supabase) {
-    alert("CRITICAL ERROR: Library Supabase JS gagal dimuat dari HTML!");
-}
-
 // INISIALISASI SUPABASE
 const supabaseUrl = 'https://yvwfduhzcrzkxcfufubx.supabase.co'; 
 const supabaseKey = 'sb_publishable_M4wVaavZ1s3BDtoiQTbU4g_W-Cwl-xv';
