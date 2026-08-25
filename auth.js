@@ -1,20 +1,18 @@
+// INISIALISASI SUPABASE
 const supabaseUrl = 'https://yvwfduhzcrzkxcfufubx.supabase.co'; 
 const supabaseKey = 'sb_publishable_M4wVaavZ1s3BDtoiQTbU4g_W-Cwl-xv';
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-console.log("2. Supabase berhasil dihubungkan.");
-
 document.addEventListener('DOMContentLoaded', async () => {
-    console.log("3. Halaman selesai dimuat, mencari form...");
     
     const formLogin = document.getElementById('form-login');
     const formRegister = document.getElementById('form-register');
     const formForgot = document.getElementById('form-forgot');
-    
-    if (formLogin) console.log("--> Form Login ditemukan!");
-    if (formRegister) console.log("--> Form Register ditemukan!");
+    const userNameDisplay = document.getElementById('user-name-display');
 
-  
+    // ==========================================
+    // 1. CEK SESI LOGIN
+    // ==========================================
     const { data: { session }, error: sessionError } = await supabase.auth.getSession();
     const currentPath = window.location.pathname;
 
@@ -25,19 +23,25 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.location.href = 'dashboard.html';
         return;
     }
+
     if (!session && isDashboard) {
         window.location.href = 'login.html';
         return;
     }
 
-    
+    if (session && userNameDisplay) {
+        userNameDisplay.innerText = session.user.user_metadata?.name || 'Pengguna';
+    }
+
+    // ==========================================
+    // 2. FUNGSI NOTIFIKASI
+    // ==========================================
     function showAlert(message, type) {
-        console.log("Menampilkan Alert:", message);
         const alertBox = document.getElementById('alert-box');
         const alertMsg = document.getElementById('alert-message');
         
         if(!alertBox || !alertMsg) {
-            alert(message); // Fallback jika UI alert-box HTML tidak ada
+            alert(message);
             return;
         }
         
@@ -54,11 +58,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         }, 3000);
     }
 
-  
+    // ==========================================
+    // 3. DAFTAR (REGISTER)
+    // ==========================================
     if(formRegister) {
         formRegister.addEventListener('submit', async (e) => {
-            e.preventDefault(); // Mencegah halaman refresh
-            console.log("TOMBOL DAFTAR DIKLIK!");
+            e.preventDefault();
             
             const name = document.getElementById('reg-name').value;
             const email = document.getElementById('reg-email').value;
@@ -73,10 +78,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
 
             if (error) {
-                console.error("Error Daftar:", error.message);
                 showAlert(error.message, 'error');
             } else {
-                console.log("Daftar Sukses!");
                 showAlert('Pendaftaran sukses! Silakan masuk.', 'success');
                 formRegister.reset();
                 setTimeout(() => { window.location.href = 'login.html'; }, 2000);
@@ -84,11 +87,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-   
+    // ==========================================
+    // 4. MASUK (LOGIN)
+    // ==========================================
     if(formLogin) {
         formLogin.addEventListener('submit', async (e) => {
             e.preventDefault();
-            console.log("TOMBOL LOGIN DIKLIK!");
             
             const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
@@ -101,17 +105,33 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
 
             if (error) {
-                console.error("Error Login:", error.message);
                 showAlert('Gagal masuk! Akun belum terdaftar atau kata sandi salah.', 'error');
             } else {
-                console.log("Login Sukses!");
                 showAlert('Masuk berhasil! Mengalihkan ke dashboard...', 'success');
                 setTimeout(() => { window.location.href = 'dashboard.html'; }, 1500);
             }
         });
     }
-});
 
+    // ==========================================
+    // 5. LUPA SANDI
+    // ==========================================
+    if(formForgot) {
+        formForgot.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('forgot-email').value;
+            
+            const { data, error } = await supabase.auth.resetPasswordForEmail(email);
+
+            if (error) {
+                showAlert(error.message, 'error');
+            } else {
+                showAlert('Tautan reset telah dikirim ke email Anda!', 'success');
+                setTimeout(() => { window.location.href = 'login.html'; }, 2500);
+            }
+        });
+    }
+});
 
 function togglePassword(inputId) {
     const input = document.getElementById(inputId);
@@ -123,4 +143,9 @@ function togglePassword(inputId) {
         input.type = "password";
         icon.classList.replace('fa-eye-slash', 'fa-eye');
     }
+}
+
+async function logoutUser() {
+    await supabase.auth.signOut();
+    window.location.href = 'login.html';
 }
