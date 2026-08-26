@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="theme-color" content="#fcf9f0"/>
+    
+    <title>Demo Crayon Art - Bersama.id</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta property="og:title" content="Undangan Pernikahan Clara & Yoga">
+    <meta property="og:description" content="Selasa, 01 September 2026. Kami mengharapkan kehadiran Anda.">
+    <meta property="og:image" content="https://cdn.kitanikah.in/sample/template/gallery/prewed-1.webp">
+    
+    <!-- FontAwesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        paper: '#fcf9f0',
+                        cRed: '#ff6b6b',
+                        cBlue: '#4ecdc4',
+                        cYellow: '#ffe66d',
+                        cGreen: '#95d5b2',
+                        cDark: '#2b2d42',
+                    },
+                    fontFamily: {
+                        crayon: ['Kalam', 'cursive'],
+                        body: ['Nunito', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Nunito', sans-serif; background-color: #e2e8f0; }
+        
+        /* Background Buku Gambar Bertekstur Titik */
+        .bg-sketchbook {
+            background-color: #fcf9f0;
+            background-image: radial-gradient(#d1d1d1 1.5px, transparent 1.5px);
+            background-size: 20px 20px;
+        }
+
+        /* Kotak Efek Gambar Tangan (Hand-drawn) */
+        .crayon-box {
+            border: 3px solid #2b2d42;
+            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+        
+        .crayon-box:hover {
+            transform: scale(1.02) rotate(-1deg);
+        }
+
+        /* Shadow Krayon Blok */
+        .shadow-cRed { box-shadow: 6px 6px 0px 0px #ff6b6b; }
+        .shadow-cBlue { box-shadow: 6px 6px 0px 0px #4ecdc4; }
+        .shadow-cYellow { box-shadow: 6px 6px 0px 0px #ffe66d; }
+        .shadow-cGreen { box-shadow: 6px 6px 0px 0px #95d5b2; }
+
+        /* Garis coretan */
+        .scribble-line {
+            height: 6px;
+            background-color: #ffe66d;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            margin: 10px auto;
+        }
+
+        /* Animasi Transisi Splash Screen */
+        .splash-exit {
+            transform: translateY(-100%);
+            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+    </style>
+</head>
+<body class="text-cDark">
+
+    <!-- DESKTOP COVER (Kiri) -->
+    <aside class="hidden lg:flex fixed top-0 bottom-0 left-0 right-[460px] z-[1] items-center justify-center bg-cYellow overflow-hidden">
+        <!-- Hiasan background acak -->
+        <i class="fa-solid fa-star absolute top-20 left-20 text-white text-6xl opacity-50 rotate-12"></i>
+        <i class="fa-solid fa-heart absolute bottom-32 right-32 text-cRed text-8xl opacity-30 -rotate-12"></i>
+        <i class="fa-solid fa-music absolute top-1/3 right-40 text-cBlue text-5xl opacity-40 rotate-45"></i>
+
+        <div class="relative z-10 flex flex-col items-center p-12 text-center crayon-box shadow-cBlue bg-white max-w-lg rotate-2">
+            <p class="font-crayon text-xl text-cBlue font-bold tracking-widest mb-4">UNDANGAN PERNIKAHAN</p>
+            <h2 class="font-crayon text-6xl font-bold text-cRed mb-4">Clara & Yoga</h2>
+            <div class="w-24 scribble-line bg-cBlue mb-4"></div>
+            <p class="font-body font-bold text-lg text-cDark">Selasa, 01 September 2026</p>
+        </div>
+
+        <div class="absolute bottom-12 z-10 flex flex-col items-center gap-2">
+            <span class="font-crayon font-bold text-cDark text-sm">Created with 💖 by</span>
+            <img src="https://i.ibb.co.com/4nh5BC5n/Gemini-Generated-Image-om2ne3om2ne3om2n.jpg" alt="Bersama.id" class="h-8 w-auto rounded-full border-2 border-cDark"/>
+        </div>
+    </aside>
+
+    <!-- MOBILE MAIN CONTAINER (Kanan/Tengah) -->
+    <main class="relative z-[2] mx-auto h-[100dvh] w-full max-w-[460px] bg-sketchbook overflow-hidden lg:mx-0 lg:ml-auto border-x-[3px] border-cDark">
+        
+        <!-- KONTEN UTAMA (Bisa di-scroll) -->
+        <div id="main-content" class="absolute inset-0 overflow-y-auto overflow-x-hidden pb-24 scroll-smooth">
+            
+            <!-- 1. HERO SECTION -->
+            <section class="min-h-screen flex flex-col items-center justify-center p-6 text-center relative">
+                <!-- Elemen coretan -->
+                <i class="fa-solid fa-crown absolute top-20 left-10 text-cYellow text-4xl -rotate-12"></i>
+                <i class="fa-solid fa-bahai absolute bottom-32 right-10 text-cBlue text-3xl rotate-12"></i>
+
+                <div class="mb-6 p-2 bg-white crayon-box shadow-cRed -rotate-2">
+                    <img src="https://cdn.kitanikah.in/sample/template/gallery/prewed-1.webp" class="w-48 h-56 object-cover rounded-lg border-2 border-cDark">
+                </div>
+
+                <p class="font-crayon text-2xl text-cBlue font-bold mt-4">We're Tying the Knot!</p>
+                <h1 class="font-crayon text-6xl font-bold text-cRed my-2 drop-shadow-md">Clara <br>& Yoga</h1>
+                <div class="w-32 scribble-line mb-6"></div>
+                <p class="font-body font-bold bg-cDark text-white px-4 py-2 rounded-xl text-sm rotate-2 shadow-cYellow">01 September 2026</p>
+            </section>
+
+            <!-- 2. BRIDE & GROOM -->
+            <section class="py-12 px-6 relative">
+                <div class="text-center mb-10">
+                    <h2 class="font-crayon text-4xl font-bold text-cDark">Meet the Couple</h2>
+                    <div class="w-16 scribble-line bg-cBlue"></div>
+                </div>
+
+                <div class="flex flex-col gap-10">
+                    <!-- Mempelai Wanita -->
+                    <div class="crayon-box shadow-cRed p-4 relative rotate-2">
+                        <i class="fa-solid fa-heart absolute -top-4 -right-4 text-cRed text-3xl rotate-12"></i>
+                        <img src="https://cdn.kitanikah.in/sample/template/bride/bride.webp" class="w-full h-64 object-cover rounded-xl border-2 border-cDark mb-4">
+                        <div class="text-center">
+                            <span class="bg-cRed text-white font-crayon px-3 py-1 rounded-lg text-sm">The Bride</span>
+                            <h3 class="font-crayon text-3xl font-bold text-cDark mt-2">Clara Ayuningtyas</h3>
+                            <p class="text-sm font-bold mt-1 text-gray-600">Putri Bpk. Fajar Pradipta & Ibu Livia Kartika</p>
+                            <!-- Medsos -->
+                            <div class="flex justify-center gap-3 mt-4">
+                                <a href="#" class="w-8 h-8 rounded-full bg-cDark text-white flex items-center justify-center hover:bg-cRed transition"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#" class="w-8 h-8 rounded-full bg-cDark text-white flex items-center justify-center hover:bg-cBlue transition"><i class="fa-brands fa-facebook-f"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center"><i class="fa-solid fa-plus text-cYellow text-4xl"></i></div>
+
+                    <!-- Mempelai Pria -->
+                    <div class="crayon-box shadow-cBlue p-4 relative -rotate-2">
+                        <i class="fa-solid fa-star absolute -bottom-4 -left-4 text-cBlue text-3xl -rotate-12"></i>
+                        <img src="https://cdn.kitanikah.in/sample/template/bride/groom.webp" class="w-full h-64 object-cover rounded-xl border-2 border-cDark mb-4">
+                        <div class="text-center">
+                            <span class="bg-cBlue text-white font-crayon px-3 py-1 rounded-lg text-sm">The Groom</span>
+                            <h3 class="font-crayon text-3xl font-bold text-cDark mt-2">Prayoga Aditya</h3>
+                            <p class="text-sm font-bold mt-1 text-gray-600">Putra Bpk. Arif Nugraha & Ibu Tania Maharani</p>
+                            <!-- Medsos -->
+                            <div class="flex justify-center gap-3 mt-4">
+                                <a href="#" class="w-8 h-8 rounded-full bg-cDark text-white flex items-center justify-center hover:bg-cBlue transition"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#" class="w-8 h-8 rounded-full bg-cDark text-white flex items-center justify-center hover:bg-cRed transition"><i class="fa-brands fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. QUOTE AYAT -->
+            <section class="py-12 px-6">
+                <div class="crayon-box shadow-cYellow bg-cYellow p-6 text-center rotate-1">
+                    <i class="fa-solid fa-quote-left text-3xl text-cDark mb-3 opacity-50"></i>
+                    <p class="font-body font-bold text-cDark text-sm leading-relaxed">
+                        "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri, supaya kamu merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang."
+                    </p>
+                    <p class="font-crayon font-bold mt-4 text-lg text-cRed">QS. Ar-Rum: 21</p>
+                </div>
+            </section>
+
+            <!-- 4. SAVE THE DATE & COUNTDOWN -->
+            <section class="py-12 px-6">
+                <div class="text-center mb-8">
+                    <h2 class="font-crayon text-4xl font-bold text-cDark">Save The Date</h2>
+                    <div class="w-16 scribble-line bg-cRed"></div>
+                </div>
+
+                <!-- Countdown -->
+                <div class="grid grid-cols-4 gap-2 mb-10">
+                    <div class="crayon-box shadow-cBlue bg-white py-3 text-center flex flex-col items-center">
+                        <span id="days" class="font-crayon text-2xl font-bold text-cBlue">00</span>
+                        <span class="text-[10px] font-bold uppercase">Hari</span>
+                    </div>
+                    <div class="crayon-box shadow-cRed bg-white py-3 text-center flex flex-col items-center">
+                        <span id="hours" class="font-crayon text-2xl font-bold text-cRed">00</span>
+                        <span class="text-[10px] font-bold uppercase">Jam</span>
+                    </div>
+                    <div class="crayon-box shadow-cYellow bg-white py-3 text-center flex flex-col items-center">
+                        <span id="minutes" class="font-crayon text-2xl font-bold text-yellow-600">00</span>
+                        <span class="text-[10px] font-bold uppercase">Menit</span>
+                    </div>
+                    <div class="crayon-box shadow-cGreen bg-white py-3 text-center flex flex-col items-center">
+                        <span id="seconds" class="font-crayon text-2xl font-bold text-cGreen">00</span>
+                        <span class="text-[10px] font-bold uppercase">Detik</span>
+                    </div>
+                </div>
+
+                <!-- Jadwal -->
+                <div class="space-y-6">
+                    <!-- Akad -->
+                    <div class="crayon-box shadow-cDark p-5 relative bg-white">
+                        <div class="absolute -top-4 left-4 bg-cGreen px-3 py-1 rounded-xl border-2 border-cDark font-crayon font-bold text-white text-sm -rotate-3">Akad Nikah</div>
+                        <h3 class="font-body font-bold text-lg mt-3"><i class="fa-regular fa-calendar-check text-cRed mr-2"></i> Selasa, 01 Sept 2026</h3>
+                        <p class="font-bold text-cBlue text-sm mt-1"><i class="fa-regular fa-clock mr-2"></i> 08:00 - 10:00 WIB</p>
+                        <p class="text-sm font-semibold mt-3 text-gray-600 border-t-2 border-dashed border-gray-300 pt-3">
+                            <i class="fa-solid fa-map-location-dot text-cDark mr-2"></i> Masjid Cut Meutia<br>
+                            <span class="font-normal text-xs block mt-1">Jl. Taman Cut Mutiah No. 1, Menteng, Jakarta Pusat</span>
+                        </p>
+                        <button onclick="window.open('https://maps.app.goo.gl/fqLFfwLMZNSXCYPc9')" class="mt-4 w-full crayon-box bg-cYellow py-2 font-crayon font-bold text-cDark hover:bg-cDark hover:text-white transition">Buka Google Maps</button>
+                    </div>
+
+                    <!-- Resepsi -->
+                    <div class="crayon-box shadow-cDark p-5 relative bg-white">
+                        <div class="absolute -top-4 right-4 bg-cBlue px-3 py-1 rounded-xl border-2 border-cDark font-crayon font-bold text-white text-sm rotate-3">Resepsi</div>
+                        <h3 class="font-body font-bold text-lg mt-3"><i class="fa-regular fa-calendar-check text-cRed mr-2"></i> Selasa, 01 Sept 2026</h3>
+                        <p class="font-bold text-cBlue text-sm mt-1"><i class="fa-regular fa-clock mr-2"></i> 11:00 - 14:00 WIB</p>
+                        <p class="text-sm font-semibold mt-3 text-gray-600 border-t-2 border-dashed border-gray-300 pt-3">
+                            <i class="fa-solid fa-map-location-dot text-cDark mr-2"></i> Smesco Convention Hall<br>
+                            <span class="font-normal text-xs block mt-1">Sme Tower, Pancoran, Jakarta Selatan</span>
+                        </p>
+                        <button onclick="window.open('https://maps.app.goo.gl/fqLFfwLMZNSXCYPc9')" class="mt-4 w-full crayon-box bg-cYellow py-2 font-crayon font-bold text-cDark hover:bg-cDark hover:text-white transition">Buka Google Maps</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. CERITA CINTA (TIMELINE) -->
+            <section class="py-12 px-6">
+                <div class="text-center mb-10">
+                    <h2 class="font-crayon text-4xl font-bold text-cDark">Our Story</h2>
+                    <div class="w-16 scribble-line bg-cGreen"></div>
+                </div>
+
+                <div class="relative border-l-4 border-dashed border-cDark ml-4 space-y-8 pb-4">
+                    <!-- Story 1 -->
+                    <div class="relative pl-8">
+                        <div class="absolute -left-[14px] top-0 w-6 h-6 rounded-full bg-cRed border-4 border-cDark"></div>
+                        <div class="crayon-box shadow-cRed bg-white p-4">
+                            <img src="https://cdn.kitanikah.in/sample/template/gallery/prewed-1.webp" class="w-full h-32 object-cover rounded-lg border-2 border-cDark mb-3">
+                            <h4 class="font-crayon font-bold text-xl text-cRed">Awal Bertemu</h4>
+                            <p class="text-xs font-bold text-gray-600 mt-1">Kami bertemu di tahun 2019, sebuah pertemuan sederhana yang tak disangka jadi awal cerita panjang.</p>
+                        </div>
+                    </div>
+                    <!-- Story 2 -->
+                    <div class="relative pl-8">
+                        <div class="absolute -left-[14px] top-0 w-6 h-6 rounded-full bg-cBlue border-4 border-cDark"></div>
+                        <div class="crayon-box shadow-cBlue bg-white p-4">
+                            <img src="https://cdn.kitanikah.in/sample/template/gallery/prewed-2.webp" class="w-full h-32 object-cover rounded-lg border-2 border-cDark mb-3">
+                            <h4 class="font-crayon font-bold text-xl text-cBlue">Menjalin Hubungan</h4>
+                            <p class="text-xs font-bold text-gray-600 mt-1">Waktu membuat kami semakin dekat, hingga akhirnya yakin untuk melangkah bersama.</p>
+                        </div>
+                    </div>
+                    <!-- Story 3 -->
+                    <div class="relative pl-8">
+                        <div class="absolute -left-[14px] top-0 w-6 h-6 rounded-full bg-cYellow border-4 border-cDark"></div>
+                        <div class="crayon-box shadow-cYellow bg-white p-4">
+                            <img src="https://cdn.kitanikah.in/sample/template/gallery/prewed-3.webp" class="w-full h-32 object-cover rounded-lg border-2 border-cDark mb-3">
+                            <h4 class="font-crayon font-bold text-xl text-yellow-600">Khitbah</h4>
+                            <p class="text-xs font-bold text-gray-600 mt-1">Pada 20 Juli 2024, kami mengikat janji dalam khitbah, langkah awal menuju pernikahan.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. DRESS CODE & GALLERY -->
+            <section class="py-12 px-6">
+                <!-- Dress code -->
+                <div class="crayon-box shadow-cDark bg-white p-5 text-center mb-12 rotate-1">
+                    <h3 class="font-crayon text-2xl font-bold text-cDark mb-2">Dress Code</h3>
+                    <p class="text-xs font-bold text-gray-600 mb-4">Kenakan busana bernuansa warna berikut agar serasi dengan tema kami.</p>
+                    <div class="flex justify-center gap-2">
+                        <div class="w-10 h-10 rounded-full border-2 border-cDark shadow-sm" style="background-color: #9caf88"></div>
+                        <div class="w-10 h-10 rounded-full border-2 border-cDark shadow-sm" style="background-color: #8ba3b8"></div>
+                        <div class="w-10 h-10 rounded-full border-2 border-cDark shadow-sm" style="background-color: #e8d9b8"></div>
+                        <div class="w-10 h-10 rounded-full border-2 border-cDark shadow-sm" style="background-color: #1f3348"></div>
+                        <div class="w-10 h-10 rounded-full border-2 border-cDark shadow-sm" style="background-color: #d4a5a5"></div>
+                    </div>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="text-center mb-8">
+                    <h2 class="font-crayon text-4xl font-bold text-cDark">Gallery</h2>
+                    <div class="w-16 scribble-line bg-cBlue"></div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://cdn.kitanikah.in/sample/template/gallery/prewed-1.webp" class="crayon-box shadow-cRed w-full h-40 object-cover -rotate-2">
+                    <img src="https://cdn.kitanikah.in/sample/template/gallery/prewed-2.webp" class="crayon-box shadow-cBlue w-full h-40 object-cover rotate-2">
+                    <img src="https://cdn.kitanikah.in/sample/template/gallery/prewed-4.webp" class="crayon-box shadow-cYellow w-full h-40 object-cover rotate-1">
+                    <img src="https://cdn.kitanikah.in/sample/template/gallery/prewed-3.webp" class="crayon-box shadow-cGreen w-full h-40 object-cover -rotate-3">
+                </div>
+            </section>
+
+            <!-- 7. VIDEO TRAILER -->
+            <section class="py-12 px-6">
+                <div class="text-center mb-8">
+                    <h2 class="font-crayon text-4xl font-bold text-cDark">Our Video</h2>
+                    <div class="w-16 scribble-line bg-cRed"></div>
+                </div>
+                <div class="crayon-box shadow-cDark p-2 bg-white rotate-1">
+                    <div class="relative w-full aspect-video rounded-xl overflow-hidden border-2 border-cDark bg-black">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/oYlHKXF_Juc?autoplay=0&controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 8. WEDDING GIFT -->
+            <section class="py-12 px-6">
+                <div class="text-center mb-8">
+                    <h2 class="font-crayon text-4xl font-bold text-cDark">Wedding Gift</h2>
+                    <div class="w-16 scribble-line bg-cYellow"></div>
+                    <p class="text-xs font-bold text-gray-600 mt-4">Doa restu Anda adalah hadiah terindah. Namun jika berkenan memberi tanda kasih, silakan pilih di bawah ini.</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                    <button onclick="switchTab('transfer')" class="crayon-box bg-cBlue text-white py-2 font-crayon font-bold text-lg hover:bg-cDark transition">Transfer</button>
+                    <button onclick="switchTab('kado')" class="crayon-box bg-cRed text-white py-2 font-crayon font-bold text-lg hover:bg-cDark transition">Kirim Kado</button>
+                </div>
+
+                <!-- Panel Transfer -->
+                <div id="panel-transfer" class="space-y-4">
+                    <div class="crayon-box shadow-cBlue p-4 bg-white">
+                        <div class="flex justify-between items-center border-b-2 border-dashed border-gray-300 pb-2 mb-2">
+                            <h4 class="font-crayon font-bold text-2xl text-cBlue">BCA</h4>
+                            <img src="https://cdn.kitanikah.in/sample/template/bank/bca.webp" class="h-6 object-contain">
+                        </div>
+                        <p class="font-bold text-xl tracking-widest text-cDark">1234 567 890</p>
+                        <p class="text-xs font-bold text-gray-500">a.n. Clara Ayuningtyas</p>
+                        <button onclick="copyToClipboard('1234567890')" class="mt-3 bg-gray-200 text-cDark font-bold text-xs py-1.5 px-4 rounded-full hover:bg-cBlue hover:text-white transition"><i class="fa-regular fa-copy mr-1"></i> Salin No. Rek</button>
+                    </div>
+                    <div class="crayon-box shadow-cYellow p-4 bg-white">
+                        <div class="flex justify-between items-center border-b-2 border-dashed border-gray-300 pb-2 mb-2">
+                            <h4 class="font-crayon font-bold text-2xl text-yellow-600">Mandiri</h4>
+                            <img src="https://cdn.kitanikah.in/sample/template/bank/mandiri.webp" class="h-6 object-contain">
+                        </div>
+                        <p class="font-bold text-xl tracking-widest text-cDark">0987 654 321</p>
+                        <p class="text-xs font-bold text-gray-500">a.n. Prayoga Aditya</p>
+                        <button onclick="copyToClipboard('0987654321')" class="mt-3 bg-gray-200 text-cDark font-bold text-xs py-1.5 px-4 rounded-full hover:bg-yellow-500 hover:text-white transition"><i class="fa-regular fa-copy mr-1"></i> Salin No. Rek</button>
+                    </div>
+                    <button onclick="toggleModal('modal-qris')" class="w-full crayon-box shadow-cGreen bg-cGreen p-4 text-center font-crayon font-bold text-xl text-cDark hover:bg-cDark hover:text-white transition">
+                        <i class="fa-solid fa-qrcode mr-2"></i> Tampilkan QRIS
+                    </button>
+                </div>
+
+                <!-- Panel Kado -->
+                <div id="panel-kado" class="hidden crayon-box shadow-cRed p-5 bg-white text-center">
+                    <i class="fa-solid fa-gift text-4xl text-cRed mb-3"></i>
+                    <h4 class="font-crayon font-bold text-2xl text-cDark mb-2">Alamat Pengiriman</h4>
+                    <p class="text-sm font-bold text-gray-600 mb-4">Jl. Casablanca Raya Kav. 88, Menteng Dalam, Tebet, Jakarta Selatan</p>
+                    <button onclick="copyToClipboard('Jl. Casablanca Raya Kav. 88, Menteng Dalam, Tebet, Jakarta Selatan')" class="bg-gray-200 text-cDark font-bold text-xs py-2 px-5 rounded-full hover:bg-cRed hover:text-white transition"><i class="fa-regular fa-copy mr-1"></i> Salin Alamat</button>
+                </div>
+            </section>
+
+            <!-- 9. GUEST BOOK -->
+            <section class="py-12 px-6">
+                <div class="text-center mb-8">
+                    <h2 class="font-crayon text-4xl font-bold text-cDark">Guest Book</h2>
+                    <div class="w-16 scribble-line bg-cGreen"></div>
+                </div>
+                <div class="crayon-box shadow-cDark p-5 bg-white">
+                    <form onsubmit="event.preventDefault(); alert('Pesan berhasil dikirim!');">
+                        <div class="mb-4">
+                            <label class="block font-bold text-sm mb-2 text-cDark">Pesan & Doa</label>
+                            <textarea rows="3" class="w-full border-2 border-cDark rounded-xl p-3 outline-none focus:border-cBlue bg-paper font-body text-sm font-semibold" placeholder="Selamat menempuh hidup baru..."></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block font-bold text-sm mb-2 text-cDark">Kehadiran</label>
+                            <select class="w-full border-2 border-cDark rounded-xl p-3 outline-none focus:border-cBlue bg-paper font-body text-sm font-semibold cursor-pointer">
+                                <option>Hadir</option>
+                                <option>Tidak Hadir</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full crayon-box bg-cBlue text-white py-3 font-crayon font-bold text-xl hover:bg-cDark transition">Kirim Ucapan <i class="fa-regular fa-paper-plane ml-1"></i></button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- 10. OUTRO -->
+            <section class="min-h-[70vh] flex flex-col items-center justify-center p-6 text-center relative mt-10">
+                <i class="fa-solid fa-dove absolute top-10 left-10 text-cBlue text-4xl"></i>
+                <i class="fa-solid fa-heart absolute top-10 right-10 text-cRed text-4xl -rotate-12"></i>
+                <h2 class="font-crayon text-5xl font-bold text-cDark mb-4">Thank You!</h2>
+                <p class="font-body font-bold text-sm text-gray-600 max-w-[280px]">Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir.</p>
+                <div class="w-24 scribble-line bg-cYellow mt-6 mb-4"></div>
+                <h3 class="font-crayon text-3xl font-bold text-cRed">Clara & Yoga</h3>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="text-center py-6 border-t-[3px] border-cDark bg-cDark text-white font-crayon text-sm tracking-widest">
+                2026 &copy; BERSAMA.ID
+            </footer>
+        </div>
+
+        <!-- SPLASH SCREEN (TUTUP DEPAN) -->
+        <div id="splash" class="absolute inset-0 z-[60] bg-sketchbook border-x-[3px] border-cDark flex flex-col items-center justify-center p-6 text-center transition-all duration-700">
+            <!-- Hiasan Splash -->
+            <i class="fa-solid fa-sun absolute top-16 left-12 text-cYellow text-5xl animate-pulse"></i>
+            <i class="fa-solid fa-heart absolute bottom-40 right-10 text-cRed text-6xl -rotate-12"></i>
+            
+            <p class="font-crayon text-xl text-cBlue font-bold tracking-widest mb-4">THE WEDDING OF</p>
+            <h1 class="font-crayon text-7xl font-bold text-cDark drop-shadow-lg mb-2">Clara <br><span class="text-cRed text-5xl">&amp;</span> Yoga</h1>
+            <p class="font-body font-extrabold text-sm text-gray-500 bg-white border-2 border-cDark px-4 py-1 rounded-full rotate-2 mb-12">01.09.2026</p>
+            
+            <div class="crayon-box shadow-cBlue p-4 bg-white mb-8 w-[80%] max-w-[280px]">
+                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Kepada Yth.</p>
+                <p class="font-crayon text-2xl font-bold text-cDark">Tamu Undangan</p>
+            </div>
+
+            <button id="btn-open-invitation" class="crayon-box shadow-cRed bg-cRed text-white px-8 py-3 font-crayon font-bold text-2xl hover:bg-cDark transition animate-bounce">
+                Buka Undangan <i class="fa-solid fa-envelope-open ml-2"></i>
+            </button>
+        </div>
+
+        <!-- FLOATING BUTTONS (AUDIO & TICKET) -->
+        <button id="btn-audio" class="fixed bottom-24 right-4 z-[50] w-12 h-12 flex items-center justify-center rounded-full crayon-box bg-white text-cDark hover:bg-cYellow transition shadow-cDark">
+            <i id="icon-audio" class="fa-solid fa-music"></i>
+        </button>
+        <button onclick="toggleModal('modal-ticket')" class="fixed bottom-8 right-4 z-[50] w-12 h-12 flex items-center justify-center rounded-full crayon-box bg-cBlue text-white hover:bg-cDark transition shadow-cDark">
+            <i class="fa-solid fa-ticket-simple"></i>
+        </button>
+
+        <!-- AUDIO TAG -->
+        <audio id="backsound" loop preload="auto">
+            <source src="https://cdn.kitanikah.in/audio/b3f59659-ea57-4610-a729-fd27ba7caccb.mp3" type="audio/mp3"/>
+        </audio>
+
+        <!-- MODAL QRIS -->
+        <div id="modal-qris" class="hidden fixed inset-0 z-[70] bg-black/80 backdrop-blur-sm items-center justify-center p-4">
+            <div class="crayon-box shadow-cGreen bg-white w-full max-w-[320px] p-6 text-center relative">
+                <button onclick="toggleModal('modal-qris')" class="absolute -top-4 -right-4 w-10 h-10 bg-cRed text-white rounded-full border-2 border-cDark font-bold text-lg hover:bg-cDark transition"><i class="fa-solid fa-xmark"></i></button>
+                <h3 class="font-crayon text-3xl font-bold text-cDark mb-4">Scan QRIS</h3>
+                <img src="https://cdn.kitanikah.in/sample/template/bank/qr-code.webp" class="w-full rounded-xl border-2 border-cDark mb-4">
+                <p class="font-bold text-sm text-gray-500">A.n Clara & Yoga</p>
+            </div>
+        </div>
+
+        <!-- MODAL E-TICKET -->
+        <div id="modal-ticket" class="hidden fixed inset-0 z-[70] bg-black/80 backdrop-blur-sm items-center justify-center p-4">
+            <div class="crayon-box shadow-cBlue bg-paper w-full max-w-[320px] p-6 text-center relative border-t-[15px] border-t-cBlue">
+                <button onclick="toggleModal('modal-ticket')" class="absolute -top-4 -right-4 w-10 h-10 bg-cRed text-white rounded-full border-2 border-cDark font-bold text-lg hover:bg-cDark transition"><i class="fa-solid fa-xmark"></i></button>
+                <p class="font-bold text-xs uppercase tracking-[0.2em] text-gray-400 mt-2">E-Ticket Masuk</p>
+                <h2 class="font-crayon text-4xl font-bold text-cDark my-2">Clara & Yoga</h2>
+                <div class="bg-white p-3 rounded-xl border-2 border-cDark w-48 h-48 mx-auto my-4 flex items-center justify-center">
+                    <i class="fa-solid fa-qrcode text-8xl text-cDark"></i>
+                </div>
+                <div class="border-t-2 border-dashed border-gray-400 my-4"></div>
+                <p class="text-xs font-bold text-gray-400 uppercase">Nama Tamu</p>
+                <p class="font-crayon text-2xl font-bold text-cDark">Tamu Undangan</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- CUSTOM JAVASCRIPT (VANILLA) -->
+    <script>
+        // 1. Logika Splash Screen & Audio
+        const btnOpen = document.getElementById('btn-open-invitation');
+        const splashScreen = document.getElementById('splash');
+        const audio = document.getElementById('backsound');
+        const btnAudio = document.getElementById('btn-audio');
+        const iconAudio = document.getElementById('icon-audio');
+        let isPlaying = false;
+
+        btnOpen.addEventListener('click', () => {
+            // Efek transisi naik
+            splashScreen.classList.add('splash-exit');
+            setTimeout(() => { splashScreen.style.display = 'none'; }, 800);
+            
+            // Putar musik
+            audio.play();
+            isPlaying = true;
+            iconAudio.classList.remove('fa-music');
+            iconAudio.classList.add('fa-pause');
+        });
+
+        // Toggle Audio
+        btnAudio.addEventListener('click', () => {
+            if(isPlaying) {
+                audio.pause();
+                iconAudio.classList.remove('fa-pause');
+                iconAudio.classList.add('fa-music');
+            } else {
+                audio.play();
+                iconAudio.classList.remove('fa-music');
+                iconAudio.classList.add('fa-pause');
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // 2. Logika Countdown
+        const targetDate = new Date("Sep 1, 2026 08:00:00").getTime();
+        
+        setInterval(() => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance > 0) {
+                document.getElementById('days').innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                document.getElementById('hours').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                document.getElementById('minutes').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                document.getElementById('seconds').innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            }
+        }, 1000);
+
+        // 3. Logika Tab Hadiah (Transfer / Kado)
+        function switchTab(tab) {
+            const panelTransfer = document.getElementById('panel-transfer');
+            const panelKado = document.getElementById('panel-kado');
+            
+            if (tab === 'transfer') {
+                panelTransfer.classList.remove('hidden');
+                panelKado.classList.add('hidden');
+            } else {
+                panelTransfer.classList.add('hidden');
+                panelKado.classList.remove('hidden');
+            }
+        }
+
+        // 4. Logika Modal Pop-up
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            } else {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+
+        // 5. Fungsi Copy Text
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Berhasil disalin: " + text);
+            }).catch(err => {
+                console.error('Gagal menyalin text: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
