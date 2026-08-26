@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="id" class="notranslate" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="color-scheme" content="light only">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="google" content="notranslate"/>
+    <meta name="robots" content="noindex">
+    <title>Clara &amp; Yoga</title>
+    <meta name="title" content="Clara &amp; Yoga">
+    <meta name="description" content="Tanpa Mengurangi Rasa Hormat. Kami Bermaksud Mengundang Bapak/Ibu/Saudara/i, Pada Acara Pernikahan Kami">
+    <meta itemprop="image" content="https://assets.satumomen.com/images/invitation/cover-8930691786340500.jpg">
+    <link rel="icon" type="image/x-icon" href="https://assets.satumomen.com/images/media/281143-media-1780627769.png">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bersama.id/clara-yoga">
+    <meta property="og:title" content="Clara &amp; Yoga">
+    <meta property="og:description" content="Tanpa Mengurangi Rasa Hormat. Kami Bermaksud Mengundang Bapak/Ibu/Saudara/i, Pada Acara Pernikahan Kami">
+    <meta property="og:image" content="https://assets.satumomen.com/images/invitation/cover-8930691786340500.jpg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta name="google-site-verification" content="nrmcoDG8j29P7Tll0zALs1pq0Vihkbp6J9-Tbd0MNaw">
+    
+    <!-- css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/fill/style.css" />
+    <link rel="preload" as="style" href="https://assets.satumomen.com/build/assets/bootstrap-vCaDZZbr.css" />
+    <link rel="preload" as="style" href="https://assets.satumomen.com/build/assets/themes-scroll-CXWhxC9B.css" />
+    <link rel="stylesheet" href="https://assets.satumomen.com/build/assets/bootstrap-vCaDZZbr.css" />
+    <link rel="stylesheet" href="https://assets.satumomen.com/build/assets/themes-scroll-CXWhxC9B.css" />
+    
+    <style>
+        @import url('https://bertemumoment.com/fonts/maharlika/style.css');
+        @import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&family=Pinyon+Script&display=swap');
+        
+        :root {
+            --inv-bg: #967678;
+            --inv-base: #ffffff;
+            --inv-accent: #57514f;
+            --inv-border: #967679;
+            --menu-bg: #8c6769;
+            --menu-inactive: #ffffff;
+            --menu-active: #967678;
+            --btn-color: #ffffff;
+            --font-base: "Onest", sans-serif;
+            --font-accent: "Maharlika", sans-serif;
+            --font-latin: "Pinyon Script", cursive;
+        }
+        
+        .menu-item.is-active {
+            background-color: var(--menu-active);
+            color: var(--menu-inactive) !important;
+        }
+        .frame-out { display:none; top: calc(50% - 30vh); }
+        .cover .frame-out { display:block; }
+        .editor-wrapper .cover .frame-out { display:none }
+
+        /* Otomatis Menyesuaikan Perangkat (Responsif Mobile & Desktop Frame) */
+        body {
+            background-color: #1a1a1a;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        #app {
+            width: 100%;
+            min-height: 100vh;
+        }
+        @media (min-width: 992px) {
+            /* Di Laptop/PC, buat wadah di tengah menyerupai layar HP eksklusif */
+            #app {
+                max-width: 480px;
+                margin: 0 auto;
+                box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+                position: relative;
+            }
+        }
+    </style>
+    <style>
+        @import url('https://bertemumoment.com/fonts/brittany_signature/BrittanySignature.css');
+        @import url('https://bertemumoment.com/fonts/photograph_signature/fonts.css');
+        @import url('https://bertemumoment.com/fonts/heatwood/Heatwood.css');
+        
+        .font-brittany-signature { font-family: 'Brittany Signature'; line-height: 1.6 !important; }
+        .font-photograph-signature { font-family: 'Photograph Signature'; line-height: 1.6 !important; }
+        .font-heatwood { font-family: 'Heatwood'; line-height: 3 !important; }
+        #YTMusic { display: block }
+    </style>
+</head>
+<body>
+    <main id="app" class="">
+        <div id="modalOverlay" class="modal-backdrop fade" style="display: none;"></div>
+        
+        <!-- Loader -->
+        <div id="loader" class="loader-wrapper" style="display: none;"><span class="loader"><span class="loader-inner"></span></span></div>
+        
+        <!-- music -->
+        <audio id="music" loop autoplay>
+            <source src="https://assets.satumomen.com/musics/instrumental-di-akhir-perang-epic-orchestra-1.mp3">
+        </audio>
+        <!-- end music -->
+        
+        <div id="satuMomen" data-guest="" data-group="" class="not-open">
+            <div class="satumomen_track">
+                <ul class="satumomen_list">
+                    
+                    <!-- Cover -->
+                    <li class="container-mobile satumomen_slide satumomen_cover" style="background-image: url(https://assets.satumomen.com/images/invitation/bg-section-99377861786340574.jpg); background-size: cover;">
+                        <div class="workspace cover">
+                            <div class="content h-100 w-100 mx-auto">
+                                <div class="h-100 pb-5 d-flex flex-column justify-content-end align-items-center">
+                                    <div class="w-100 mb-4">
+                                        <div class="w-100 d-flex align-items-end pb-2 animate__animated animate__zoomIn animate__slower image-editable" style="background-size:contain;background-position:center;background-repeat:no-repeat;background-image:url('https://bertemumoment.com/themes/novianty/bg-name.webp');height:100px;">
+                                            <div class="w-100 text-center d-flex align-items-center">
+                                                <div class="text-right col-6 editable h3 mb-0 pl-0 font-accent" style="font-size:40px;">Clara </div>
+                                                <div class="text-left col-6 editable h3 mb-0 pr-0 font-accent" style="font-size:40px;">Yoga </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-center animate__animated animate__zoomIn animate__slower">
+                                            <div class="editable animate__animated animate__fadeInUp animate__slower" style="font-size:14px;">12.12.26</div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center mx-auto" style="max-width:300px;">
+                                        <div class="mb-3 text-center animate__animated animate__zoomIn animate__slower" style="border-radius:.5rem;">
+                                            <div class="editable mb-1 animate__animated animate__fadeInUp animate__slower" style="font-size:14px;">Kepada Yth.</div>
+                                            <div id="guestNameSlot" class="editable color-accent h5 font-weight-bold animate__animated animate__fadeInUp animate__slower" style="font-size:16px;color:rgb(255, 255, 255);">Tamu Undangan</div>
+                                        </div>
+                                        <button class="btn-open-invitation btn btn-primary rounded-pill animate__animated animate__fadeInUp animate__slow" style="font-size: 14px;">Open Invitation</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frame">
+                                <img class="frame-tl animate__animated animate__fadeInTopLeft animate__slower" src="https://bertemumoment.com/themes/novianty/tl.webp" alt="frame">
+                                <img class="frame-tr animate__animated animate__fadeInTopRight animate__slower" src="https://bertemumoment.com/themes/novianty/tr.webp" alt="frame">
+                                <img class="frame-bl animate__animated animate__fadeInBottomLeft animate__slower" src="https://bertemumoment.com/themes/novianty/bl.webp" alt="frame">
+                                <img class="frame-br animate__animated animate__fadeInBottomRight animate__slower" src="https://bertemumoment.com/themes/novianty/br.webp" alt="frame">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="blank-canvas" style="height: 100vh"></li>
+                    
+                    <!-- Quote -->
+                    <li class="container-mobile satumomen_slide" style="background-image: url(https://assets.satumomen.com/images/invitation/bg-section-99378051786340837.jpg); background-size: cover;">
+                        <div class="workspace ">
+                            <div class="content h-100 w-100 mx-auto">
+                                <div class="d-flex justify-content-center align-items-center" style="height:100%;">
+                                    <div style="width:100%;">
+                                        <div class="text-center animate__animated animate__fadeInUp animate__slower">
+                                            <div class="editable quotes mb-3" style="font-size:14.4px;"> وَمِنْ ءَايَٰتِهِۦٓ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَٰجًا لِّتَسْكُنُوٓا۟ إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِى ذَٰلِكَ لَءَايَٰتٍ لِّقَوْمٍ يَتَفَكَّرُونَ<br /><br />Artinya: "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu istri-istri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berfikir."</div>
+                                            <div class="editable font-italic" style="font-size:14.4px;">Surah Ar-Rum : 21</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frame">
+                                <img class="frame-tl animate__animated animate__fadeInTopLeft animate__slower" src="https://bertemumoment.com/themes/novianty/tl.webp" alt="frame">
+                                <img class="frame-tr animate__animated animate__fadeInTopRight animate__slower" src="https://bertemumoment.com/themes/novianty/tr.webp" alt="frame">
+                                <img class="frame-bl animate__animated animate__fadeInBottomLeft animate__slower" src="https://bertemumoment.com/themes/novianty/bl.webp" alt="frame">
+                                <img class="frame-br animate__animated animate__fadeInBottomRight animate__slower" src="https://bertemumoment.com/themes/novianty/br.webp" alt="frame">
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- Groom -->
+                    <li class="container-mobile satumomen_slide" style="background-image: url(https://assets.satumomen.com/images/invitation/bg-section-99377881786340585.jpg); background-size: cover;">
+                        <div class="workspace ">
+                            <div class="content h-100 w-100 mx-auto">
+                                <div class="h-100 pb-5 d-flex justify-content-end flex-column align-items-center">
+                                    <div style="width:100%;">
+                                        <div class="text-center animate__animated animate__fadeInUp animate__slower">
+                                            <div class="editable font-accent" style="font-size:30px;">Yoga Pratama <br /></div>
+                                            <div class="editable quotes" style="font-size:14.4px;">Putra<br />dari Bapak Santoso<br />dan Ibu Rina</div>
+                                        </div>
+                                        <div class="text-center">
+                                            <a href="https://instagram.com/yogapratama" target="_blank" class="link btn btn-primary rounded-pill my-3 animate__animated animate__fadeInUp animate__slower" rel="noreferrer noopener">@yogapratama</a>
+                                        </div>
+                                        <div class="w-100">
+                                            <div class="w-100 d-flex align-items-end pb-2 animate__animated animate__zoomIn animate__slower image-editable" style="background-size:contain;background-position:center;background-repeat:no-repeat;background-image:url('https://bertemumoment.com/themes/novianty/bg-name.webp');height:57px;">
+                                                <div class="w-100 text-center d-flex align-items-center">
+                                                    <div class="text-right col-6 editable h3 mb-0 pl-0 font-accent" style="font-size:20px;">Clara</div>
+                                                    <div class="text-left col-6 editable h3 mb-0 pr-0 font-accent" style="font-size:20px;">Yoga </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-center animate__animated animate__zoomIn animate__slower">
+                                                <div class="editable animate__animated animate__fadeInUp animate__slower" style="font-size:12px;">12.12.26</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frame">
+                                <img class="frame-tl animate__animated animate__fadeInTopLeft animate__slower" src="https://bertemumoment.com/themes/novianty/tl.webp" alt="frame">
+                                <img class="frame-tr animate__animated animate__fadeInTopRight animate__slower" src="https://bertemumoment.com/themes/novianty/tr.webp" alt="frame">
+                                <img class="frame-bl animate__animated animate__fadeInBottomLeft animate__slower" src="https://bertemumoment.com/themes/novianty/bl.webp" alt="frame">
+                                <img class="frame-br animate__animated animate__fadeInBottomRight animate__slower" src="https://bertemumoment.com/themes/novianty/br.webp" alt="frame">
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- Bride -->
+                    <li class="container-mobile satumomen_slide" style="background-image: url(https://assets.satumomen.com/images/invitation/bg-section-99377871786340581.jpg); background-size: cover;">
+                        <div class="workspace ">
+                            <div class="content h-100 w-100 mx-auto">
+                                <div class="h-100 pb-5 d-flex justify-content-end flex-column align-items-center">
+                                    <div style="width:100%;">
+                                        <div class="text-center animate__animated animate__fadeInUp animate__slower">
+                                            <div class="editable font-accent" style="font-size:30px;">Clara Anindya</div>
+                                            <div class="editable quotes" style="font-size:14.4px;">Putri<br />dari Bapak Hendra<br />dan Ibu Susi</div>
+                                        </div>
+                                        <div class="text-center">
+                                            <a href="https://instagram.com/claraanindya" target="_blank" class="link btn btn-primary rounded-pill my-3 animate__animated animate__fadeInUp animate__slower" rel="noreferrer noopener">@claraanindya</a>
+                                        </div>
+                                        <div class="w-100">
+                                            <div class="w-100 d-flex align-items-end pb-2 animate__animated animate__zoomIn animate__slower image-editable" style="background-size:contain;background-position:center;background-repeat:no-repeat;background-image:url('https://bertemumoment.com/themes/novianty/bg-name.webp');height:57px;">
+                                                <div class="w-100 text-center d-flex align-items-center">
+                                                    <div class="text-right col-6 editable h3 mb-0 pl-0 font-accent" style="font-size:20px;">Clara</div>
+                                                    <div class="text-left col-6 editable h3 mb-0 pr-0 font-accent" style="font-size:20px;">Yoga </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-center animate__animated animate__zoomIn animate__slower">
+                                                <div class="editable animate__animated animate__fadeInUp animate__slower" style="font-size:12px;">12.12.26</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frame">
+                                <img class="frame-tl animate__animated animate__fadeInTopLeft animate__slower" src="https://bertemumoment.com/themes/novianty/tl.webp" alt="frame">
+                                <img class="frame-tr animate__animated animate__fadeInTopRight animate__slower" src="https://bertemumoment.com/themes/novianty/tr.webp" alt="frame">
+                                <img class="frame-bl animate__animated animate__fadeInBottomLeft animate__slower" src="https://bertemumoment.com/themes/novianty/bl.webp" alt="frame">
+                                <img class="frame-br animate__animated animate__fadeInBottomRight animate__slower" src="https://bertemumoment.com/themes/novianty/br.webp" alt="frame">
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- Love Story -->
+                    <li class="container-mobile satumomen_slide" style="background-image: url(https://assets.satumomen.com/images/invitation/secondary_image-8930691786340854.jpg); background-size: cover;">
+                        <div class="workspace ">
+                            <div class="content h-100 w-100 mx-auto">
+                                <div class="d-flex flex-column justify-content-center align-items-center" style="height:100%;">
+                                    <div class="editable text-center color-accent h4 mb-4 animate__animated animate__fadeInDown animate__slower font-latin" style="font-size:28.8px;color:rgb(255, 255, 255);">Our Love Story</div>
+                                    <div>
+                                        <div class="text-left pl-3 mb-3 animate__animated animate__fadeInUp animate__slower" style="position:relative;">
+                                            <span style="height:16px;width:16px;position:absolute;background-color:var(--inv-accent);border-radius:100%;transform:translateX(-24px) translateY(4px);"></span>
+                                            <span style="height:100%;width:2px;position:absolute;background-color:var(--inv-accent);transform:translateX(-17px) translateY(20px);"></span>
+                                            <div class="editable font-weight-bold mb-2" style="font-size:14.4px;">Awal bertemu (2022) </div>
+                                            <div class="editable quotes" style="font-size:14.4px;">Kami pertama kali bertemu sebagai rekan di satu kantor yang sama. Awalnya hanya sebatas profesional kerja dan menyapa sekadarnya.</div>
+                                        </div>
+                                        <div class="text-left pl-3 mb-3 animate__animated animate__fadeInUp animate__slower" style="position:relative;">
+                                            <span style="height:16px;width:16px;position:absolute;background-color:var(--inv-accent);border-radius:100%;transform:translateX(-24px) translateY(4px);"></span>
+                                            <span style="height:100%;width:2px;position:absolute;background-color:var(--inv-accent);transform:translateX(-17px) translateY(20px);"></span>
+                                            <div class="editable font-weight-bold mb-2" style="font-size:14.4px;">Relationship (2023)<br /></div>
+                                            <div class="editable quotes" style="font-size:14.4px;">Setelah melalui banyak sapaan dan hari-hari bekerja di kantor bersama, kami memutuskan untuk melangkah lebih serius. Hubungan profesional kini berubah menjadi komitmen hati untuk saling menjaga.</div>
+                                        </div>
+                                        <div class="text-left pl-3 mb-3 animate__animated animate__fadeInUp animate__slower" style="position:relative;">
+                                            <span style="height:16px;width:16px;position:absolute;background-color:var(--inv-accent);border-radius:100%;transform:translateX(-24px) translateY(4px);"></span>
+                                            <div class="editable font-weight-bold mb-2" style="font-size:14.4px;">Married (2026)<br /></div>
+                                            <div class="editable quotes" style="font-size:14.4px;">Berawal dari rekan kerja yang saling sapa dan menjalin hubungan selama bertahun-tahun, kini kami siap merajut lembaran baru sebagai suami istri. Doakan kami agar pernikahan ini selalu diberkahi hingga akhir hayat.<br /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frame">
+                                <img class="frame-tl animate__animated animate__fadeInTopLeft animate__slower" src="https://bertemumoment.com/themes/novianty/tl.webp" alt="frame">
+                                <img class="frame-tr animate__animated animate__fadeInTopRight animate__slower" src="https://bertemumoment.com/themes/novianty/tr.webp" alt="frame">
+                                <img class="frame-bl animate__animated animate__fadeInBottomLeft animate__slower" src="https://bertemumoment.com/themes/novianty/bl.webp" alt="frame">
+                                <img class="frame-br animate__animated animate__fadeInBottomRight animate__slower" src="https://bertemumoment.com/themes/novianty/br.webp" alt="frame">
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- Event Info -->
+                    <li class="container-mobile satumomen_slide" style="background-image: url(https://assets.satumomen.com/images/invitation/secondary_image-8930691786340854.jpg); background-size: cover;">
+                        <div class="workspace ">
+                            <div class="content h-100 w-100 mx-auto">
+                                <div class="d-flex justify-content-center align-items-center" style="height:100%;">
+                                    <div class="w-100">
+                                        <div class="w-100 mb-4">
+                                            <div class="w-100 d-flex align-items-end pb-2 animate__animated animate__zoomIn animate__slower image-editable" style="background-size:contain;background-position:center;background-repeat:no-repeat;background-image:url('https://bertemumoment.com/themes/novianty/bg-name.webp');height:57px;">
+                                                <div class="w-100 text-center d-flex align-items-center">
+                                                    <div class="text-right col-6 editable h3 mb-0 pl-0 font-accent" style="font-size:20px;">Clara</div>
+                                                    <div class="text-left col-6 editable h3 mb-0 pr-0 font-accent" style="font-size:20px;">Yoga </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-center animate__animated animate__zoomIn animate__slower">
+                                                <div class="editable animate__animated animate__fadeInUp animate__slower" style="font-size:12px;">12.12.26</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="d-flex justify-content-center align-items-center mb-4">
+                                            <div class="text-center animate__animated animate__fadeInDown animate__slower">
+                                                <div class="editable font-weight-bold font-accent" style="font-size:24px;">Akad Nikah</div>
+                                                <div class="editable mb-2" style="font-size:14px;">Sabtu, 12 Desember 2026<br />Pukul 08.00 - 10.00 WIB</div>
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="editable h4 mb-2 animate__animated animate__fadeInDown animate__slower font-accent" style="font-size:24px;">Resepsi</div>
+                                            <div class="mb-2 d-flex flex-row justify-content-center align-items-center animate__animated animate__zoomIn animate__slower">
+                                                <div class="editable" style="font-size:14.4px;width:80px;">SABTU</div>
+                                                <div style="border-left:2px solid var(--inv-border);border-right:2px solid var(--inv-border);" class="px-2">
+                                                    <div class="editable" style="font-size:50px;line-height:1;">12</div>
+                                                </div>
+                                                <div class="editable" style="font-size:14.4px;width:80px;">DESEMBER 2026</div>
+                                            </div>
+                                            <div class="mb-4 editable animate__animated animate__fadeInDown animate__slower" style="font-size:14.4px;">Pukul 11.00 WIB</div>
+                                            <div class="editable animate__animated animate__fadeInDown animate__slower font-accent" style="font-size:24px;">Lokasi</div>
+                                            <div class="editable animate__animated animate__fadeInDown animate__slower" style="font-size:14.4px;">Ballroom Hotel Mulia Senayan<br>Jl. Asia Afrika, Jakarta Pusat</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frame">
+                                <img class="frame-tl animate__animated animate__fadeInTopLeft animate__slower" src="https://bertemumoment.com/themes/novianty/tl.webp" alt="frame">
+                                <img class="frame-tr animate__animated animate__fadeInTopRight animate__slower" src="https://bertemumoment.com/themes/novianty/tr.webp" alt="frame">
+                                <img class="frame-bl animate__animated animate__fadeInBottomLeft animate__slower" src="https://bertemumoment.com/themes/novianty/bl.webp" alt="frame">
+                                <img class="frame-br animate__animated animate__fadeInBottomRight animate__slower" src="https://bertemumoment.com/themes/novianty/br.webp" alt="frame">
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- Map/Lokasi -->
+                    <li class="container-mobile satumomen_slide" style="background-image: url(https://assets.satumomen.com/images/invitation/secondary_image-8930691786340854.jpg); background-size: cover;">
+                        <div class="workspace ">
+                            <div class="content h-100 w-100 mx-auto">
+                                <div class="d-flex justify-content-center align-items-center" style="height:100%;">
+                                    <div style="width:100%;">
+                                        <div class="editable text-center color-accent mb-3 animate__animated animate__fadeInDown animate__slow font-italic" style="font-size:42px;color:rgb(255, 255, 255);">Maps</div>
+                                        <div>
+                                            <div class="p-1 mb-3 animate__animated animate__flipInX animate__slower" style="border-radius:2.5rem;overflow:hidden;position:relative;border:4px solid var(--inv-base);">
+                                                <div class="image-editable animate__animated animate__fadeInDown animate__slow" style="width:100%;margin:auto;border-radius:2rem;overflow:hidden;padding-bottom:70%;position:relative;border:2px solid var(--inv-base);">
+                                                    <img src="https://assets.satumomen.com/images/galleries/893069-gallery-GW3m4Zuj7I.png" class="w-100 h-100" style="position: absolute; object-fit: cover;" alt="no-image.jpg" />
+                                                </div>
+                                            </div>
+                                            <div class="text-center animate__animated animate__fadeInUp animate__slow">
+                                                <div class="editable color-accent font-weight-bold" style="font-size:18px;color:rgb(255, 255, 255);">Ballroom Hotel Mulia Senayan<br>Jl. Asia Afrika, Jakarta Pusat</div>
+                                                <div class="editable mb-3" style="font-size:14px;"></div>
+                                                <a href="https://maps.app.goo.gl/xVrsWotprE469orh6" target="_blank" rel="nofollow noreferrer noopener" class="link btn btn-primary rounded-pill animate__animated animate__fadeInUp animate__slow">Petunjuk Ke Lokasi</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frame">
+                                <img class="frame-tl animate__animated animate__fadeInTopLeft animate__slower" src="https://bertemumoment.com/themes/novianty/tl.webp" alt="frame">
+                                <img class="frame-tr animate__animated animate__fadeInTopRight animate__slower" src="https://bertemumoment.com/themes/novianty/tr.webp" alt="frame">
+                                <img class="frame-bl animate__animated animate__fadeInBottomLeft animate__slower" src="https://bertemumoment.com/themes/novianty/bl.webp" alt="frame">
+                                <img class="frame-br animate__animated animate__fadeInBottomRight animate__slower" src="https://bertemumoment.com/themes/novianty/br.webp" alt="frame">
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- Countdown & RSVP -->
+                    <li class="container-mobile satumomen_slide" style="background-image: url(https://assets.satumomen.com/images/invitation/secondary_image-8930691786340854.jpg); background-size: cover;">
+                        <div class="workspace ">
+                            <div class="content h-100 w-100 mx-auto">
+                                <div class="d-flex justify-content-center align-items-center" style="height:100%;">
+                                    <div style="width:100%;">
+                                        <div class="w-100 mb-4">
+                                            <div class="w-100 d-flex align-items-end pb-2 animate__animated animate__zoomIn animate__slower image-editable" style="background-size:contain;background-position:center;background-repeat:no-repeat;background-image:url('https://bertemumoment.com/themes/novianty/bg-name.webp');height:57px;">
+                                                <div class="w-100 text-center d-flex align-items-center">
+                                                    <div class="text-right col-6 editable h3 mb-0 pl-0 font-accent" style="font-size:20px;">Clara</div>
+                                                    <div class="text-left col-6 editable h3 mb-0 pr-0 font-accent" style="font-size:20px;">Yoga </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-center animate__animated animate__zoomIn animate__slower">
+                                                <div class="editable animate__animated animate__fadeInUp animate__slower" style="font-size:12px;">12.12.26</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="text-center">
+                                            <div class="editable h4 mb-4 animate__animated animate__fadeInDown animate__slower font-latin" style="font-size:28.8px;">Menuju Hari Spesial Kami</div>
+                                            <div class="mb-5 mx-auto countdown-wrapper d-flex flex-column animate__animated animate__fadeInUp animate__slower" data-datetime="2026-12-12T08:00" style="max-width:280px;">
+                                                <div class="countdown text-center">
+                                                    <div class="countdown-item day">
+                                                        <div class="number">00</div>
+                                                        <div class="text editable">Hari</div>
+                                                    </div>
+                                                    <div class="countdown-item hour">
+                                                        <div class="number">00</div>
+                                                        <div class="text editable">Jam</div>
+                                                    </div>
+                                                    <div class="countdown-item minute">
+                                                        <div class="number">00</div>
+                                                        <div class="text editable">Menit</div>
+                                                    </div>
+                                                    <div class="countdown-item second">
+                                                        <div class="number">00</div>
+                                                        <div class="text editable">Detik</div>
+                                                    </div>
+                                                </div>
+                                                <button class="btn-countdown btn btn-sm btn-pilled btn-accent mt-2">Atur Countdown</button>
+                                            </div>
+                                            <div class="editable mb-4 animate__animated animate__fadeInUp animate__slower" style="font-size:14.4px;">Tekan tombol dibawah ini untuk mengirim ucapan dan konfirmasi kehadiran</div>
+                                            <button class="btn-rsvp btn btn-primary rounded-pill mb-4 animate__animated animate__fadeInUp animate__slow">Konfirmasi &amp; Kirim Ucapan</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frame">
+                                <img class="frame-tl animate__animated animate__fadeInTopLeft animate__slower" src="https://bertemumoment.com/themes/novianty/tl.webp" alt="frame">
+                                <img class="frame-tr animate__animated animate__fadeInTopRight animate__slower" src="https://bertemumoment.com/themes/novianty/tr.webp" alt="frame">
+                                <img class="frame-bl animate__animated animate__fadeInBottomLeft animate__slower" src="https://bertemumoment.com/themes/novianty/bl.webp" alt="frame">
+                                <img class="frame-br animate__animated animate__fadeInBottomRight animate__slower" src="https://bertemumoment.com/themes/novianty/br.webp" alt="frame">
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- Gallery -->
+                    <li class="container-mobile satumomen_slide" style="background-image: url(https://assets.satumomen.com/images/invitation/secondary_image-8930691786340854.jpg); background-size: cover;">
+                        <div class="workspace ">
+                            <div class="content h-100 w-100 mx-auto">
+                                <div class="d-flex justify-content-center align-items-center" style="height:100%;">
+                                    <div style="width:100%;">
+                                        <div class="text-center mb-4 animate__animated animate__fadeInDown animate__slower">
+                                            <div class="color-accent h4 mb-2 editable font-latin" style="color:rgb(255, 255, 255);font-size:28.8px;">Galeri Foto Mempelai</div>
+                                        </div>
+                                        <div class="image-editable d-flex flex-wrap">
+                                            <div style="width:33.33%;overflow:hidden;padding:4px;" class="animate__animated animate__zoomIn animate__slower">
+                                                <div class="light" style="overflow:hidden;width:100%;height:140px;">
+                                                    <img src="https://assets.satumomen.com/images/galleries/893069-gallery-TS6uMQIimY.jpg" style="width: 100%;height: 100%;object-fit: cover;" class="lightbox" alt="no-image.jpg" />
+                                                </div>
+                                            </div>
+                                            <div style="width:33.33%;overflow:hidden;padding:4px;" class="animate__animated animate__zoomIn animate__slower">
+                                                <div style="overflow:hidden;width:100%;height:140px;">
+                                                    <img src="https://assets.satumomen.com/images/galleries/893069-gallery-cFrQkRniQl.jpg" style="width: 100%;height: 100%;object-fit: cover;" class="lightbox" alt="no-image.jpg" />
+                                                </div>
+                                            </div>
+                                            <div style="width:33.33%;overflow:hidden;padding:4px;" class="animate__animated animate__zoomIn animate__slower">
+                                                <div style="overflow:hidden;width:100%;height:140px;">
+                                                    <img src="https://assets.satumomen.com/images/galleries/893069-gallery-snxcj8Wa08.jpg" style="width: 100%;height: 100%;object-fit: cover;" class="lightbox" alt="no-image.jpg" />
+                                                </div>
+                                            </div>
+                                            <div style="width:50%;overflow:hidden;padding:4px;" class="animate__animated animate__zoomIn animate__slower">
+                                                <div style="overflow:hidden;width:100%;height:140px;">
+                                                    <img src="https://assets.satumomen.com/images/galleries/893069-gallery-2XighHufRh.jpg" style="width: 100%;height: 100%;object-fit: cover;" class="lightbox" alt="no-image.jpg" />
+                                                </div>
+                                            </div>
+                                            <div style="width:50%;overflow:hidden;padding:4px;" class="animate__animated animate__zoomIn animate__slower">
+                                                <div style="overflow:hidden;width:100%;height:140px;">
+                                                    <img src="https://assets.satumomen.com/images/galleries/893069-gallery-tNM2s4RiUh.jpg" style="width: 100%;height: 100%;object-fit: cover;" class="lightbox" alt="no-image.jpg" />
+                                                </div>
+                                            </div>
+                                            <div style="width:33.33%;overflow:hidden;padding:4px;" class="animate__animated animate__zoomIn animate__slower">
+                                                <div style="overflow:hidden;width:100%;height:140px;">
+                                                    <img src="https://assets.satumomen.com/images/galleries/893069-gallery-D89LwDxDjt.jpg" style="width: 100%;height: 100%;object-fit: cover;" class="lightbox" alt="no-image.jpg" />
+                                                </div>
+                                            </div>
+                                            <div style="width:33.33%;overflow:hidden;padding:4px;" class="animate__animated animate__zoomIn animate__slower">
+                                                <div style="overflow:hidden;width:100%;height:140px;">
+                                                    <img src="https://assets.satumomen.com/images/galleries/893069-gallery-uUkOwKzwqg.jpg" style="width: 100%;height: 100%;object-fit: cover;" class="lightbox" alt="no-image.jpg" />
+                                                </div>
+                                            </div>
+                                            <div style="width:33.33%;overflow:hidden;padding:4px;" class="animate__animated animate__zoomIn animate__slower">
+                                                <div style="overflow:hidden;width:100%;height:140px;">
+                                                    <img src="https://assets.satumomen.com/images/galleries/893069-gallery-5iJVVgi0r2.jpg" style="width: 100%;height: 100%;object-fit: cover;" class="lightbox" alt="no-image.jpg" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frame">
+                                <img class="frame-tl animate__animated animate__fadeInTopLeft animate__slower" src="https://bertemumoment.com/themes/novianty/tl.webp" alt="frame">
+                                <img class="frame-tr animate__animated animate__fadeInTopRight animate__slower" src="https://bertemumoment.com/themes/novianty/tr.webp" alt="frame">
+                                <img class="frame-bl animate__animated animate__fadeInBottomLeft animate__slower" src="https://bertemumoment.com/themes/novianty/bl.webp" alt="frame">
+                                <img class="frame-br animate__animated animate__fadeInBottomRight animate__slower" src="https://bertemumoment.com/themes/novianty/br.webp" alt="frame">
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- Wedding Gift -->
+                    <li class="container-mobile satumomen_slide" style="background-image: url(https://assets.satumomen.com/images/invitation/secondary_image-8930691786340854.jpg); background-size: cover;">
+                        <div class="workspace ">
+                            <div class="content h-100 w-100 mx-auto">
+                                <div class="h-100 d-flex justify-content-center align-items-center">
+                                    <div class="w-100 text-center">
+                                        <div class="w-100 mb-4">
+                                            <div class="w-100 d-flex align-items-end pb-2 animate__animated animate__zoomIn animate__slower image-editable" style="background-size:contain;background-position:center;background-repeat:no-repeat;background-image:url('https://bertemumoment.com/themes/novianty/bg-name.webp');height:57px;">
+                                                <div class="w-100 text-center d-flex align-items-center">
+                                                    <div class="text-right col-6 editable h3 mb-0 pl-0 font-accent" style="font-size:20px;">Clara</div>
+                                                    <div class="text-left col-6 editable h3 mb-0 pr-0 font-accent" style="font-size:20px;">Yoga </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-center animate__animated animate__zoomIn animate__slower">
+                                                <div class="editable animate__animated animate__fadeInUp animate__slower" style="font-size:12px;">12.12.26</div>
+                                            </div>
+                                        </div>
+                                        <div class="h4 mb-2 editable animate__animated animate__fadeInDown animate__slower font-latin" style="font-size:28.8px;">Tanda Kasih</div>
+                                        <div class="editable mb-4 animate__animated animate__fadeInDown animate__slower" style="font-size:14.4px;">Terima kasih telah menambah semangat kegembiraan pernikahan kami dengan kehadiran dan hadiah indah Anda.</div>
+                                        <div class="mt-3 p-4 rounded" style="border:1px solid var(--inv-border);">
+                                            <div class="d-flex animate__animated animate__zoomIn animate__slow">
+                                                <div class="mx-auto">
+                                                    <div class="d-flex align-items-center mb-3">
+                                                        <div style="width:80px;height:50px;overflow:hidden;" class="image-editable bg-white rounded">
+                                                            <img src="https://assets.satumomen.com/assets/logo-bca-biru-1687975058.png" style="width: 100%;height: 100%;object-fit: contain;" alt="no-image.jpg" />
+                                                        </div>
+                                                        <div class="text-left pl-2">
+                                                            <div class="editable account-number font-weight-bold h5 mb-0" style="font-size:18px;">1234567890</div>
+                                                            <div class="editable" style="font-size:14.4px;">Clara Anindya</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex align-items-center">
+                                                        <div style="width:80px;height:50px;overflow:hidden;" class="image-editable bg-white rounded">
+                                                            <img src="https://assets.satumomen.com/assets/logo-bca-biru-1687975058.png" style="width: 100%;height: 100%;object-fit: contain;" alt="no-image.jpg" />
+                                                        </div>
+                                                        <div class="text-left pl-2">
+                                                            <div class="editable account-number font-weight-bold h5 mb-0" style="font-size:18px;">081234567890</div>
+                                                            <div class="editable" style="font-size:14.4px;">Yoga Pratama</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 p-4 rounded" style="border:1px solid var(--inv-border);">
+                                            <div class="text-center mb-2 animate__animated animate__zoomIn animate__slow">
+                                                <div class="editable font-weight-bold h5 mb-2" style="font-size:18px;">Kirim Kado</div>
+                                                <div class="editable copy-address mb-0" style="font-size:14.4px;">Anda dapat mengirim kado ke:<br /> Ballroom Hotel Mulia Senayan, Jakarta Pusat<br /></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frame">
+                                <img class="frame-tl animate__animated animate__fadeInTopLeft animate__slower" src="https://bertemumoment.com/themes/novianty/tl.webp" alt="frame">
+                                <img class="frame-tr animate__animated animate__fadeInTopRight animate__slower" src="https://bertemumoment.com/themes/novianty/tr.webp" alt="frame">
+                                <img class="frame-bl animate__animated animate__fadeInBottomLeft animate__slower" src="https://bertemumoment.com/themes/novianty/bl.webp" alt="frame">
+                                <img class="frame-br animate__animated animate__fadeInBottomRight animate__slower" src="https://bertemumoment.com/themes/novianty/br.webp" alt="frame">
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- Closing -->
+                    <li class="container-mobile satumomen_slide" style="background-image: url(https://assets.satumomen.com/images/invitation/bg-section-99377931786340762.jpg); background-size: cover;">
+                        <div class="workspace ">
+                            <div class="content h-100 w-100 mx-auto">
+                                <div class="watermark d-flex flex-column justify-content-start h-100 pt-5">
+                                    <div class="w-100">
+                                        <div class="text-center">
+                                            <div class="editable mb-2 animate__animated animate__fadeInDown animate__slower" style="font-size:14px;">Merupakan suatu kebahagiaan dan<br />kehormatan bagi kami,<br />apabila Bapak/Ibu/Saudara/i,<br />berkenan hadir dan memberikan do’a restu<br />kepada kedua mempelai.</div>
+                                            <div class="editable animate__animated animate__fadeInDown animate__slow" style="font-size:14px;">Turut Mengundang</div>
+                                            <div class="w-100">
+                                                <div class="w-100 d-flex align-items-end pb-2 animate__animated animate__zoomIn animate__slower image-editable" style="background-size:contain;background-position:center;background-repeat:no-repeat;background-image:url('https://bertemumoment.com/themes/novianty/bg-name.webp');height:57px;">
+                                                    <div class="w-100 text-center d-flex align-items-center">
+                                                        <div class="text-right col-6 editable h3 mb-0 pl-0 font-accent" style="font-size:20px;">Clara</div>
+                                                        <div class="text-left col-6 editable h3 mb-0 pr-0 font-accent" style="font-size:20px;">Yoga </div>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center animate__animated animate__zoomIn animate__slower">
+                                                    <div class="editable animate__animated animate__fadeInUp animate__slower" style="font-size:12px;">12.12.26</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="watermark-placeholder text-center"></div>
+                                </div>
+                            </div>
+                            <div class="frame">
+                                <img class="frame-tl animate__animated animate__fadeInTopLeft animate__slower" src="https://bertemumoment.com/themes/novianty/tl.webp" alt="frame">
+                                <img class="frame-tr animate__animated animate__fadeInTopRight animate__slower" src="https://bertemumoment.com/themes/novianty/tr.webp" alt="frame">
+                                <img class="frame-bl animate__animated animate__fadeInBottomLeft animate__slower" src="https://bertemumoment.com/themes/novianty/bl.webp" alt="frame">
+                                <img class="frame-br animate__animated animate__fadeInBottomRight animate__slower" src="https://bertemumoment.com/themes/novianty/br.webp" alt="frame">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- floating action music -->
+        <div class="floating-action d-flex align-items-end flex-column">                                                
+            <button id="btnMusic" onclick="playMusic()" class="btn btn-float ">
+                <svg class="play" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 256 256"><path d="M184,152V104a8,8,0,0,1,16,0v48a8,8,0,0,1-16,0Zm40-72a8,8,0,0,0-8,8v80a8,8,0,0,0,16,0V88A8,8,0,0,0,224,80ZM53.92,34.62A8,8,0,1,0,42.08,45.38L73.55,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V175.09l42.08,46.29a8,8,0,1,0,11.84-10.76Zm92.16,77.59A8,8,0,0,0,160,106.83V32a8,8,0,0,0-12.91-6.31l-39.85,31a8,8,0,0,0-1,11.7Z"></path></svg>
+                <svg class="pause" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 256 256"><path d="M160,32V224a8,8,0,0,1-12.91,6.31L77.25,176H32a16,16,0,0,1-16-16V96A16,16,0,0,1,32,80H77.25l69.84-54.31A8,8,0,0,1,160,32Zm32,64a8,8,0,0,0-8,8v48a8,8,0,0,0,16,0V104A8,8,0,0,0,192,96Zm32-16a8,8,0,0,0-8,8v80a8,8,0,0,0,16,0V88A8,8,0,0,0,224,80Z"></path></svg>
+            </button>                    
+        </div>
+        
+        <!-- lightbox -->
+        <div id="lightboxWrapper" class="lightbox-wrapper">
+            <div class="lightbox-list"></div>
+            <button id="lightboxCloseBtn" class="btn btn-lightbox">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 0 1 1.414 0L10 8.586l4.293-4.293a1 1 0 1 1 1.414 1.414L11.414 10l4.293 4.293a1 1 0 0 1-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 0 1-1.414-1.414L8.586 10 4.293 5.707a1 1 0 0 1 0-1.414z" clip-rule="evenodd" />
+                </svg>
+            </button>
+            <div class="lightbox-navigation">
+                <button id="lightboxPrevBtn" class="btn lightbox-arrow" data-index="0">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="lightboxNextBtn" class="btn lightbox-arrow" data-index="0">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- startQRModal -->
+        <div class="modal fade" id="qrModal" tabindex="-1" role="dialog" aria-labelledby="qrModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="height:100%">
+                    <div style="width: 100%;aspect-ratio: 16/9; background-size:cover; background-position: center; background-image: url(https://assets.satumomen.com/images/invitation/cover-8930691786340500.jpg);"></div>
+                    <div class="text-center py-4 px-4">
+                        <div>
+                            <div class="mx-auto">
+                                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="180" height="180" viewBox="0 0 180 180"><rect x="0" y="0" width="180" height="180" fill="#ffffff"/><g transform="scale(7.2)"><g transform="translate(0,0)"><path fill-rule="evenodd" d="M8 0L8 1L9 1L9 2L10 2L10 3L11 3L11 1L13 1L13 0L11 0L11 1L9 1L9 0ZM14 0L14 1L15 1L15 0ZM16 0L16 1L17 1L17 0ZM12 2L12 4L11 4L11 5L10 5L10 4L9 4L9 5L10 5L10 8L9 8L9 6L8 6L8 8L9 8L9 10L8 10L8 11L7 11L7 10L6 10L6 11L5 11L5 8L3 8L3 9L4 9L4 12L5 12L5 13L3 13L3 10L2 10L2 8L0 8L0 11L1 11L1 12L0 12L0 17L1 17L1 15L3 15L3 16L2 16L2 17L7 17L7 16L6 16L6 15L8 15L8 18L9 18L9 20L8 20L8 22L9 22L9 20L10 20L10 23L8 23L8 25L9 25L9 24L10 24L10 23L11 23L11 20L10 20L10 19L12 19L12 21L14 21L14 24L13 24L13 25L15 25L15 22L16 22L16 23L17 23L17 22L19 22L19 21L21 21L21 16L22 16L22 18L24 18L24 19L23 19L23 22L20 22L20 23L18 23L18 25L19 25L19 24L21 24L21 25L22 25L22 24L24 24L24 25L25 25L25 18L24 18L24 16L25 16L25 14L24 14L24 13L25 13L25 10L24 10L24 9L25 9L25 8L24 8L24 9L19 9L19 8L18 8L18 9L19 9L19 10L16 10L16 9L17 9L17 6L16 6L16 8L14 8L14 7L15 7L15 6L14 6L14 5L15 5L15 4L16 4L16 5L17 5L17 3L15 3L15 4L14 4L14 2ZM12 4L12 5L11 5L11 7L12 7L12 9L10 9L10 10L9 10L9 11L10 11L10 10L12 10L12 11L13 11L13 13L11 13L11 12L10 12L10 13L9 13L9 14L8 14L8 12L7 12L7 11L6 11L6 12L7 12L7 13L6 13L6 14L3 14L3 15L4 15L4 16L5 16L5 15L6 15L6 14L8 14L8 15L9 15L9 14L10 14L10 15L11 15L11 14L14 14L14 13L16 13L16 12L17 12L17 13L18 13L18 14L19 14L19 15L20 15L20 16L21 16L21 15L20 15L20 13L21 13L21 14L23 14L23 13L24 13L24 12L21 12L21 10L20 10L20 11L19 11L19 13L18 13L18 11L15 11L15 10L14 10L14 11L13 11L13 10L12 10L12 9L14 9L14 8L13 8L13 7L14 7L14 6L13 6L13 7L12 7L12 5L14 5L14 4ZM6 8L6 9L7 9L7 8ZM22 10L22 11L24 11L24 10ZM14 11L14 12L15 12L15 11ZM1 13L1 14L2 14L2 13ZM16 14L16 16L15 16L15 15L12 15L12 16L9 16L9 17L14 17L14 18L12 18L12 19L13 19L13 20L14 20L14 19L16 19L16 16L18 16L18 15L17 15L17 14ZM23 15L23 16L24 16L24 15ZM14 16L14 17L15 17L15 16ZM17 17L17 20L20 20L20 17ZM18 18L18 19L19 19L19 18ZM12 22L12 23L13 23L13 22ZM21 23L21 24L22 24L22 23ZM16 24L16 25L17 25L17 24ZM0 0L0 7L7 7L7 0ZM1 1L1 6L6 6L6 1ZM2 2L2 5L5 5L5 2ZM18 0L18 7L25 7L25 0ZM19 1L19 6L24 6L24 1ZM20 2L20 5L23 5L23 2ZM0 18L0 25L7 25L7 18ZM1 19L1 24L6 24L6 19ZM2 20L2 23L5 23L5 20Z" fill="#000000"/></g></g></svg>
+                                <div style="margin-top: 10px; text-align: center"></div>                            </div>
+                        </div>                                                <hr style="margin-top: 1rem; margin-bottom: 1rem; border: 0; border-top: 2px dashed rgba(0,0,0,.1);">                        <div style="text-align: center">                            <strong>12 Des 2026</strong><br>                            <p class="mb-0">11:00 </p>                            <p></p>                        </div>                                                <hr style="margin-top: 1rem; margin-bottom: 1rem; border: 0; border-top: 2px dashed rgba(0,0,0,.1);">                                                                        <div style="margin-bottom: 10px">                            <div style="color: #b2b2b2;">Nama</div>                            <div></div>                        </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>                    <button onclick="closeModal(qrModal)" type="button" class="btn btn-close"><svg                            xmlns="http://www.w3.org/2000/svg" height="42px" width="42px" fill="none"                            viewBox="0 0 24 24" stroke="currentColor">                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"                                d="M6 18 18 6M6 6l12 12" />                        </svg></button>                </div>            </div>        </div>
+        <!-- endQRModal -->
+        
+        <!-- startRSVPModal -->
+        <div class="modal fade" id="rsvpModal" tabindex="-1" role="dialog" aria-labelledby="rsvpModal" >
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content p-4" style="height:100%">
+                    <rsvp-component :lang="{&quot;invitation_code&quot;:&quot;Kode Undangan&quot;,&quot;validate_code&quot;:&quot;Validasi Kode Undangan&quot;,&quot;name&quot;:&quot;Nama&quot;,&quot;group_name&quot;:&quot;Nama Grup&quot;,&quot;phone&quot;:&quot;No Hp \/ WhatsApp&quot;,&quot;attendance&quot;:&quot;Kehadiran?&quot;,&quot;yes&quot;:&quot;Hadir&quot;,&quot;no&quot;:&quot;Tidak Hadir&quot;,&quot;guest&quot;:&quot;Orang&quot;,&quot;guest_count&quot;:&quot;Jumlah Tamu&quot;,&quot;comment&quot;:&quot;Komentar atau Ucapan&quot;,&quot;send&quot;:&quot;Kirim&quot;,&quot;update&quot;:&quot;Kirim&quot;,&quot;captcha_placeholder&quot;:&quot;Ketik Text&quot;}" :invitation_id="893069" name="" code="" :replace="true" overlay="1"></rsvp-component>
+                    <button onclick="closeModal(rsvpModal)" type="button" class="btn btn-close"><svg
+                            xmlns="http://www.w3.org/2000/svg" height="42px" width="42px" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18 18 6M6 6l12 12" />
+                        </svg></button>
+                </div>
+            </div>
+        </div>
+        <!-- endRSVPModal -->
+        
+        <!-- watermark -->
+        <div id="waterMark" class="mt-5" style="display: none">
+            <p class="mb-1 animate__animated animate__fadeInUp animate__slower small animate__delay-1s">by Bersama.id</p>
+            <div class="d-flex align-items-center justify-content-center animate__animated animate__fadeInUp animate__slower animate__delay-1s">
+                <div class="list-icon p-2">
+                    <a href="https://instagram.com/bersama.id" target="_BLANK" class="icon d-block" rel="nofollow">
+                        <img src="https://bertemumoment.com/images/instagram.webp" alt="instagram" height="26px" width="26px">
+                    </a>
+                </div>
+                <div class="list-icon p-2">
+                    <a href="https://tiktok.com/@bersama.id06" target="_BLANK" class="icon d-block" rel="nofollow">
+                        <img src="https://bertemumoment.com/images/tiktok.webp" alt="tiktok" height="26px" width="26px">
+                    </a>
+                </div>
+            </div>
+            <div class="text-center animate__animated animate__fadeInUp animate__slower animate__delay-1s">
+                <a class="d-block mx-auto" href="https://bersamaid.netlify.app" target="_blank" rel="noopener noreferrer" style="width: 100px; height: 40px">
+                    <img height="40" width="100" class="h-100 w-100" style="object-fit: contain" src="https://i.ibb.co.com/4nh5BC5n/Gemini-Generated-Image-om2ne3om2ne3om2n.jpg" alt="Bersama.id">
+                </a>
+            </div>
+            <div class="wm-music mt-3 text-center animate__animated animate__fadeInUp animate__slower animate__delay-1s" style="font-size: 60%">
+                <div style="opacity: 0.5"><strong>Music:</strong></div>
+                <div style="opacity: 0.5">Instrumental Di Akhir Perang Epic Orchestra 1</div>
+            </div>
+        </div>
+        <!-- end watermark -->
+    </main>
+    
+    <!-- illegal -->
+    <div id="illegal" class="container-mobile" style="background: #ffffff; z-index: 9999; min-height: 100vh; display: flex; justify-content: center; align-items: center; display: none">
+        <div class="modal-body modal-body d-flex flex-column align-items-center">
+            <div class="mb-4 text-center">
+                <svg width="90" height="90" fill="none"><path d="M36 28.024A18.05 18.05 0 0025.022 39M59.999 28.024A18.05 18.05 0 0170.975 39" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><ellipse cx="37.5" cy="43.5" rx="4.5" ry="7.5" fill="currentColor"></ellipse><ellipse cx="58.5" cy="43.5" rx="4.5" ry="7.5" fill="currentColor"></ellipse><path d="M24.673 75.42a9.003 9.003 0 008.879 5.563m-8.88-5.562A8.973 8.973 0 0124 72c0-7.97 9-18 9-18s9 10.03 9 18a9 9 0 01-8.448 8.983m-8.88-5.562C16.919 68.817 12 58.983 12 48c0-19.882 16.118-36 36-36s36 16.118 36 36-16.118 36-36 36a35.877 35.877 0 01-14.448-3.017" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M41.997 71.75A14.94 14.94 0 0148 70.5c2.399 0 4.658.56 6.661 1.556a3 3 0 003.999-4.066 12 12 0 00-10.662-6.49 11.955 11.955 0 00-7.974 3.032c1.11 2.37 1.917 4.876 1.972 7.217z" fill="currentColor"></path></svg>
+                <h2 class="mb-3">Jangan Bikin Aku Sedih</h2>
+                <p>Kamu didapati mencoba menghapus watermark secara ilegal.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- not support modal -->
+    <div class="modal fade" id="notSupport" tabindex="-1" role="dialog" aria-labelledby="notSupport" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border-radius: .8rem;">
+                <div class="modal-body text-center justify-content-center align-items-center">
+                    <h2>Pemberitahuan</h2>
+                    <p>Browser yang kamu gunakan mungkin kurang kompatibel. Beberapa fungsi undangan ini mungkin tidak dapat berjalan dengan baik. Kami merekomendasikan Chrome. Klik tombol dibawah ini untuk mendownload.</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="https://apps.apple.com/id/app/google-chrome/id535886823" class="btn p-1" target="_BLANK">
+                            <img src="https://bertemumoment.com/images/btn_app_store.png" alt="AppStore" height="40px">
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.android.chrome&hl=in&gl=US" class="btn p-1" target="_BLANK">
+                            <img src="https://bertemumoment.com/images/btn_play_store.png" alt="PlayStore" height="40px">
+                        </a>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-secondary btn-block rounded-pill" onclick="closeModal(notSupport)">Tetap Akses</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- start script -->
+    <script src="https://bertemumoment.com/themes/theme-app.js?v=260626"></script>
+    <script src="https://bertemumoment.com/themes/themes-scroll.js?v=260626"></script>
+    <script>
+        var notSupport = document.getElementById('notSupport');
+        function checkBrowser() { 
+            if(navigator.userAgent.indexOf("UCBrowser") != -1 || navigator.userAgent.indexOf("MiuiBrowser") != -1 || navigator.userAgent.indexOf("OppoBrowser") != -1) {
+                showModal(notSupport);
+                var loader = document.getElementById('loader');
+                if (loader) {
+                    loader.style.display = "none";
+                }
+            }
+        }
+        checkBrowser()
+    </script>
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"b1072c94a5e1416b87a6229e70ed857e","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>
