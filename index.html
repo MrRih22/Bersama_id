@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- GSAP Core: ringan, tanpa plugin tambahan -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -50,12 +52,8 @@
         .toggle-checkbox:checked + .toggle-label { background-color: #697e6d; }
         input[type=range] { accent-color: #697e6d; }
         
-        @keyframes subtleZoom {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
-        .animate-subtle { animation: subtleZoom 8s ease-in-out infinite; }
+        /* Animasi berat diganti GSAP. Tidak ada infinite animation. */
+        .gsap-hidden { visibility: hidden; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
@@ -68,14 +66,12 @@
             <div class="text-2xl font-bold font-serif text-sage-900 flex items-center gap-3 tracking-wide">
                 <i class="fa-solid fa-leaf text-earth-500 text-lg"></i> Bersama.id
             </div>
-            <div class="hidden md:flex space-x-10 text-sm tracking-widest uppercase font-bold text-sage-800">
+            <div class="hidden md:flex flex-1 justify-center items-center gap-10 text-sm tracking-widest uppercase font-bold text-sage-800">
                 <a href="#fitur" class="hover:text-earth-500 transition-colors">Fitur</a>
                 <a href="#harga" class="hover:text-earth-500 transition-colors">Harga</a>
                 <a href="#katalog" class="hover:text-earth-500 transition-colors">Desain</a>
             </div>
-            <a href="login.html" class="bg-transparent border border-sage-500 text-sage-600 px-6 py-2 rounded font-bold uppercase text-xs tracking-widest hover:bg-sage-500 hover:text-white transition duration-300">
-                Login Panel
-            </a>
+            <div class="w-[120px] hidden md:block"></div>
         </div>
     </nav>
 
@@ -85,10 +81,10 @@
             <div class="uppercase tracking-widest text-earth-600 text-sm font-bold border-l-2 border-earth-500 pl-4">
                 Platform Undangan Eksklusif
             </div>
-            <h1 class="text-5xl md:text-6xl font-serif font-bold leading-tight text-sage-900">
+            <h1 class="text-5xl md:text-6xl font-serif font-bold leading-tight text-sage-900 hero-title">
                 Abadikan <br><span class="italic text-earth-500">Momen Indahmu</span> dalam Keanggunan.
             </h1>
-            <p class="text-slate-500 text-lg leading-relaxed font-light">
+            <p class="text-slate-500 text-lg leading-relaxed font-light hero-copy">
                 Hadirkan kesan pertama yang tak terlupakan. Undangan digital dengan desain premium, elegan, dan fitur interaktif lengkap untuk para tamu kehormatanmu.
             </p>
             <div class="flex gap-4 pt-4">
@@ -99,7 +95,7 @@
         </div>
         <div class="md:w-1/2 relative">
             <div class="absolute inset-0 bg-sage-200 transform translate-x-4 translate-y-4 rounded-xl"></div>
-            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wedding Elegant" class="relative rounded-xl shadow-xl animate-subtle object-cover w-full h-[500px]">
+            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wedding Elegant" class="relative rounded-xl shadow-xl object-cover w-full h-[500px] hero-image">
         </div>
     </section>
 
@@ -589,167 +585,209 @@
     </a>
 
     <script>
-        // -------------------------
-        // LOGIKA KALKULATOR HARGA
-        // -------------------------
-        const formatIDR = (num) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(num);
+        document.addEventListener('DOMContentLoaded', () => {
+            'use strict';
 
-        const basePrice = 50000; 
-        
-        const inputFoto = document.getElementById('input-foto');
-        const chkKado = document.getElementById('chk-kado');
-        const chkCerita = document.getElementById('chk-cerita');
-        const chkLifetime = document.getElementById('chk-lifetime');
-        const chkLagu = document.getElementById('chk-lagu');
-        const chkVideo = document.getElementById('chk-video');
+            /* =====================================================
+               GSAP LIGHT + SMOOTH
+               - GSAP Core saja
+               - Tidak memakai ScrollTrigger
+               - IntersectionObserver hanya untuk mendeteksi scroll
+               - Animasi hanya berjalan ketika diperlukan
+               - Tidak ada infinite animation
+            ===================================================== */
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const gsapReady = typeof window.gsap !== 'undefined';
 
-        const labelFoto = document.getElementById('label-foto');
-        const sumFoto = document.getElementById('sum-foto');
-        const sumTamu = document.getElementById('sum-tamu');
-        const hargaTotal = document.getElementById('harga-total');
-        const hargaCoret = document.getElementById('harga-coret');
+            if (!gsapReady || reduceMotion) return;
 
-        function updateCheckmarkState(checkboxId, iconId, rowId) {
-            const isChecked = document.getElementById(checkboxId).checked;
-            const iconEl = document.getElementById(iconId);
-            const rowEl = document.getElementById(rowId);
-            
-            if (isChecked) {
-                iconEl.className = 'fa-solid fa-check text-earth-500 transition-colors';
-                rowEl.classList.add('bg-sage-50', 'border-sage-200');
-                rowEl.classList.remove('bg-white', 'border-sage-100');
-            } else {
-                iconEl.className = 'fa-solid fa-check text-slate-200 transition-colors';
-                rowEl.classList.remove('bg-sage-50', 'border-sage-200');
-                rowEl.classList.add('bg-white', 'border-sage-100');
+            /* =====================================================
+               1. INTRO SAAT HALAMAN DIBUKA
+            ===================================================== */
+            const introTl = gsap.timeline({ defaults: { ease: 'power2.out' } });
+
+            introTl
+                .from('nav', {
+                    y: -18,
+                    opacity: 0,
+                    duration: 0.5,
+                    clearProps: 'transform,opacity'
+                })
+                .from('.hero-title', {
+                    y: 24,
+                    opacity: 0,
+                    duration: 0.65,
+                    clearProps: 'transform,opacity'
+                }, '-=0.25')
+                .from('.hero-copy', {
+                    y: 18,
+                    opacity: 0,
+                    duration: 0.55,
+                    clearProps: 'transform,opacity'
+                }, '-=0.35')
+                .from('.hero-title ~ div a, .hero-copy ~ div a', {
+                    y: 14,
+                    opacity: 0,
+                    duration: 0.45,
+                    clearProps: 'transform,opacity'
+                }, '-=0.3')
+                .from('.hero-image', {
+                    x: 25,
+                    opacity: 0,
+                    scale: 0.985,
+                    duration: 0.75,
+                    clearProps: 'transform,opacity'
+                }, '-=0.55');
+
+            /* =====================================================
+               2. REVEAL SAAT SCROLL
+               Satu observer untuk semua elemen = lebih ringan.
+            ===================================================== */
+            const revealSelector = [
+                '#fitur > div > div:first-child',
+                '#fitur .grid > div',
+                '#harga > div:first-child',
+                '#harga .grid > div',
+                '#katalog > div > div:first-child',
+                '#katalog-grid .design-card',
+                'footer > div'
+            ].join(',');
+
+            const revealItems = document.querySelectorAll(revealSelector);
+
+            if ('IntersectionObserver' in window && revealItems.length) {
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) return;
+
+                        const el = entry.target;
+                        const delay = Number(el.dataset.gsapDelay || 0);
+
+                        gsap.to(el, {
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.55,
+                            delay,
+                            ease: 'power2.out',
+                            overwrite: 'auto',
+                            clearProps: 'transform,opacity'
+                        });
+
+                        obs.unobserve(el);
+                    });
+                }, {
+                    threshold: 0.08,
+                    rootMargin: '0px 0px -45px 0px'
+                });
+
+                revealItems.forEach((el, index) => {
+                    /* Jangan menyembunyikan elemen yang sudah terlihat di layar */
+                    const rect = el.getBoundingClientRect();
+                    const visibleNow = rect.top < window.innerHeight && rect.bottom > 0;
+
+                    gsap.set(el, {
+                        opacity: visibleNow ? 1 : 0,
+                        y: visibleNow ? 0 : 20
+                    });
+
+                    el.dataset.gsapDelay = ((index % 4) * 0.045).toFixed(3);
+                    observer.observe(el);
+                });
             }
-        }
 
-        function updateSliderState(value, rowId, iconClass) {
-            const rowEl = document.getElementById(rowId);
-            const iconEl = rowEl.querySelector('i');
-            if(parseInt(value) > 0) {
-                rowEl.classList.add('bg-sage-50', 'border-sage-200');
-                iconEl.className = `${iconClass} w-5 text-earth-500`;
-            } else {
-                rowEl.classList.remove('bg-sage-50', 'border-sage-200');
-                iconEl.className = `${iconClass} w-5 text-slate-400`;
+            /* =====================================================
+               3. HOVER CARD — hanya aktif saat mouse desktop
+            ===================================================== */
+            const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+            if (canHover) {
+                document.querySelectorAll('.design-card, #harga .grid > div').forEach(card => {
+                    card.addEventListener('mouseenter', () => {
+                        gsap.to(card, {
+                            y: -4,
+                            duration: 0.2,
+                            ease: 'power2.out',
+                            overwrite: true
+                        });
+                    });
+
+                    card.addEventListener('mouseleave', () => {
+                        gsap.to(card, {
+                            y: 0,
+                            duration: 0.22,
+                            ease: 'power2.out',
+                            overwrite: true
+                        });
+                    });
+                });
+
+                document.querySelectorAll('nav a, footer a, footer button, .fixed.bottom-6').forEach(el => {
+                    el.addEventListener('mouseenter', () => {
+                        gsap.to(el, {
+                            y: -2,
+                            duration: 0.18,
+                            ease: 'power2.out',
+                            overwrite: true
+                        });
+                    });
+
+                    el.addEventListener('mouseleave', () => {
+                        gsap.to(el, {
+                            y: 0,
+                            duration: 0.2,
+                            ease: 'power2.out',
+                            overwrite: true
+                        });
+                    });
+                });
             }
-        }
 
-        function hitungTotal() {
-            let total = basePrice;
-            
-            const jmlFoto = parseInt(inputFoto.value);
-            total += (jmlFoto * 2000);
-            labelFoto.innerText = jmlFoto + ' Foto';
-            sumFoto.innerText = jmlFoto;
-            updateSliderState(jmlFoto, 'row-foto', 'fa-regular fa-image');
+            /* =====================================================
+               4. FILTER KATALOG — animasi ringan ketika berganti
+            ===================================================== */
+            const originalFilterKatalog = window.filterKatalog;
+            if (typeof originalFilterKatalog === 'function') {
+                window.filterKatalog = function(category) {
+                    originalFilterKatalog(category);
 
-            updateCheckmarkState('chk-kado', 'icon-kado', 'row-kado');
-            updateCheckmarkState('chk-cerita', 'icon-cerita', 'row-cerita');
-            updateCheckmarkState('chk-lifetime', 'icon-lifetime', 'row-lifetime');
-            updateCheckmarkState('chk-lagu', 'icon-lagu', 'row-lagu');
-            updateCheckmarkState('chk-video', 'icon-video', 'row-video');
+                    const visibleCards = document.querySelectorAll('.design-card:not(.hidden)');
+                    if (!visibleCards.length) return;
 
-            if(chkKado.checked) total += parseInt(chkKado.value);
-            if(chkCerita.checked) total += parseInt(chkCerita.value);
-            if(chkLifetime.checked) total += parseInt(chkLifetime.value);
-            if(chkLagu.checked) total += parseInt(chkLagu.value);
-            if(chkVideo.checked) total += parseInt(chkVideo.value);
+                    gsap.fromTo(visibleCards,
+                        { opacity: 0, y: 10 },
+                        {
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.35,
+                            stagger: 0.035,
+                            ease: 'power2.out',
+                            overwrite: true,
+                            clearProps: 'transform,opacity'
+                        }
+                    );
+                };
+            }
 
-            hargaTotal.innerText = formatIDR(total);
-            hargaCoret.innerText = formatIDR(total + 30000);
-        }
+            /* =====================================================
+               5. SMOOTH ANCHOR
+               Tetap native agar tidak membuat RAF/loop tambahan.
+            ===================================================== */
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', e => {
+                    const id = anchor.getAttribute('href');
+                    if (!id || id === '#') return;
 
-        [inputFoto  , chkKado, chkCerita, chkLifetime, chkLagu, chkVideo].forEach(el => {
-            if(el) el.addEventListener('input', hitungTotal);
+                    const target = document.querySelector(id);
+                    if (!target) return;
+
+                    e.preventDefault();
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
+            });
         });
-
-        hitungTotal();
-
-        // -------------------------
-        // LOGIKA FILTER KATEGORI & PENCARIAN
-        // -------------------------
-        const categoryLinks = document.querySelectorAll('.category-link');
-        const designCards = document.querySelectorAll('.design-card');
-        const searchInput = document.getElementById('search-desain');
-
-        let currentCategory = 'semua';
-        let searchQuery = '';
-
-        function applyFilters() {
-            designCards.forEach(card => {
-                const cardCategory = card.dataset.category;
-                const cardName = card.querySelector('h3').innerText.toLowerCase();
-                
-                // Cek apakah kartu cocok dengan kategori yang dipilih
-                const matchCategory = (currentCategory === 'semua' || cardCategory === currentCategory);
-                
-                // Cek apakah nama kartu mengandung huruf/kata yang diketik di search bar
-                const matchSearch = cardName.includes(searchQuery);
-
-                // Tampilkan hanya jika cocok dengan kategori DAN cocok dengan hasil pencarian
-                if (matchCategory && matchSearch) {
-                    card.classList.remove('hidden');
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
-        }
-
-        function filterKatalog(category) {
-            currentCategory = category;
-
-            // 1. Update URL tanpa merefresh halaman
-            const url = new URL(window.location);
-            if (category === 'semua') {
-                url.searchParams.delete('category');
-            } else {
-                url.searchParams.set('category', category);
-            }
-            window.history.pushState({}, '', url);
-
-            // 2. Ubah style aktif pada tombol kategori di Sidebar
-            categoryLinks.forEach(link => {
-                const badge = link.querySelector('span:last-child');
-                
-                if (link.dataset.target === category) {
-                    // Kelas aktif (Earth Tone)
-                    link.className = 'category-link flex justify-between items-center bg-earth-50 text-earth-600 px-4 py-3 rounded-lg transition active-category';
-                    badge.className = 'bg-earth-200 text-earth-700 text-xs py-0.5 px-2.5 rounded-full font-bold';
-                } else {
-                    // Kelas tidak aktif (Sage Tone)
-                    link.className = 'category-link flex justify-between items-center text-sage-700 hover:bg-sage-50 px-4 py-3 rounded-lg transition';
-                    badge.className = 'bg-sage-100 text-sage-600 text-xs py-0.5 px-2.5 rounded-full font-bold';
-                }
-            });
-
-            // 3. Jalankan fungsi filter
-            applyFilters();
-        }
-
-        // Event Click untuk Sidebar Kategori
-        categoryLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault(); 
-                filterKatalog(link.dataset.target);
-            });
-        });
-
-        // Event Input untuk Live Search Bar
-        if(searchInput) {
-            searchInput.addEventListener('input', (e) => {
-                searchQuery = e.target.value.toLowerCase();
-                applyFilters();
-            });
-        }
-
-        // Cek URL saat pertama kali dimuat
-        const urlParams = new URLSearchParams(window.location.search);
-        const initialCategory = urlParams.get('category') || 'semua';
-        filterKatalog(initialCategory);
-
     </script>
 </body>
 </html>
